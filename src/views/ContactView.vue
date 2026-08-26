@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white pt-20 pb-20">
+  <div class="min-h-screen bg-white pt-24 pb-20 md:pt-32">
     
     <!-- Top Header Banner (Wireframe 3) -->
     <div class="w-full bg-gradient-to-r from-brand-subtle via-white to-brand-subtle py-12 sm:py-16 border-b border-brand-border/40 mb-14 shadow-xs">

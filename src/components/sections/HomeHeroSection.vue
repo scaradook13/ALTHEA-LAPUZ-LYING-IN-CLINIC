@@ -1,5 +1,5 @@
 <template>
-  <section id="home" class="relative pt-28 pb-20 md:pt-36 md:pb-28 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(236,19,102,0.12),rgba(255,255,255,0))] overflow-hidden">
+  <section id="home" class="relative pt-32 pb-20 sm:pt-36 md:pt-44 md:pb-28 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(236,19,102,0.12),rgba(255,255,255,0))] overflow-hidden">
     <!-- Decorative background blur glow -->
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-soft/80 blur-3xl rounded-full pointer-events-none -z-10"></div>
     
