@@ -23,10 +23,10 @@
 
         <!-- Navigation Links + Small FAQ Toggle Button -->
         <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-bold text-text-secondary">
-          <router-link to="/" class="hover:text-brand-primary transition-colors">Home</router-link>
-          <router-link to="/services" class="hover:text-brand-primary transition-colors">Services</router-link>
-          <router-link to="/about" class="hover:text-brand-primary transition-colors">About</router-link>
-          <router-link to="/contact" class="hover:text-brand-primary transition-colors">Contact Us</router-link>
+          <router-link to="/" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">Home</router-link>
+          <router-link to="/services" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">Services</router-link>
+          <router-link to="/about" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">About</router-link>
+          <router-link to="/contact" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">Contact Us</router-link>
           
           <!-- Small FAQ Toggle Button -->
           <button 
@@ -128,6 +128,7 @@
               </div>
               <router-link 
                 to="/contact" 
+                @click="isFaqVisible = false"
                 class="px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-bold shadow-brand-sm hover:bg-brand-primary-hover hover:shadow-brand transition-all"
               >
                 Contact Clinic
@@ -148,11 +149,18 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { HelpCircle, ChevronDown, MessageCircleQuestion, X } from '@lucide/vue'
 
+const route = useRoute()
 const isFaqVisible = ref(false)
 const openFaqIndex = ref(0)
+
+// Automatically collapse FAQ whenever user changes tab or navigates to a new page
+watch(() => route.fullPath, () => {
+  isFaqVisible.value = false
+})
 
 const toggleFaqVisibility = async () => {
   isFaqVisible.value = !isFaqVisible.value
@@ -198,6 +206,7 @@ const faqs = [
   }
 ]
 </script>
+
 
 
 
