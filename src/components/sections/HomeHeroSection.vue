@@ -29,7 +29,7 @@
           <!-- CTAs -->
           <div class="flex flex-wrap items-center gap-4 pt-2">
             <BaseButton to="/contact" variant="primary" size="lg">
-              Schedule a Visit
+              Contact Us
             </BaseButton>
             <BaseButton to="/about" variant="secondary" size="lg" class="inline-flex items-center gap-2 font-bold">
               Our Story <ArrowRight class="w-4 h-4 ml-0.5 group-hover:translate-x-1 transition-transform" />
