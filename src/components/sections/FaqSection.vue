@@ -1,0 +1,69 @@
+<template>
+  <section class="py-24 bg-brand-surface border-t border-brand-light">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4">Frequently Asked Questions</h2>
+        <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+          Find answers to common questions about our clinic, services, appointments, and maternity care.
+        </p>
+      </div>
+      
+      <div class="space-y-4">
+        <FaqAccordion 
+          v-for="(faq, index) in faqs" 
+          :key="index"
+          :question="faq.question"
+          :answer="faq.answer"
+        />
+      </div>
+
+      <div class="mt-16 text-center bg-brand-soft rounded-3xl p-8 border border-brand-light">
+        <h3 class="text-2xl font-bold text-text-primary mb-3">Still have questions?</h3>
+        <p class="text-text-secondary mb-6">We're here to help! Reach out to us for any other inquiries.</p>
+        <BaseButton to="/contact" variant="primary">
+          Need More Help? Contact Us
+        </BaseButton>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import FaqAccordion from '../common/FaqAccordion.vue'
+import BaseButton from '../common/BaseButton.vue'
+
+const faqs = [
+  {
+    question: 'What services does Althea-Lapuz Lying-In Clinic offer?',
+    answer: 'We offer comprehensive maternal and newborn care, including prenatal checkups, normal spontaneous delivery (NSD), newborn screening, vaccination, and family planning services.'
+  },
+  {
+    question: 'How do I book an appointment?',
+    answer: 'You can book an appointment by contacting us via phone, email, or our Facebook page. We recommend scheduling in advance for regular checkups, though walk-ins are accepted for urgent maternity needs.'
+  },
+  {
+    question: 'Do I need to schedule an appointment before visiting the clinic?',
+    answer: 'While we encourage scheduling appointments for prenatal checkups and consultations to minimize wait times, our delivery and birthing services are available 24/7 for expecting mothers.'
+  },
+  {
+    question: 'What should I bring for my appointment or delivery?',
+    answer: 'For a prenatal checkup, please bring your previous medical records and ultrasound results. For delivery, please prepare your maternity records, baby clothes, receiving blankets, and your personal hygiene kit.'
+  },
+  {
+    question: 'What maternity and prenatal care services are available?',
+    answer: 'Our prenatal care includes routine fetal monitoring, maternal health assessments, nutritional guidance, and ultrasound referrals. We provide continuous support throughout your entire pregnancy.'
+  },
+  {
+    question: 'Do you provide postpartum care?',
+    answer: 'Yes, we provide postpartum support to monitor the mother\'s recovery, assist with breastfeeding, and ensure the newborn is healthy and thriving.'
+  },
+  {
+    question: 'How can I contact the clinic for more information?',
+    answer: 'You can reach us at (123) 456-7890 or +0912 345 6789. You can also send an email to inquiry@althealapuzclinic.com or send an inquiry through our Contact page.'
+  },
+  {
+    question: 'What are the clinic\'s operating hours?',
+    answer: 'Our regular checkup hours are Monday to Saturday from 8:00 AM to 5:00 PM. However, our delivery room and on-call birthing team are available 24/7 for any spontaneous deliveries.'
+  }
+]
+</script>
