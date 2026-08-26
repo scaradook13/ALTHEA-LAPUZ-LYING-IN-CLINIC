@@ -4,11 +4,13 @@
       <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
         <!-- Brand & Slogan -->
         <div class="flex items-center gap-3">
-          <img 
-            src="../../assets/images/althea-lapuz-logo.png" 
-            alt="Althea-Lapuz Lying In Clinic" 
-            class="w-9 h-9 rounded-full object-contain ring-2 ring-brand-border/60"
-          />
+          <div class="w-9 h-9 flex-shrink-0 relative">
+            <img 
+              src="../../assets/images/althea-lapuz-logo.png" 
+              alt="Althea-Lapuz Lying In Clinic" 
+              class="w-full h-full rounded-full object-contain ring-2 ring-brand-border/60"
+            />
+          </div>
           <div class="text-left">
             <h3 class="text-sm font-extrabold text-neutral-950 uppercase tracking-wider">
               Althea-Lapuz Lying In Clinic

@@ -4,20 +4,20 @@
       <div class="flex justify-between items-center h-20 md:h-24">
         
         <!-- Logo & Clinic Title -->
-        <div class="flex-shrink-0 flex items-center">
-          <router-link to="/" class="flex items-center gap-4 group">
-            <div class="relative">
+        <div class="flex-shrink-0 flex items-center min-w-0">
+          <router-link to="/" class="flex items-center gap-2.5 sm:gap-4 group min-w-0">
+            <div class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 flex-shrink-0 relative">
               <img 
                 src="../../assets/images/althea-lapuz-logo.png" 
                 alt="Althea-Lapuz Lying In Clinic Logo" 
-                class="w-13 h-13 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-contain shadow-brand-sm group-hover:scale-105 transition-all duration-300 ring-2 sm:ring-[3px] ring-brand-border/60 group-hover:ring-brand-primary"
+                class="w-full h-full rounded-full object-contain shadow-brand-sm group-hover:scale-105 transition-all duration-300 ring-2 sm:ring-[3px] ring-brand-border/60 group-hover:ring-brand-primary"
               />
             </div>
-            <div class="flex flex-col text-left">
-              <span class="text-base sm:text-lg md:text-xl font-extrabold text-neutral-950 tracking-wide uppercase group-hover:text-brand-primary transition-colors">
+            <div class="flex flex-col text-left min-w-0">
+              <span class="text-xs sm:text-base md:text-xl font-extrabold text-neutral-950 tracking-wide uppercase group-hover:text-brand-primary transition-colors truncate">
                 ALTHEA-LAPUZ LYING IN CLINIC
               </span>
-              <span class="text-[11px] sm:text-xs font-bold tracking-widest text-text-muted uppercase">
+              <span class="text-[9px] sm:text-[11px] md:text-xs font-bold tracking-widest text-text-muted uppercase truncate">
                 Maternal & Newborn Care
               </span>
             </div>
