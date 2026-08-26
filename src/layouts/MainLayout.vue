@@ -1,8 +1,8 @@
 <template>
-  <div class="font-sans text-text-primary bg-brand-surface min-h-screen flex flex-col">
+  <div class="font-sans text-neutral-900 bg-white min-h-screen flex flex-col antialiased">
     <NavBar />
     
-    <main class="flex-grow pt-20">
+    <main class="flex-grow">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" />
@@ -30,3 +30,4 @@ import Footer from '../components/layout/Footer.vue'
   opacity: 0;
 }
 </style>
+

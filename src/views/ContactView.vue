@@ -1,148 +1,151 @@
 <template>
-  <div class="min-h-screen bg-brand-soft pb-20">
-    <PageHero 
-      title="Contact Information" 
-      subtitle="We are here to assist you. Reach out to schedule an appointment, ask questions, or learn more about our facility."
-    />
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        
-        <!-- Contact Information List -->
-        <BaseCard class="lg:col-span-1">
-          <h2 class="text-2xl font-bold text-text-primary mb-8 flex items-center gap-3">
-            <Phone class="text-brand-primary w-6 h-6" />
-            Contact Details
-          </h2>
-          
-          <div class="space-y-8 text-text-secondary">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-brand-soft rounded-2xl flex items-center justify-center flex-shrink-0 border border-brand-light">
-                <PhoneCall class="w-6 h-6 text-brand-primary" />
-              </div>
-              <div>
-                <p class="font-bold text-text-primary text-lg mb-1">Phone Numbers</p>
-                <p class="text-lg">(123) 456-7890</p>
-                <p class="text-lg">+0912 345 6789</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-brand-soft rounded-2xl flex items-center justify-center flex-shrink-0 border border-brand-light">
-                <Mail class="w-6 h-6 text-brand-primary" />
-              </div>
-              <div>
-                <p class="font-bold text-text-primary text-lg mb-1">Email Address</p>
-                <p class="text-lg">inquiry@althealapuzclinic.com</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-brand-soft rounded-2xl flex items-center justify-center flex-shrink-0 border border-brand-light">
-                <Share2 class="w-6 h-6 text-brand-primary" />
-              </div>
-              <div>
-                <p class="font-bold text-text-primary text-lg mb-1">Social Media</p>
-                <a href="#" class="text-brand-primary hover:text-brand-primary-dark hover:underline font-medium text-lg transition-colors">Facebook Page</a>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-brand-soft rounded-2xl flex items-center justify-center flex-shrink-0 border border-brand-light">
-                <Headphones class="w-6 h-6 text-brand-primary" />
-              </div>
-              <div>
-                <p class="font-bold text-text-primary text-lg mb-1">Patient Support</p>
-                <p class="leading-relaxed text-lg">Available during operating hours for general inquiries and booking.</p>
-              </div>
-            </div>
+  <div class="min-h-screen bg-white pt-20 pb-20">
+    
+    <!-- Top Header Banner (Wireframe 3) -->
+    <div class="w-full bg-gradient-to-r from-brand-subtle via-white to-brand-subtle py-12 sm:py-16 border-b border-brand-border/40 mb-14 shadow-xs">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6">
+        <div class="space-y-3 text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+            <span>Direct Inquiries</span>
           </div>
-        </BaseCard>
-
-        <!-- Clinic Location -->
-        <BaseCard class="lg:col-span-1">
-          <h2 class="text-2xl font-bold text-text-primary mb-8 flex items-center gap-3">
-            <MapPin class="text-brand-primary w-6 h-6" />
-            Clinic Location
-          </h2>
-          
-          <div class="space-y-6 text-text-secondary mb-8">
-            <div>
-              <p class="font-bold text-text-primary mb-2">Full Address</p>
-              <p class="text-lg">123 Healthway Avenue, Medical District, Cityville, 12345</p>
+          <h1 class="text-4xl sm:text-5xl font-extrabold text-neutral-950 tracking-tight">
+            Contact Us
+          </h1>
+          <p class="text-text-secondary text-sm sm:text-base">
+            We are here to assist with checkup schedules, delivery inquiries, and concierge services.
+          </p>
+        </div>
+        <div>
+          <div class="w-36 h-24 sm:w-48 sm:h-28 bg-white rounded-2xl border border-brand-border/70 flex items-center justify-center shadow-card overflow-hidden relative group">
+            <img 
+              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop" 
+              alt="Clinic" 
+              class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" 
+            />
+            <div class="absolute inset-0 bg-brand-primary/10 flex items-center justify-center">
+              <span class="text-[10px] font-extrabold uppercase text-white bg-neutral-950/70 px-2.5 py-1 rounded-full backdrop-blur-xs">
+                Baliwag Clinic
+              </span>
             </div>
-            <div>
-              <p class="font-bold text-text-primary mb-2">Nearby Landmarks</p>
-              <p class="text-lg">Near Cityville Central Plaza, adjacent to the community pharmacy.</p>
-            </div>
-          </div>
-          
-          <div class="w-full h-56 bg-brand-soft rounded-[2rem] overflow-hidden relative flex items-center justify-center shadow-inner group cursor-pointer border border-brand-light">
-            <!-- Simulated Google Map -->
-            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=600&auto=format&fit=crop" alt="Map View" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-brand-primary-dark/10 flex items-center justify-center mix-blend-multiply"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <BaseButton variant="primary" class="shadow-xl px-8 !py-4 font-bold tracking-wide">
-                <template #prefix><Navigation class="w-5 h-5 mr-2" /></template>
-                Open in Maps
-              </BaseButton>
-            </div>
-          </div>
-        </BaseCard>
-
-        <!-- Clinic Inquiry Form -->
-        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-brand-light lg:col-span-1 relative">
-          <div class="relative z-10">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-text-primary">
-              <MessageSquare class="w-6 h-6 text-brand-primary" />
-              Send an Inquiry
-            </h2>
-            
-            <form @submit.prevent="submitForm" class="space-y-6">
-              <div>
-                <label class="block text-sm font-bold mb-2 text-text-primary">Name</label>
-                <input type="text" class="w-full px-5 py-3.5 rounded-2xl bg-white border border-brand-light focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-light text-text-primary transition-all text-lg placeholder-text-secondary/50" placeholder="Your full name" required>
-              </div>
-              
-              <div>
-                <label class="block text-sm font-bold mb-2 text-text-primary">Email / Phone</label>
-                <input type="text" class="w-full px-5 py-3.5 rounded-2xl bg-white border border-brand-light focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-light text-text-primary transition-all text-lg placeholder-text-secondary/50" placeholder="How can we reach you?" required>
-              </div>
-              
-              <div>
-                <label class="block text-sm font-bold mb-2 text-text-primary">Subject</label>
-                <select class="w-full px-5 py-3.5 rounded-2xl bg-white border border-brand-light focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-light text-text-primary transition-all text-lg appearance-none">
-                  <option value="appointment">Schedule Appointment</option>
-                  <option value="services">Inquire about Services</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              
-              <div>
-                <label class="block text-sm font-bold mb-2 text-text-primary">Message</label>
-                <textarea rows="4" class="w-full px-5 py-3.5 rounded-2xl bg-white border border-brand-light focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-light text-text-primary resize-none transition-all text-lg placeholder-text-secondary/50" placeholder="Your message here..." required></textarea>
-              </div>
-              
-              <BaseButton type="submit" variant="primary" fullWidth class="text-lg mt-4 !py-4 shadow-lg">
-                Submit Inquiry
-              </BaseButton>
-            </form>
           </div>
         </div>
-
       </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
+      
+      <!-- Clinic Title & 24/7 Notice -->
+      <div class="space-y-3">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold shadow-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          24 Hours a Day • 7 Days a Week Active Care
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-primary-dark tracking-tight">
+          Althea-Lapuz Lying In Clinic
+        </h2>
+        <p class="text-sm sm:text-base text-text-secondary font-medium">
+          Tilapayong, City of Baliwag, Bulacan
+        </p>
+      </div>
+
+      <!-- Contact Cards (2 Columns: Email & Facebook) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 max-w-3xl mx-auto">
+        <!-- Email Card -->
+        <a 
+          href="mailto:althealapuzlyingin@gmail.com" 
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300"
+        >
+          <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
+            <Mail class="w-7 h-7" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
+              Email Support
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all">
+              althealapuzlyingin@gmail.com
+            </p>
+          </div>
+          <span class="text-xs font-bold text-brand-primary group-hover:underline">Send an Email →</span>
+        </a>
+
+        <!-- Facebook Card -->
+        <a 
+          href="https://facebook.com" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300"
+        >
+          <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
+            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
+              Facebook Page
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 tracking-wide uppercase">
+              ALTHEA-LAPUZ LYING-IN CLINIC
+            </p>
+          </div>
+          <span class="text-xs font-bold text-brand-primary group-hover:underline">Visit Social Page →</span>
+        </a>
+      </div>
+
+      <!-- Medical Concierge In-Person Notice Banner -->
+      <div class="w-full bg-brand-soft/80 rounded-2xl p-6 sm:p-7 border border-brand-border/70 text-sm text-brand-primary-dark font-medium leading-relaxed max-w-3xl mx-auto shadow-card flex items-start gap-4 text-left">
+        <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+          <Sparkles class="w-5 h-5" />
+        </div>
+        <div>
+          <h4 class="text-sm font-extrabold uppercase tracking-wider text-brand-primary mb-1">
+            In-Person Medical Concierge
+          </h4>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            For direct in-person assistance, our Medical Concierge desk is located at Tilapayong, City of Baliwag, Bulacan, open to serve you 24hrs, Monday to Saturday.
+          </p>
+        </div>
+      </div>
+
+      <!-- MAP Section -->
+      <div class="space-y-4 pt-4 max-w-3xl mx-auto text-left">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm sm:text-base font-extrabold text-neutral-950 uppercase tracking-wide">
+            MAP: Althea-Lapuz Lying In Clinic
+          </h3>
+          <span class="text-xs text-text-muted">Tilapayong, Baliwag</span>
+        </div>
+
+        <div class="w-full h-80 sm:h-96 bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group">
+          <!-- Google Maps iframe for Tilapayong, Baliwag -->
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15424.088812674488!2d120.893125!3d14.954215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339655f4699f8d55%3A0x28652caefea8ea27!2sTilapayong%2C%20Baliwag%2C%20Bulacan!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" 
+            class="w-full h-full border-0 opacity-85 group-hover:opacity-100 transition-opacity duration-300"
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Althea-Lapuz Lying In Clinic Location Map"
+          ></iframe>
+
+          <!-- Central Map Pin Overlay -->
+          <div class="absolute pointer-events-none inset-0 flex items-center justify-center bg-brand-primary/10">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-xl backdrop-blur-xs border-4 border-white animate-bounce">
+              <MapPin class="w-8 h-8 sm:w-10 sm:h-10 text-white fill-current" />
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
 
 <script setup>
-import { Phone, PhoneCall, Mail, Share2, Headphones, MapPin, Navigation, MessageSquare } from '@lucide/vue'
-import PageHero from '../components/common/PageHero.vue'
-import BaseCard from '../components/common/BaseCard.vue'
-import BaseButton from '../components/common/BaseButton.vue'
-
-const submitForm = () => {
-  alert('Thank you for your inquiry. We will get back to you shortly.')
-}
+import { Mail, MapPin, Sparkles } from '@lucide/vue'
 </script>
+
+
+
+

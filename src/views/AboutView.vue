@@ -1,178 +1,169 @@
 <template>
-  <div class="min-h-screen bg-brand-soft pb-20">
-    <PageHero 
-      title="About Our Clinic" 
-      subtitle="Learn about our history, our dedicated team, and the core values that drive us to provide exceptional maternal care."
-    />
+  <div class="min-h-screen bg-white pt-24 pb-20 md:pt-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 md:space-y-28">
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 space-y-20">
-      
-      <!-- Clinic History / Background -->
-      <BaseCard class="p-8 md:p-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 class="text-3xl font-bold text-text-primary mb-6">Our Background & History</h2>
-            <p class="text-text-secondary leading-relaxed mb-6 text-lg">
-              Althea-Lapuz Lying-In Clinic started as a humble facility aimed at bridging the gap in maternal healthcare within our local community. Over the past decade, we have grown into a fully equipped, modern clinic.
-            </p>
-            <p class="text-text-secondary leading-relaxed text-lg">
-              Our journey has been guided by a single, unwavering commitment: ensuring that every mother and child receives the utmost care, respect, and medical attention during the miracle of childbirth.
+      <!-- Top Header / Hero -->
+      <div class="max-w-4xl text-left space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+          <span>About Our Practice</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight leading-[1.15]">
+          Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-primary-dark">Althea-Lapuz</span> Lying In Clinic
+        </h1>
+        <p class="text-xl font-bold text-brand-primary-dark font-sans">
+          Your trusted partner in maternal and general healthcare.
+        </p>
+        <p class="text-text-secondary text-base sm:text-lg leading-relaxed max-w-3xl">
+          We provide comprehensive, compassionate care tailored to your unique needs, ensuring a safe and comfortable environment for every patient. Our approach is direct, transparent, and focused entirely on your health outcomes.
+        </p>
+      </div>
+
+      <!-- Why Choose Us Section -->
+      <div class="space-y-12">
+        <div class="text-left space-y-2">
+          <div class="inline-block text-xs font-extrabold uppercase tracking-widest text-brand-primary">
+            CLINICAL DISTINCTION
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight">
+            Why Choose Us
+          </h2>
+        </div>
+
+        <!-- Feature Row 1: Experienced Staff (Text Left, Image Right) -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-center bg-white p-6 sm:p-10 rounded-3xl border border-brand-border/50 shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="md:col-span-6 space-y-4 text-left">
+            <span class="text-xs font-extrabold text-brand-primary bg-brand-soft px-3 py-1 rounded-full border border-brand-border/60">
+              01 • Expertise
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-900">
+              Experienced Staff
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed max-w-lg">
+              Our dedicated team brings years of clinical expertise to ensure the highest standard of specialized care, guiding mothers safely through every phase of childbirth.
             </p>
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="rounded-[2rem] overflow-hidden shadow-sm hover:scale-105 transition-transform duration-500 relative group h-56">
-                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Clinic History 1" />
-                <div class="absolute inset-0 bg-brand-primary opacity-10 mix-blend-multiply pointer-events-none"></div>
-            </div>
-            <div class="rounded-[2rem] overflow-hidden shadow-sm mt-8 hover:scale-105 transition-transform duration-500 relative group h-56">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover" alt="Clinic History 2" />
-                <div class="absolute inset-0 bg-brand-primary opacity-10 mix-blend-multiply pointer-events-none"></div>
+          <div class="md:col-span-6">
+            <div class="w-full h-64 sm:h-80 bg-brand-soft rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
+              <img 
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" 
+                alt="Experienced Staff" 
+                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div class="absolute inset-0 bg-brand-primary/10"></div>
             </div>
           </div>
         </div>
-      </BaseCard>
 
-      <!-- Why Choose Us & Healthcare Team -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <!-- Why Choose Us -->
-        <BaseCard class="!p-10">
-          <div class="flex items-center gap-4 mb-10">
-            <div class="w-14 h-14 bg-brand-soft rounded-2xl flex items-center justify-center text-brand-primary border border-brand-light">
-              <ShieldCheck class="w-7 h-7" />
+        <!-- Feature Row 2: Quality Care (Image Left, Text Right) -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-center bg-white p-6 sm:p-10 rounded-3xl border border-brand-border/50 shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="md:col-span-6 order-2 md:order-1">
+            <div class="w-full h-64 sm:h-80 bg-brand-soft rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
+              <img 
+                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" 
+                alt="Quality Care" 
+                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div class="absolute inset-0 bg-brand-primary/10"></div>
             </div>
-            <h3 class="text-3xl font-bold text-text-primary">Why Choose Us</h3>
           </div>
-          <ul class="space-y-6">
-            <li class="flex gap-6 p-4 rounded-3xl hover:bg-brand-light transition-colors border border-transparent hover:border-brand-light group">
-              <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-brand-primary border border-brand-light group-hover:border-brand-primary transition-colors">
-                <Users class="w-6 h-6" />
-              </div>
-              <div>
-                <h4 class="font-bold text-text-primary text-xl mb-1">Experienced Staff</h4>
-                <p class="text-text-secondary text-lg">Our team consists of licensed and highly trained professionals dedicated to maternal health.</p>
-              </div>
-            </li>
-            <li class="flex gap-6 p-4 rounded-3xl hover:bg-brand-light transition-colors border border-transparent hover:border-brand-light group">
-              <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-brand-primary border border-brand-light group-hover:border-brand-primary transition-colors">
-                <HeartPulse class="w-6 h-6" />
-              </div>
-              <div>
-                <h4 class="font-bold text-text-primary text-xl mb-1">Quality Care</h4>
-                <p class="text-text-secondary text-lg">We prioritize safety, comfort, and follow the latest best medical practices.</p>
-              </div>
-            </li>
-            <li class="flex gap-6 p-4 rounded-3xl hover:bg-brand-light transition-colors border border-transparent hover:border-brand-light group">
-              <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-brand-primary border border-brand-light group-hover:border-brand-primary transition-colors">
-                <CalendarCheck class="w-6 h-6" />
-              </div>
-              <div>
-                <h4 class="font-bold text-text-primary text-xl mb-1">Convenient Appointments</h4>
-                <p class="text-text-secondary text-lg">Flexible scheduling to accommodate the busy lives of expecting mothers.</p>
-              </div>
-            </li>
-          </ul>
-        </BaseCard>
-
-        <!-- Healthcare Team -->
-        <div class="bg-brand-primary-dark rounded-3xl p-10 text-white shadow-xl flex flex-col justify-center relative overflow-hidden">
-          <!-- Background Pattern -->
-          <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="pattern-about" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <circle cx="20" cy="20" r="2" fill="currentColor"></circle>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#pattern-about)"></rect>
-            </svg>
-          </div>
-
-          <div class="relative z-10">
-            <div class="flex items-center gap-4 mb-8">
-              <div class="w-14 h-14 bg-brand-primary rounded-2xl flex items-center justify-center text-white shadow-inner border border-brand-accent">
-                <Stethoscope class="w-7 h-7" />
-              </div>
-              <h3 class="text-3xl font-bold">Healthcare Team</h3>
-            </div>
-            <p class="text-brand-light mb-10 leading-relaxed text-lg">
-              Our clinic is staffed by a dedicated team of licensed midwives and consulting obstetricians specializing in normal spontaneous delivery and newborn care.
+          <div class="md:col-span-6 order-1 md:order-2 space-y-4 text-left">
+            <span class="text-xs font-extrabold text-brand-primary bg-brand-soft px-3 py-1 rounded-full border border-brand-border/60">
+              02 • Patient Safety
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-900">
+              Quality Care
+            </h3>
+            <p class="text-text-secondary text-base leading-relaxed max-w-lg">
+              We are committed to delivering safe, effective, and evidence-based medical services to all our patients, maintaining strict sterile standards and proactive monitoring.
             </p>
-            
-            <div class="space-y-6">
-              <div class="bg-brand-primary/60 rounded-3xl p-6 flex items-center gap-6 border border-brand-accent backdrop-blur-sm">
-                <div class="w-16 h-16 bg-brand-accent rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm border border-brand-accent">
-                  <User class="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h4 class="font-bold text-xl mb-1 text-white">Featured Midwife Team</h4>
-                  <p class="text-brand-light">On-call 24/7 for delivery cases to ensure you are never alone during labor.</p>
-                </div>
-              </div>
-              
-              <div class="bg-brand-primary/60 rounded-3xl p-6 border border-brand-accent backdrop-blur-sm">
-                <h4 class="font-bold text-xl mb-4 text-white">Core Specializations</h4>
-                <div class="flex flex-wrap gap-3">
-                  <span class="px-5 py-2 bg-brand-accent rounded-full text-sm font-medium shadow-sm border border-brand-primary text-white">Maternal Care</span>
-                  <span class="px-5 py-2 bg-brand-accent rounded-full text-sm font-medium shadow-sm border border-brand-primary text-white">Newborn Screening</span>
-                  <span class="px-5 py-2 bg-brand-accent rounded-full text-sm font-medium shadow-sm border border-brand-primary text-white">Family Planning</span>
-                  <span class="px-5 py-2 bg-brand-accent rounded-full text-sm font-medium shadow-sm border border-brand-primary text-white">Postpartum Support</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- Mission / Vision -->
-      <BaseCard class="p-8 md:p-12 text-center">
-        <h2 class="text-3xl font-bold text-text-primary mb-12">Mission, Vision & Values</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-16">
-          <div class="bg-brand-soft p-10 rounded-[2rem] border border-brand-light hover:border-brand-accent transition-colors">
-            <div class="w-16 h-16 bg-brand-soft rounded-2xl flex items-center justify-center mb-8 border border-brand-light">
-              <Target class="w-8 h-8 text-brand-primary" />
-            </div>
-            <h3 class="text-3xl font-bold text-text-primary mb-4">Our Mission</h3>
-            <p class="text-text-secondary leading-relaxed text-lg">
-              To provide safe, affordable, and high-quality maternal and newborn care services, empowering mothers and ensuring a healthy start for every child in our community.
-            </p>
+      <!-- Healthcare Team Section -->
+      <div class="space-y-8 pt-8 border-t border-brand-border/30 text-left">
+        <div class="space-y-1">
+          <div class="inline-block text-xs font-extrabold uppercase tracking-widest text-brand-primary">
+            OUR PRACTITIONERS
           </div>
-          <div class="bg-brand-soft p-10 rounded-[2rem] border border-brand-light hover:border-brand-accent transition-colors">
-            <div class="w-16 h-16 bg-brand-soft rounded-2xl flex items-center justify-center mb-8 border border-brand-light">
-              <Eye class="w-8 h-8 text-brand-primary" />
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-neutral-950 tracking-tight">
+            Healthcare Team
+          </h2>
+          <p class="text-sm sm:text-base text-text-secondary mt-1 font-normal">
+            Meet the clinical professionals dedicated to your health and peace of mind.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 pt-2">
+          <!-- Experienced Staff Checkmarks -->
+          <div class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 shadow-card space-y-6">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary shadow-xs">
+                <Users class="w-5 h-5" />
+              </div>
+              <h3 class="text-xl font-bold text-neutral-900">
+                Experienced Staff
+              </h3>
             </div>
-            <h3 class="text-3xl font-bold text-text-primary mb-4">Our Vision</h3>
-            <p class="text-text-secondary leading-relaxed text-lg">
-              To be the leading and most trusted lying-in clinic in the region, recognized for our compassionate care, professional excellence, and commitment to maternal and child health.
-            </p>
+            
+            <ul class="space-y-4 text-sm sm:text-base text-neutral-900 font-semibold">
+              <li class="flex items-center gap-3 p-3 bg-white rounded-xl border border-brand-border/40 shadow-xs">
+                <div class="w-7 h-7 rounded-full bg-brand-soft flex items-center justify-center text-brand-primary flex-shrink-0">
+                  <CheckCircle2 class="w-4 h-4" />
+                </div>
+                <span>Licensed Midwives</span>
+              </li>
+              <li class="flex items-center gap-3 p-3 bg-white rounded-xl border border-brand-border/40 shadow-xs">
+                <div class="w-7 h-7 rounded-full bg-brand-soft flex items-center justify-center text-brand-primary flex-shrink-0">
+                  <CheckCircle2 class="w-4 h-4" />
+                </div>
+                <span>Obstetricians & Gynecologists</span>
+              </li>
+              <li class="flex items-center gap-3 p-3 bg-white rounded-xl border border-brand-border/40 shadow-xs">
+                <div class="w-7 h-7 rounded-full bg-brand-soft flex items-center justify-center text-brand-primary flex-shrink-0">
+                  <CheckCircle2 class="w-4 h-4" />
+                </div>
+                <span>Pediatric Care Specialists</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Midwife Availability -->
+          <div class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 shadow-card flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary shadow-xs">
+                    <Clock class="w-5 h-5" />
+                  </div>
+                  <h3 class="text-xl font-bold text-neutral-900">
+                    Midwife Availability
+                  </h3>
+                </div>
+                <span class="px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold rounded-full">
+                  Active On-Call
+                </span>
+              </div>
+              
+              <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
+                Our certified midwives are accessible for scheduled consultations, continuous monitoring, and emergency delivery support. We maintain a vigorous 24/7 rotation to ensure expert maternal care is always available when you need it most.
+              </p>
+            </div>
+
+            <div class="p-4 bg-brand-soft/60 rounded-2xl border border-brand-border/60 text-xs text-brand-primary-dark font-medium">
+              📍 Direct consultations available at Tilapayong, City of Baliwag, Bulacan.
+            </div>
           </div>
         </div>
-        
-        <div class="border-t border-brand-light pt-16">
-          <h3 class="text-3xl font-bold text-text-primary mb-10">Our Core Values</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="p-8 bg-brand-soft rounded-3xl flex flex-col items-center hover:bg-brand-light transition-colors cursor-default border border-brand-light">
-              <span class="text-xl font-bold text-brand-primary-dark">Compassion</span>
-            </div>
-            <div class="p-8 bg-brand-soft rounded-3xl flex flex-col items-center hover:bg-brand-light transition-colors cursor-default border border-brand-light">
-              <span class="text-xl font-bold text-brand-primary-dark">Excellence</span>
-            </div>
-            <div class="p-8 bg-brand-soft rounded-3xl flex flex-col items-center hover:bg-brand-light transition-colors cursor-default border border-brand-light">
-              <span class="text-xl font-bold text-brand-primary-dark">Integrity</span>
-            </div>
-            <div class="p-8 bg-brand-soft rounded-3xl flex flex-col items-center hover:bg-brand-light transition-colors cursor-default border border-brand-light">
-              <span class="text-xl font-bold text-brand-primary-dark">Respect</span>
-            </div>
-          </div>
-        </div>
-      </BaseCard>
+      </div>
 
     </div>
   </div>
 </template>
 
 <script setup>
-import { ShieldCheck, Users, HeartPulse, CalendarCheck, Stethoscope, User, Target, Eye } from '@lucide/vue'
-import PageHero from '../components/common/PageHero.vue'
-import BaseCard from '../components/common/BaseCard.vue'
+import { CheckCircle2, Users, Clock } from '@lucide/vue'
 </script>
+
+
+

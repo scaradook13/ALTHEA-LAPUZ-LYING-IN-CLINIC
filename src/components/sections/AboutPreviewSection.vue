@@ -1,46 +1,129 @@
 <template>
-  <section id="about" class="py-20 bg-brand-surface">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <SectionHeader title="Learn More About Us" showDivider />
+  <section id="about" class="py-20 md:py-28 bg-gradient-to-b from-brand-subtle/50 via-white to-white border-t border-brand-border/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Tag / Pill Button -->
+      <div class="text-center mb-14">
+        <router-link 
+          to="/about"
+          class="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-soft hover:bg-brand-primary text-brand-primary-dark hover:text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-full border border-brand-border/70 shadow-brand-sm hover:shadow-brand transition-all duration-300 group"
+        >
+          <span>LEARN MORE ABOUT US</span>
+          <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </router-link>
+      </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-left mt-12">
-        <div>
-          <h3 class="text-2xl font-bold text-text-primary mb-4">Welcome to Althea-Lapuz Lying-In Clinic</h3>
-          <p class="text-text-secondary mb-6 leading-relaxed text-lg">
-            Our clinic was established with a singular focus: to provide accessible, high-quality, and compassionate maternal and newborn care to our community. 
-            We understand that pregnancy and childbirth are some of the most important moments in a family's life.
-          </p>
-          <div class="space-y-4 text-text-secondary mb-8 text-lg">
-            <div class="flex items-start gap-3">
-              <CheckCircle2 class="w-6 h-6 text-brand-primary mt-0.5 flex-shrink-0" />
-              <p><strong class="text-text-primary">What we provide:</strong> A safe haven for expectant mothers, offering comprehensive prenatal to postnatal care.</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <CheckCircle2 class="w-6 h-6 text-brand-primary mt-0.5 flex-shrink-0" />
-              <p><strong class="text-text-primary">Who we serve:</strong> Families in our local and surrounding communities looking for personalized midwifery services.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <!-- Left Image Box -->
+        <div class="lg:col-span-5">
+          <div class="relative group">
+            <div class="absolute -inset-2 bg-gradient-to-tr from-brand-primary/20 to-brand-soft rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition-opacity"></div>
+            
+            <div class="relative w-full h-80 sm:h-96 md:h-[460px] bg-brand-soft rounded-3xl border border-brand-border/60 overflow-hidden shadow-card">
+              <img 
+                src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop" 
+                alt="About Althea-Lapuz Clinic" 
+                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out" 
+              />
+              
+              <!-- Floating Badge -->
+              <div class="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/95 border border-brand-border/70 rounded-2xl p-4 shadow-lg text-left">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center font-bold text-sm shadow-brand-sm">
+                    12+
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Years of Excellence</h4>
+                    <p class="text-xs text-text-secondary">Dedicated Maternal & Infant Healthcare</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          
-          <ViewMoreButton to="/about" class="!mt-0" />
         </div>
-        
-        <div class="grid grid-cols-2 gap-4 h-full">
-          <div class="bg-brand-soft rounded-3xl p-6 flex flex-col justify-center text-center border border-brand-light">
-            <span class="text-4xl lg:text-5xl font-bold text-brand-primary mb-2">10+</span>
-            <span class="text-text-primary font-medium">Years of Experience</span>
+
+        <!-- Right Clinic Information -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <div class="space-y-3">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight leading-tight">
+              About the Clinic
+            </h2>
+            <p class="text-text-secondary text-base sm:text-lg leading-relaxed font-normal">
+              Founded on the principles of transparency and dedicated patient care, our dedicated program entity has provided compassionate and specialized maternal healthcare since 2012. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
+            </p>
+            <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
+              Specialized, modern healthcare center focused on clinical comfort, proactive, medical excellence.
+            </p>
           </div>
-          <div class="rounded-3xl overflow-hidden h-full w-full min-h-[250px] shadow-sm relative group">
-            <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600&auto=format&fit=crop" alt="Clinic Interior" class="object-cover h-full w-full transition-transform duration-700 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-brand-primary opacity-10 mix-blend-multiply pointer-events-none"></div>
+
+          <!-- 2 Columns: Established & Patient Focus Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="bg-white p-5 rounded-2xl border border-brand-border/60 shadow-card hover:border-brand-primary/50 transition-colors">
+              <div class="flex items-center gap-2 mb-1.5">
+                <Calendar class="w-4 h-4 text-brand-primary" />
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">
+                  Established
+                </h3>
+              </div>
+              <p class="text-2xl font-serif font-bold text-neutral-950">
+                2012
+              </p>
+              <p class="text-xs text-text-secondary mt-1">Providing trustworthy maternal care in Bulacan</p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-brand-border/60 shadow-card hover:border-brand-primary/50 transition-colors">
+              <div class="flex items-center gap-2 mb-1.5">
+                <Heart class="w-4 h-4 text-brand-primary" />
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">
+                  Patient Focus
+                </h3>
+              </div>
+              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed font-medium">
+                Specialized care & newborn services focused on safety, comfort, and direct medical excellence.
+              </p>
+            </div>
+          </div>
+
+          <!-- Operating Hours Card -->
+          <div class="bg-white p-6 rounded-2xl border border-brand-border/60 shadow-card space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <Clock class="w-4 h-4 text-brand-primary" />
+                <h3 class="text-sm font-bold text-neutral-950 uppercase tracking-wider">
+                  Operating Hours
+                </h3>
+              </div>
+              <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                24/7 Delivery On-Call
+              </span>
+            </div>
+            
+            <ul class="text-text-secondary text-xs sm:text-sm space-y-1.5">
+              <li class="flex justify-between border-b border-neutral-100 pb-1">
+                <span class="font-medium text-neutral-800">Monday - Friday:</span>
+                <span>8:00 AM - 5:00 PM</span>
+              </li>
+              <li class="flex justify-between border-b border-neutral-100 pb-1">
+                <span class="font-medium text-neutral-800">Saturday:</span>
+                <span>8:00 AM - 12:00 PM</span>
+              </li>
+              <li class="flex justify-between text-brand-primary font-semibold pt-0.5">
+                <span>Sunday (Active Deliveries):</span>
+                <span>24/7 Emergency On-Call</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 </template>
 
 <script setup>
-import { CheckCircle2 } from '@lucide/vue'
-import SectionHeader from '../common/SectionHeader.vue'
-import ViewMoreButton from '../common/ViewMoreButton.vue'
+import { ArrowRight, Calendar, Heart, Clock } from '@lucide/vue'
 </script>
+
+
+
