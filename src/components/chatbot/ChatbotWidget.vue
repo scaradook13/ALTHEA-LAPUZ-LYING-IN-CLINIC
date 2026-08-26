@@ -38,7 +38,7 @@
           <!-- Quick Replies (only show at bottom) -->
           <div v-show="!isTyping" class="mt-4">
             <QuickReplies 
-              :replies="availableQuickReplies"
+              :replies="displayedQuickReplies"
               @select="handleQuickReply"
             />
           </div>
@@ -95,6 +95,7 @@ const userInput = ref('')
 const messages = ref([])
 const isTyping = ref(false)
 const messagesContainer = ref(null)
+const hasAskedQuestion = ref(false)
 
 const toggleChat = () => {
   isOpen.value = !isOpen.value
@@ -103,7 +104,10 @@ const toggleChat = () => {
   }
 }
 
-const availableQuickReplies = computed(() => {
+const displayedQuickReplies = computed(() => {
+  if (hasAskedQuestion.value) {
+    return [{ id: 'ask_more', question: 'Ask another question' }]
+  }
   return quickReplyIds.map(id => faqResponses.find(faq => faq.id === id)).filter(Boolean)
 })
 
@@ -129,6 +133,13 @@ const addBotResponse = async (text) => {
 }
 
 const handleQuickReply = (reply) => {
+  if (reply.id === 'ask_more') {
+    hasAskedQuestion.value = false
+    scrollToBottom()
+    return
+  }
+  
+  hasAskedQuestion.value = true
   messages.value.push({ text: reply.question, isUser: true })
   scrollToBottom()
   addBotResponse(reply.answer)
@@ -138,6 +149,7 @@ const handleInputSubmit = () => {
   const text = userInput.value.trim()
   if (!text) return
   
+  hasAskedQuestion.value = true
   // Add user message
   messages.value.push({ text, isUser: true })
   userInput.value = ''
