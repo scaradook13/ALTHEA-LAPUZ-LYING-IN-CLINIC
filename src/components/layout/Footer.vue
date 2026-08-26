@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-gradient-to-b from-brand-subtle via-white to-brand-soft/60 text-text-primary border-t border-brand-border/40 mt-auto transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+  <footer class="bg-gradient-to-b from-brand-subtle via-white to-brand-soft/60 text-text-primary border-t border-brand-border/40 mt-auto transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6">
       
       <!-- ================= MAIN FOOTER ROW ================= -->
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -31,8 +31,10 @@
           <!-- Small FAQ Toggle Button -->
           <button 
             @click="toggleFaqVisibility"
-            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all duration-200 focus:outline-none cursor-pointer"
-            :class="isFaqVisible ? 'bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/30' : 'bg-brand-soft text-brand-primary hover:bg-brand-light hover:text-brand-primary-dark border border-brand-border/60'"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 focus:outline-none cursor-pointer active:scale-95"
+            :class="isFaqVisible 
+              ? 'bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/20' 
+              : 'bg-brand-soft text-brand-primary hover:bg-brand-light hover:text-brand-primary-dark border border-brand-border/60 hover:shadow-xs'"
             :aria-expanded="isFaqVisible"
             aria-label="Toggle Frequently Asked Questions"
           >
@@ -42,100 +44,98 @@
         </div>
       </div>
 
-      <!-- ================= EXPANDABLE FAQ DRAWER / SECTION ================= -->
-      <transition
-        enter-active-class="transition-all duration-400 ease-out"
-        enter-from-class="opacity-0 -translate-y-4 max-h-0"
-        enter-to-class="opacity-100 translate-y-0 max-h-[2000px]"
-        leave-active-class="transition-all duration-300 ease-in"
-        leave-from-class="opacity-100 translate-y-0 max-h-[2000px]"
-        leave-to-class="opacity-0 -translate-y-4 max-h-0"
+      <!-- ================= SMOOTH EXPANDABLE FAQ DRAWER ================= -->
+      <div 
+        class="grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        :class="isFaqVisible 
+          ? 'grid-rows-[1fr] opacity-100 pt-6 border-t border-brand-border/40' 
+          : 'grid-rows-[0fr] opacity-0 pointer-events-none pt-0 border-t-0'"
       >
-        <section v-if="isFaqVisible" id="faq-section" class="space-y-8 text-left pt-6 border-t border-brand-border/40 overflow-hidden">
-          
-          <!-- Section Header with Close Action -->
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div class="max-w-2xl space-y-2">
-              <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
-                <HelpCircle class="w-3.5 h-3.5" />
-                <span>Frequently Asked Questions</span>
-              </div>
-              <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                Got Questions? We’re Here to Help.
-              </h2>
-              <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                Find quick answers to common questions regarding maternal care, prenatal checkups, delivery schedules, and clinic facilities.
-              </p>
-            </div>
+        <div class="overflow-hidden">
+          <section id="faq-section" class="space-y-8 text-left pb-2">
             
-            <button 
-              @click="isFaqVisible = false" 
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-neutral-600 hover:text-brand-primary hover:bg-brand-soft border border-neutral-200 transition-colors"
-            >
-              <X class="w-3.5 h-3.5" />
-              <span>Hide FAQs</span>
-            </button>
-          </div>
-
-          <!-- FAQ Accordion Grid (2 Columns on Desktop) -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1">
-            <div 
-              v-for="(faq, index) in faqs" 
-              :key="faq.question"
-              class="bg-white rounded-2xl border border-brand-border/60 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
-            >
+            <!-- Section Header with Close Button -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="max-w-2xl space-y-2">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+                  <HelpCircle class="w-3.5 h-3.5" />
+                  <span>Frequently Asked Questions</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                  Got Questions? We’re Here to Help.
+                </h2>
+                <p class="text-text-secondary text-xs sm:text-sm leading-relaxed">
+                  Find quick answers to common questions regarding maternal care, prenatal checkups, delivery schedules, and clinic facilities.
+                </p>
+              </div>
+              
               <button 
-                @click="toggleFaq(index)"
-                class="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 focus:outline-none group cursor-pointer"
-                :aria-expanded="openFaqIndex === index"
+                @click="isFaqVisible = false" 
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-neutral-600 hover:text-brand-primary hover:bg-brand-soft border border-neutral-200 hover:border-brand-border transition-all duration-200 cursor-pointer"
               >
-                <span class="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-                  {{ faq.question }}
-                </span>
-                <div 
-                  class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300"
-                  :class="openFaqIndex === index ? 'rotate-180 bg-brand-primary text-white' : ''"
-                >
-                  <ChevronDown class="w-3.5 h-3.5" />
-                </div>
+                <X class="w-3.5 h-3.5" />
+                <span>Hide FAQs</span>
               </button>
+            </div>
 
-              <!-- Collapsible Answer -->
-              <transition
-                enter-active-class="transition-all duration-300 ease-out"
-                enter-from-class="max-h-0 opacity-0"
-                enter-to-class="max-h-96 opacity-100"
-                leave-active-class="transition-all duration-200 ease-in"
-                leave-from-class="max-h-96 opacity-100"
-                leave-to-class="max-h-0 opacity-0"
+            <!-- FAQ Accordion Grid (2 Columns on Desktop) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1">
+              <div 
+                v-for="(faq, index) in faqs" 
+                :key="faq.question"
+                class="bg-white rounded-2xl border border-brand-border/60 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
               >
-                <div v-show="openFaqIndex === index" class="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-text-secondary leading-relaxed border-t border-neutral-100">
-                  <p>{{ faq.answer }}</p>
-                </div>
-              </transition>
-            </div>
-          </div>
+                <button 
+                  @click="toggleFaq(index)"
+                  class="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 focus:outline-none group cursor-pointer"
+                  :aria-expanded="openFaqIndex === index"
+                >
+                  <span class="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
+                    {{ faq.question }}
+                  </span>
+                  <div 
+                    class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out"
+                    :class="openFaqIndex === index ? 'rotate-180 bg-brand-primary text-white' : ''"
+                  >
+                    <ChevronDown class="w-3.5 h-3.5" />
+                  </div>
+                </button>
 
-          <!-- Quick Chatbot / Inquiry Callout -->
-          <div class="p-4 sm:p-5 bg-brand-soft/70 rounded-2xl border border-brand-border/60 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-xl bg-brand-primary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
-                <MessageCircleQuestion class="w-4 h-4" />
-              </div>
-              <div>
-                <h4 class="text-xs sm:text-sm font-bold text-neutral-950">Have another question not listed here?</h4>
-                <p class="text-[11px] sm:text-xs text-text-secondary">Talk to our AI Clinic Assistant or contact our concierge directly.</p>
+                <!-- Butter-Smooth Grid Accordion Collapsible -->
+                <div 
+                  class="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  :class="openFaqIndex === index ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-100' : 'grid-rows-[0fr] opacity-0 border-t-0'"
+                >
+                  <div class="overflow-hidden">
+                    <div class="px-4 sm:px-5 pb-5 pt-3 text-xs sm:text-sm text-text-secondary leading-relaxed">
+                      <p>{{ faq.answer }}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <router-link 
-              to="/contact" 
-              class="px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-bold shadow-brand-sm hover:bg-brand-primary-hover hover:shadow-brand transition-all"
-            >
-              Contact Clinic
-            </router-link>
-          </div>
-        </section>
-      </transition>
+
+            <!-- Quick Chatbot / Inquiry Callout -->
+            <div class="p-4 sm:p-5 bg-brand-soft/70 rounded-2xl border border-brand-border/60 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-brand-primary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                  <MessageCircleQuestion class="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 class="text-xs sm:text-sm font-bold text-neutral-950">Have another question not listed here?</h4>
+                  <p class="text-[11px] sm:text-xs text-text-secondary">Talk to our AI Clinic Assistant or contact our concierge directly.</p>
+                </div>
+              </div>
+              <router-link 
+                to="/contact" 
+                class="px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-bold shadow-brand-sm hover:bg-brand-primary-hover hover:shadow-brand transition-all"
+              >
+                Contact Clinic
+              </router-link>
+            </div>
+          </section>
+        </div>
+      </div>
 
       <!-- ================= COPYRIGHT BAR ================= -->
       <div class="pt-4 border-t border-brand-border/30 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-text-muted">
@@ -158,10 +158,12 @@ const toggleFaqVisibility = async () => {
   isFaqVisible.value = !isFaqVisible.value
   if (isFaqVisible.value) {
     await nextTick()
-    const faqElement = document.getElementById('faq-section')
-    if (faqElement) {
-      faqElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    setTimeout(() => {
+      const faqElement = document.getElementById('faq-section')
+      if (faqElement) {
+        faqElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }
+    }, 120)
   }
 }
 
@@ -196,6 +198,7 @@ const faqs = [
   }
 ]
 </script>
+
 
 
 
