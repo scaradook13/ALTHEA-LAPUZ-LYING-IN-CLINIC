@@ -1,9 +1,11 @@
 <script setup>
 import MainLayout from './layouts/MainLayout.vue'
+import ChatbotWidget from './components/chatbot/ChatbotWidget.vue'
 </script>
 
 <template>
   <MainLayout />
+  <ChatbotWidget />
 </template>
 
 <style>
