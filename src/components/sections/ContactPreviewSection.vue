@@ -103,15 +103,14 @@
             title="Althea-Lapuz Lying In Clinic Location Map"
           ></iframe>
           
-          <!-- Location Badge Overlay with hover direction action -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center bg-brand-primary/10 group-hover:bg-neutral-950/20 transition-colors">
-            <span class="text-xl sm:text-3xl font-extrabold tracking-wider text-brand-primary-dark px-7 py-3 bg-white/95 rounded-2xl border border-brand-border/80 backdrop-blur-md shadow-xl group-hover:scale-105 transition-transform flex items-center gap-2">
-              <MapPin class="w-6 h-6 text-brand-primary fill-current" />
-              <span>Location: Tilapayong, Baliwag</span>
-            </span>
-            <div class="mt-3 px-4 py-1.5 bg-brand-primary text-white rounded-full text-xs font-extrabold shadow-md opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all flex items-center gap-1.5">
-              <span>Click to Open in Google Maps</span>
-              <ExternalLink class="w-3.5 h-3.5" />
+          <!-- Central Map Pin Overlay with interactive hover effect -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-950/10 group-hover:bg-neutral-950/20 transition-colors">
+            <div class="w-16 h-16 sm:w-18 sm:h-18 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-xl backdrop-blur-xs border-4 border-white group-hover:scale-110 transition-transform duration-300">
+              <MapPin class="w-8 h-8 sm:w-9 sm:h-9 text-white fill-current" />
+            </div>
+            <div class="mt-3 px-4 py-1.5 bg-white/95 backdrop-blur-md rounded-full border border-brand-border/80 text-xs font-bold text-brand-primary-dark shadow-md group-hover:bg-brand-primary group-hover:text-white transition-all duration-300 flex items-center gap-1.5">
+              <span>📍 Click map to get directions in Google Maps</span>
+              <ExternalLink class="w-3 h-3" />
             </div>
           </div>
         </a>
