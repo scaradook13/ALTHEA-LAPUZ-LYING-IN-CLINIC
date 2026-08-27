@@ -64,24 +64,34 @@
 
       <!-- Wide Location Map Box -->
       <div class="max-w-5xl mx-auto">
-        <div class="w-full h-80 sm:h-[400px] bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group">
-          <!-- Interactive Google Maps iframe / map view for Baliwag Bulacan -->
+        <a 
+          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="block w-full h-80 sm:h-[400px] bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group cursor-pointer"
+          title="Click to open Google Maps for directions to Althea-Lapuz Lying-In Clinic"
+        >
+          <!-- Interactive Google Maps iframe -->
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15424.088812674488!2d120.893125!3d14.954215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339655f4699f8d55%3A0x28652caefea8ea27!2sTilapayong%2C%20Baliwag%2C%20Bulacan!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" 
-            class="w-full h-full border-0 opacity-85 group-hover:opacity-100 transition-opacity duration-300"
-            allowfullscreen="" 
+            class="w-full h-full border-0 opacity-85 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
             title="Althea-Lapuz Lying In Clinic Location Map"
           ></iframe>
           
-          <!-- Wireframe Location Badge Overlay -->
-          <div class="absolute pointer-events-none inset-0 flex items-center justify-center bg-brand-primary/10">
-            <span class="text-2xl sm:text-4xl font-extrabold tracking-wider lowercase text-brand-primary-dark px-8 py-3.5 bg-white/95 rounded-2xl border border-brand-border/80 backdrop-blur-md shadow-xl">
-              location
+          <!-- Location Badge Overlay with hover direction action -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center bg-brand-primary/10 group-hover:bg-neutral-950/20 transition-colors">
+            <span class="text-xl sm:text-3xl font-extrabold tracking-wider text-brand-primary-dark px-7 py-3 bg-white/95 rounded-2xl border border-brand-border/80 backdrop-blur-md shadow-xl group-hover:scale-105 transition-transform flex items-center gap-2">
+              <MapPin class="w-6 h-6 text-brand-primary fill-current" />
+              <span>Location: Tilapayong, Baliwag</span>
             </span>
+            <div class="mt-3 px-4 py-1.5 bg-brand-primary text-white rounded-full text-xs font-extrabold shadow-md opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all flex items-center gap-1.5">
+              <span>Click to Open in Google Maps</span>
+              <ExternalLink class="w-3.5 h-3.5" />
+            </div>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>
@@ -89,7 +99,7 @@
 </template>
 
 <script setup>
-import { Phone, MapPin, Mail } from '@lucide/vue'
+import { Phone, MapPin, Mail, ExternalLink } from '@lucide/vue'
 </script>
 
 

@@ -115,27 +115,44 @@
           <h3 class="text-sm sm:text-base font-extrabold text-neutral-950 uppercase tracking-wide">
             MAP: Althea-Lapuz Lying In Clinic
           </h3>
-          <span class="text-xs text-text-muted">Tilapayong, Baliwag</span>
+          <a 
+            href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="text-xs font-bold text-brand-primary hover:underline inline-flex items-center gap-1"
+          >
+            <span>Open in Google Maps</span>
+            <ExternalLink class="w-3.5 h-3.5" />
+          </a>
         </div>
 
-        <div class="w-full h-80 sm:h-96 bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group">
-          <!-- Google Maps iframe for Tilapayong, Baliwag -->
+        <a 
+          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="block w-full h-80 sm:h-96 bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group cursor-pointer"
+          title="Click to open Google Maps for directions to Althea-Lapuz Lying-In Clinic"
+        >
+          <!-- Google Maps iframe with pointer-events-none so click passes through to the anchor tag -->
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15424.088812674488!2d120.893125!3d14.954215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x339655f4699f8d55%3A0x28652caefea8ea27!2sTilapayong%2C%20Baliwag%2C%20Bulacan!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph" 
-            class="w-full h-full border-0 opacity-85 group-hover:opacity-100 transition-opacity duration-300"
-            allowfullscreen="" 
+            class="w-full h-full border-0 opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
             title="Althea-Lapuz Lying In Clinic Location Map"
           ></iframe>
 
-          <!-- Central Map Pin Overlay -->
-          <div class="absolute pointer-events-none inset-0 flex items-center justify-center bg-brand-primary/10">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-xl backdrop-blur-xs border-4 border-white animate-bounce">
-              <MapPin class="w-8 h-8 sm:w-10 sm:h-10 text-white fill-current" />
+          <!-- Central Map Pin Overlay with interactive hover effect -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-950/10 group-hover:bg-neutral-950/20 transition-colors">
+            <div class="w-16 h-16 sm:w-18 sm:h-18 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-xl backdrop-blur-xs border-4 border-white group-hover:scale-110 transition-transform duration-300">
+              <MapPin class="w-8 h-8 sm:w-9 sm:h-9 text-white fill-current" />
+            </div>
+            <div class="mt-3 px-4 py-1.5 bg-white/95 backdrop-blur-md rounded-full border border-brand-border/80 text-xs font-bold text-brand-primary-dark shadow-md group-hover:bg-brand-primary group-hover:text-white transition-all duration-300 flex items-center gap-1.5">
+              <span>📍 Click map to get directions in Google Maps</span>
+              <ExternalLink class="w-3 h-3" />
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>
@@ -143,7 +160,7 @@
 </template>
 
 <script setup>
-import { Mail, MapPin, Sparkles } from '@lucide/vue'
+import { Mail, MapPin, Sparkles, ExternalLink } from '@lucide/vue'
 </script>
 
 
