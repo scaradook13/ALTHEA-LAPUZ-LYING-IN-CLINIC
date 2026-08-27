@@ -90,45 +90,87 @@
               </button>
             </div>
 
-            <!-- FAQ Accordion Grid (2 Columns on Desktop) -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-1">
-              <div 
-                v-for="(faq, index) in faqs" 
-                :key="faq.question"
-                class="bg-white rounded-2xl border border-brand-border/60 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
-              >
-                <button 
-                  @click="toggleFaq(index)"
-                  class="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 focus:outline-none group cursor-pointer"
-                  :aria-expanded="openFaqIndex === index"
-                >
-                  <span class="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-                    {{ faq.question }}
-                  </span>
-                  <div 
-                    class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out"
-                    :class="openFaqIndex === index ? 'rotate-180 bg-brand-primary text-white' : ''"
-                  >
-                    <ChevronDown class="w-3.5 h-3.5" />
-                  </div>
-                </button>
-
-                <!-- Butter-Smooth Grid Accordion Collapsible -->
+            <!-- FAQ Accordion Layout (2 Independent Columns to prevent adjacent stretching) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start pt-1">
+              
+              <!-- Left Column (Even index FAQs) -->
+              <div class="space-y-4">
                 <div 
-                  class="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                  :class="openFaqIndex === index ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-100' : 'grid-rows-[0fr] opacity-0 border-t-0'"
+                  v-for="faq in leftFaqs" 
+                  :key="faq.question"
+                  class="bg-white rounded-2xl border border-brand-border/70 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
                 >
-                  <div class="overflow-hidden">
-                    <div class="px-4 sm:px-5 pb-5 pt-3 text-xs sm:text-sm text-text-secondary leading-relaxed">
-                      <p>{{ faq.answer }}</p>
+                  <button 
+                    @click="toggleFaq(faq.originalIndex)"
+                    class="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 focus:outline-none group cursor-pointer"
+                    :aria-expanded="openFaqIndex === faq.originalIndex"
+                  >
+                    <span class="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
+                      {{ faq.question }}
+                    </span>
+                    <div 
+                      class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out"
+                      :class="openFaqIndex === faq.originalIndex ? 'rotate-180 bg-brand-primary text-white' : ''"
+                    >
+                      <ChevronDown class="w-3.5 h-3.5" />
+                    </div>
+                  </button>
+
+                  <!-- Butter-Smooth Grid Accordion Collapsible -->
+                  <div 
+                    class="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    :class="openFaqIndex === faq.originalIndex ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-100' : 'grid-rows-[0fr] opacity-0 border-t-0'"
+                  >
+                    <div class="overflow-hidden">
+                      <div class="px-4 sm:px-5 pb-5 pt-3 text-xs sm:text-sm text-text-secondary leading-relaxed bg-brand-subtle/30">
+                        <p>{{ faq.answer }}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <!-- Right Column (Odd index FAQs) -->
+              <div class="space-y-4">
+                <div 
+                  v-for="faq in rightFaqs" 
+                  :key="faq.question"
+                  class="bg-white rounded-2xl border border-brand-border/70 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
+                >
+                  <button 
+                    @click="toggleFaq(faq.originalIndex)"
+                    class="w-full p-4 sm:p-5 text-left flex justify-between items-center gap-4 focus:outline-none group cursor-pointer"
+                    :aria-expanded="openFaqIndex === faq.originalIndex"
+                  >
+                    <span class="text-xs sm:text-sm font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
+                      {{ faq.question }}
+                    </span>
+                    <div 
+                      class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 ease-out"
+                      :class="openFaqIndex === faq.originalIndex ? 'rotate-180 bg-brand-primary text-white' : ''"
+                    >
+                      <ChevronDown class="w-3.5 h-3.5" />
+                    </div>
+                  </button>
+
+                  <!-- Butter-Smooth Grid Accordion Collapsible -->
+                  <div 
+                    class="grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    :class="openFaqIndex === faq.originalIndex ? 'grid-rows-[1fr] opacity-100 border-t border-neutral-100' : 'grid-rows-[0fr] opacity-0 border-t-0'"
+                  >
+                    <div class="overflow-hidden">
+                      <div class="px-4 sm:px-5 pb-5 pt-3 text-xs sm:text-sm text-text-secondary leading-relaxed bg-brand-subtle/30">
+                        <p>{{ faq.answer }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <!-- Quick Chatbot / Inquiry Callout -->
-            <div class="p-4 sm:p-5 bg-brand-soft/70 rounded-2xl border border-brand-border/60 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div class="p-4 sm:p-5 bg-white/90 rounded-2xl border border-brand-border/70 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-xs">
               <div class="flex items-center gap-3">
                 <div class="w-9 h-9 rounded-xl bg-brand-primary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
                   <MessageCircleQuestion class="w-4 h-4" />
@@ -161,13 +203,13 @@
 </template>
 
 <script setup>
-import { ref, nextTick, watch } from 'vue'
+import { ref, computed, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { HelpCircle, ChevronDown, MessageCircleQuestion, X } from '@lucide/vue'
 
 const route = useRoute()
 const isFaqVisible = ref(false)
-const openFaqIndex = ref(0)
+const openFaqIndex = ref(-1)
 
 // Automatically collapse FAQ whenever user changes tab or navigates to a new page
 watch(() => route.fullPath, () => {
@@ -217,6 +259,18 @@ const faqs = [
     answer: 'You can contact us via phone at (044)-462-0789 / 0931-069-3921 / 0969-405-5108, email us at lapuzaltheajasmine@gmail.com, or visit our clinic located at 332 Ramon Magsaysay Street, Tilapayong, City of Baliwag, Bulacan.'
   }
 ]
+
+const faqsWithIndex = computed(() => {
+  return faqs.map((faq, index) => ({ ...faq, originalIndex: index }))
+})
+
+const leftFaqs = computed(() => {
+  return faqsWithIndex.value.filter((_, idx) => idx % 2 === 0)
+})
+
+const rightFaqs = computed(() => {
+  return faqsWithIndex.value.filter((_, idx) => idx % 2 !== 0)
+})
 </script>
 
 
