@@ -141,6 +141,8 @@
       <!-- ================= TAB 2: SERVICE PRICING & FEES ================= -->
       <div v-else-if="activeTab === 'pricing'" class="space-y-8 text-left pt-2">
         <div class="border border-brand-border/60 rounded-3xl p-6 sm:p-10 md:p-12 bg-gradient-to-br from-brand-subtle via-white to-white shadow-card space-y-8">
+          
+          <!-- Section Header -->
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pb-4 border-b border-brand-border/40">
             <div>
               <span class="text-xs font-extrabold uppercase tracking-widest text-brand-primary">CLINICAL SERVICES & PACKAGES</span>
@@ -148,99 +150,143 @@
             </div>
             <router-link 
               to="/contact" 
-              class="px-5 py-2 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-bold shadow-brand-sm hover:bg-brand-primary-hover transition-colors"
+              class="px-5 py-2.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-bold shadow-brand-sm hover:bg-brand-primary-hover hover:shadow-brand transition-all"
             >
               Inquire or Schedule Visit
             </router-link>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
-            <!-- 1: Prenatal Checkups -->
-            <div class="bg-white p-6 rounded-2xl border border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary transition-all space-y-4 group">
-              <div class="flex items-center justify-between">
-                <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors">
-                  • Prenatal Checkups
-                </h3>
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60">
-                  Standard & Specialized
-                </span>
-              </div>
-              <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-xl border border-brand-border/50 overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" 
-                  alt="Prenatal Checkups" 
-                  class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
-                />
-              </div>
-              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                Comprehensive maternal assessment, ultrasound coordination, fetal heart monitoring, and health tracking throughout every trimester.
-              </p>
-            </div>
+          <!-- Helper Prompt -->
+          <p class="text-xs sm:text-sm text-text-secondary">
+            💡 Click on any service card below to view comprehensive service details, inclusions, requirements, and schedule a consultation.
+          </p>
 
-            <!-- 2: Newborn Screening -->
-            <div class="bg-white p-6 rounded-2xl border border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary transition-all space-y-4 group">
-              <div class="flex items-center justify-between">
-                <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors">
-                  • Newborn Screening
+          <!-- Interactive Expandable 2-Column Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto items-start">
+            <div 
+              v-for="service in servicesData" 
+              :key="service.id"
+              @click="toggleService(service.id)"
+              @keydown.enter.prevent="toggleService(service.id)"
+              @keydown.space.prevent="toggleService(service.id)"
+              role="button"
+              :aria-expanded="expandedServiceId === service.id"
+              tabindex="0"
+              class="bg-white p-6 sm:p-7 rounded-3xl border transition-all duration-300 text-left space-y-4 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary/40 select-none"
+              :class="expandedServiceId === service.id 
+                ? 'border-brand-primary shadow-brand ring-2 ring-brand-primary/10' 
+                : 'border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary/80'"
+            >
+              <!-- Card Header with Category Tag -->
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors flex items-center gap-2">
+                  <span class="text-brand-primary">•</span>
+                  <span>{{ service.title }}</span>
                 </h3>
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60">
-                  Expanded (NBS)
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60 flex-shrink-0">
+                  {{ service.tag }}
                 </span>
               </div>
-              <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-xl border border-brand-border/50 overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=600&auto=format&fit=crop" 
-                  alt="Newborn Screening" 
-                  class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
-                />
-              </div>
-              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                Early diagnostic blood test to detect rare metabolic and congenital disorders, ensuring early medical care and newborn protection.
-              </p>
-            </div>
 
-            <!-- 3: Normal Spontaneous Delivery -->
-            <div class="bg-white p-6 rounded-2xl border border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary transition-all space-y-4 group">
-              <div class="flex items-center justify-between">
-                <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors">
-                  • Normal Spontaneous Delivery
-                </h3>
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60">
-                  NSD Package
-                </span>
-              </div>
-              <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-xl border border-brand-border/50 overflow-hidden relative">
+              <!-- High Resolution Image with Zoom -->
+              <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-2xl border border-brand-border/50 overflow-hidden relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=600&auto=format&fit=crop" 
-                  alt="Normal Spontaneous Delivery" 
+                  :src="service.image" 
+                  :alt="service.title" 
                   class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
                 />
+                <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/25 via-transparent to-transparent"></div>
               </div>
-              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                Safe birthing care assisted by licensed midwives and medical staff, including labor monitoring, sterile delivery setup, and recovery support.
-              </p>
-            </div>
 
-            <!-- 4: Vaccination -->
-            <div class="bg-white p-6 rounded-2xl border border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary transition-all space-y-4 group">
-              <div class="flex items-center justify-between">
-                <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors">
-                  • Vaccination
-                </h3>
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60">
-                  Maternal & Infant
-                </span>
-              </div>
-              <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-xl border border-brand-border/50 overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=600&auto=format&fit=crop" 
-                  alt="Vaccination" 
-                  class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
-                />
-              </div>
+              <!-- Short Summary Description -->
               <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                Essential immunizations including newborn BCG, Hepatitis B, and recommended maternal vaccines to protect against infectious diseases.
+                {{ service.shortDescription }}
               </p>
+
+              <!-- Interactive Click / Expand Indicator Bar -->
+              <div class="pt-3 flex items-center justify-between border-t border-brand-border/30 text-xs font-bold text-brand-primary">
+                <span class="flex items-center gap-1.5">
+                  <Sparkles class="w-3.5 h-3.5 text-brand-primary" />
+                  <span>{{ expandedServiceId === service.id ? 'Click to collapse details' : 'Click to view full specifications' }}</span>
+                </span>
+                <div 
+                  class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center transition-transform duration-300 ease-out flex-shrink-0"
+                  :class="expandedServiceId === service.id ? 'rotate-180 bg-brand-primary text-white shadow-brand-sm' : ''"
+                >
+                  <ChevronDown class="w-4 h-4" />
+                </div>
+              </div>
+
+              <!-- Butter-Smooth Expandable Detail Area -->
+              <div 
+                class="grid transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                :class="expandedServiceId === service.id 
+                  ? 'grid-rows-[1fr] opacity-100 mt-4 pt-4 border-t border-brand-border/30' 
+                  : 'grid-rows-[0fr] opacity-0 pointer-events-none mt-0 pt-0 border-t-0'"
+              >
+                <div class="overflow-hidden space-y-5">
+                  
+                  <!-- Detailed Overview -->
+                  <div class="space-y-1.5 pt-1">
+                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Detailed Overview</h4>
+                    <p class="text-xs sm:text-sm text-neutral-800 leading-relaxed bg-brand-soft/60 p-3.5 rounded-2xl border border-brand-border/40 font-normal">
+                      {{ service.detailedDescription }}
+                    </p>
+                  </div>
+
+                  <!-- What's Included List -->
+                  <div class="space-y-2">
+                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-neutral-900 flex items-center gap-1.5">
+                      <CheckCircle2 class="w-3.5 h-3.5 text-brand-primary" />
+                      <span>What's Included</span>
+                    </h4>
+                    <ul class="space-y-2 text-xs sm:text-sm text-text-secondary bg-white p-3.5 rounded-2xl border border-brand-border/40">
+                      <li v-for="(item, idx) in service.includes" :key="idx" class="flex items-start gap-2.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 flex-shrink-0"></span>
+                        <span class="leading-relaxed">{{ item }}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <!-- Who It's For -->
+                  <div class="bg-white p-3.5 rounded-2xl border border-brand-border/40 text-xs sm:text-sm space-y-1">
+                    <span class="text-xs font-bold text-neutral-900 flex items-center gap-1.5">
+                      <Users class="w-3.5 h-3.5 text-brand-primary" />
+                      <span>Who It's For</span>
+                    </span>
+                    <p class="text-text-secondary pl-5 leading-relaxed">{{ service.whoFor }}</p>
+                  </div>
+
+                  <!-- Important Notes / Preparation -->
+                  <div class="bg-brand-soft/40 p-3.5 rounded-2xl border border-brand-border/40 text-xs sm:text-sm space-y-1">
+                    <span class="text-xs font-bold text-neutral-900 flex items-center gap-1.5">
+                      <FileText class="w-3.5 h-3.5 text-brand-primary" />
+                      <span>Important Notes & Preparation</span>
+                    </span>
+                    <p class="text-text-secondary pl-5 leading-relaxed">{{ service.notes }}</p>
+                  </div>
+
+                  <!-- Pricing / Coverage Info -->
+                  <div class="p-3.5 bg-brand-subtle/90 rounded-2xl border border-brand-border/50 flex items-center gap-2.5 text-xs text-brand-primary-dark font-semibold">
+                    <Banknote class="w-4 h-4 text-brand-primary flex-shrink-0" />
+                    <span>{{ service.pricing }}</span>
+                  </div>
+
+                  <!-- Prominent Contact CTA Button -->
+                  <div class="pt-2">
+                    <router-link 
+                      to="/contact"
+                      @click.stop
+                      class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-extrabold shadow-brand-sm hover:shadow-brand hover:bg-brand-primary-hover active:scale-[0.98] transition-all cursor-pointer"
+                    >
+                      <span>Contact Us / Schedule Visit</span>
+                      <ArrowRight class="w-4 h-4" />
+                    </router-link>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -372,11 +418,25 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { ArrowRight, Banknote, ShieldCheck } from '@lucide/vue'
+import { 
+  ArrowRight, 
+  Banknote, 
+  ShieldCheck, 
+  ChevronDown, 
+  CheckCircle2, 
+  Users, 
+  FileText, 
+  Sparkles 
+} from '@lucide/vue'
 
 const route = useRoute()
 const router = useRouter()
 const activeTab = ref('overview')
+const expandedServiceId = ref(null)
+
+const toggleService = (id) => {
+  expandedServiceId.value = expandedServiceId.value === id ? null : id
+}
 
 const tabTitle = computed(() => {
   if (activeTab.value === 'pricing') return 'Service Pricing & Fees'
@@ -393,6 +453,79 @@ const tabSubtitle = computed(() => {
   }
   return 'We provide comprehensive maternity care, including prenatal checkups, delivery assistance, postnatal care, newborn care, and maternal health services.'
 })
+
+const servicesData = [
+  {
+    id: 'prenatal-checkups',
+    title: 'Prenatal Checkups',
+    tag: 'Standard & Specialized',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop',
+    shortDescription: 'Comprehensive maternal assessment, ultrasound coordination, fetal heart monitoring, and health tracking throughout every trimester.',
+    detailedDescription: 'Our prenatal checkup program provides continuous, compassionate clinical monitoring for expecting mothers. From the earliest weeks of pregnancy through final term preparation, our licensed midwives and medical practitioners ensure both maternal wellness and optimal fetal development.',
+    whoFor: 'Expecting mothers in all stages of pregnancy (1st, 2nd, and 3rd trimester).',
+    includes: [
+      'Maternal vital signs & blood pressure monitoring',
+      'Fetal Doppler heartbeat check & fundic height measurement',
+      'Nutritional guidance & prenatal vitamin prescription',
+      'Ultrasound coordination & laboratory test interpretation',
+      'Birth plan counseling and delivery readiness preparation'
+    ],
+    notes: 'Please bring your maternity booklet, valid ID, and any recent lab or ultrasound results.',
+    pricing: 'Accessible consultation fee • PhilHealth / Maternal benefit assistance available'
+  },
+  {
+    id: 'newborn-screening',
+    title: 'Newborn Screening',
+    tag: 'Expanded (NBS)',
+    image: 'https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=600&auto=format&fit=crop',
+    shortDescription: 'Early diagnostic blood test to detect rare metabolic and congenital disorders, ensuring early medical care and newborn protection.',
+    detailedDescription: 'Expanded Newborn Screening (ENBS) is a vital preventative health test conducted ideally within 24 to 72 hours after birth. A few drops of blood from the baby’s heel are screened for multiple life-threatening metabolic, endocrine, and genetic conditions before clinical symptoms appear.',
+    whoFor: 'All newborn infants within 24 to 72 hours (up to 2 weeks) after birth.',
+    includes: [
+      'Heel-prick blood sample collection by certified medical staff',
+      'Screening for congenital hypothyroidism, CAH, G6PD deficiency, PKU, MSUD, and galactosemia',
+      'Official Philippine Newborn Screening Center laboratory processing',
+      'Results release, physician consultation, and medical records documentation'
+    ],
+    notes: 'Must be done at least 24 hours after birth. Covered under the PhilHealth Newborn Care Package (NCP).',
+    pricing: 'DOH standard expanded NBS package • Included in PhilHealth NCP'
+  },
+  {
+    id: 'normal-spontaneous-delivery',
+    title: 'Normal Spontaneous Delivery',
+    tag: 'NSD Package',
+    image: 'https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=600&auto=format&fit=crop',
+    shortDescription: 'Safe birthing care assisted by licensed midwives and medical staff, including labor monitoring, sterile delivery setup, and recovery support.',
+    detailedDescription: 'Our Normal Spontaneous Delivery (NSD) package provides round-the-clock maternal and newborn care in a clean, sterile, and family-centered birthing facility. Experienced licensed midwives closely guide you through labor progression, delivery, and immediate postnatal bonding.',
+    whoFor: 'Low-risk pregnant mothers with full-term single pregnancies suitable for normal spontaneous vaginal delivery.',
+    includes: [
+      '24/7 delivery room admission and sterile birthing suite setup',
+      'Continuous labor monitoring, partograph tracking, and maternal vital checks',
+      'Professional delivery assistance by licensed midwives and medical staff',
+      'Immediate Essential Newborn Care (EINC / Unang Yakap) and early skin-to-skin contact',
+      'Postpartum recovery room stay, maternal observation, and lactation assistance'
+    ],
+    notes: 'Please bring your complete prenatal records, baby clothes, receiving blankets, maternity pads, and PhilHealth documents upon admission.',
+    pricing: 'Complete birthing packages available • PhilHealth Maternity Care Package (MCP) accredited'
+  },
+  {
+    id: 'vaccination',
+    title: 'Vaccination',
+    tag: 'Maternal & Infant',
+    image: 'https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=600&auto=format&fit=crop',
+    shortDescription: 'Essential immunizations including newborn BCG, Hepatitis B, and recommended maternal vaccines to protect against infectious diseases.',
+    detailedDescription: 'Our clinical immunization program strictly adheres to Department of Health (DOH) and World Health Organization (WHO) schedules, protecting both mother and child against life-threatening infectious diseases through safe, sterile vaccine administration.',
+    whoFor: 'Newborns, infants, young children, and pregnant women requiring routine or catch-up immunization.',
+    includes: [
+      'Newborn first doses: BCG (Tuberculosis) and Hepatitis B birth dose',
+      'Routine infant vaccines (Pentavalent, Oral/Inactivated Polio, PCV, MMR)',
+      'Maternal Tetanus Toxoid (Td/Tdap) and Flu immunization',
+      'Official Baby Book / Immunization card issuance and schedule monitoring'
+    ],
+    notes: 'Please bring your child’s baby booklet / immunization card to every visit.',
+    pricing: 'DOH essential immunization schedule • Transparent package & per-vaccine rates'
+  }
+]
 
 const setTab = (tab) => {
   activeTab.value = tab
@@ -421,6 +554,7 @@ watch(() => route.query, () => {
   syncFromRoute()
 })
 </script>
+
 
 
 
