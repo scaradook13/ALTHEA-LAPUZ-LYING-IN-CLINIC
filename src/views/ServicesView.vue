@@ -289,6 +289,429 @@
 
             </div>
           </div>
+
+          <!-- ================================================================= -->
+          <!-- ============= EXTENDED OFFICIAL CLINIC PRICE DIRECTORY ============ -->
+          <!-- ================================================================= -->
+          <div class="pt-12 border-t border-brand-border/50 space-y-12">
+            
+            <!-- Official Notice & Regulatory Header -->
+            <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border/70 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <div class="space-y-1.5 text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-soft border border-brand-border/80 text-brand-primary text-[11px] font-extrabold uppercase tracking-wider rounded-full">
+                  <FileCheck class="w-3.5 h-3.5" />
+                  <span>Public Access to Price List Information (A.O. No. 2021-0008)</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-neutral-950">
+                  Official Price Directory & Fee Schedule
+                </h3>
+                <p class="text-xs sm:text-sm text-text-secondary">
+                  Althea-Lapuz Lying-In Clinic • 332 Ramon Magsaysay Street, Tilapayong, Baliwag, Bulacan
+                </p>
+              </div>
+
+              <div class="flex items-center gap-3 bg-brand-subtle px-4 py-2.5 rounded-2xl border border-brand-border/60 flex-shrink-0">
+                <Calendar class="w-4 h-4 text-brand-primary" />
+                <span class="text-xs font-extrabold text-brand-primary-dark uppercase tracking-wider">
+                  Price Information — As of April 01, 2026
+                </span>
+              </div>
+            </div>
+
+            <!-- ================= SUBSECTION 1: OTHER SERVICES & FAMILY PLANNING ================= -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              
+              <!-- 1. Other Services -->
+              <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border/60 shadow-card space-y-5 text-left">
+                <div class="flex items-center justify-between pb-3 border-b border-brand-border/40">
+                  <div class="space-y-0.5">
+                    <span class="text-[11px] font-extrabold uppercase tracking-widest text-brand-primary">OUTPATIENT CLINICAL</span>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-neutral-950">Other Services</h3>
+                  </div>
+                  <span class="px-3 py-1 bg-amber-50 text-amber-800 border border-amber-200 text-[11px] font-bold rounded-full">
+                    Not Covered by PhilHealth
+                  </span>
+                </div>
+
+                <p class="text-xs text-text-secondary">
+                  Standard outpatient clinical procedures and document registration services.
+                </p>
+
+                <!-- Clean Price Table -->
+                <div class="overflow-x-auto rounded-2xl border border-brand-border/50">
+                  <table class="w-full text-left text-xs sm:text-sm">
+                    <thead class="bg-brand-soft/70 text-neutral-950 font-bold border-b border-brand-border/50">
+                      <tr>
+                        <th class="py-3 px-4">Service</th>
+                        <th class="py-3 px-4">Coverage</th>
+                        <th class="py-3 px-4 text-right">Price</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-brand-border/30">
+                      <tr v-for="item in otherServices" :key="item.service" class="hover:bg-brand-soft/30 transition-colors">
+                        <td class="py-3 px-4 font-bold text-neutral-900">{{ item.service }}</td>
+                        <td class="py-3 px-4 text-text-muted text-xs">{{ item.coverage }}</td>
+                        <td class="py-3 px-4 text-right font-extrabold text-brand-primary">{{ item.formattedPrice }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 2. Family Planning Contraceptives -->
+              <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border/60 shadow-card space-y-5 text-left">
+                <div class="flex items-center justify-between pb-3 border-b border-brand-border/40">
+                  <div class="space-y-0.5">
+                    <span class="text-[11px] font-extrabold uppercase tracking-widest text-brand-primary">WOMEN'S WELLNESS</span>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-neutral-950">Family Planning Contraceptives</h3>
+                  </div>
+                  <span class="px-3 py-1 bg-brand-soft text-brand-primary border border-brand-border/60 text-[11px] font-bold rounded-full">
+                    Clinical Administration
+                  </span>
+                </div>
+
+                <p class="text-xs text-text-secondary">
+                  Reproductive health planning, hormonal injectables, and cervical cancer screenings.
+                </p>
+
+                <div class="space-y-4">
+                  <!-- Category: Injectables -->
+                  <div class="space-y-2">
+                    <h4 class="text-xs font-extrabold text-neutral-900 uppercase tracking-wider flex items-center gap-1.5">
+                      <Syringe class="w-3.5 h-3.5 text-brand-primary" />
+                      <span>Injectables</span>
+                    </h4>
+                    <div class="overflow-x-auto rounded-2xl border border-brand-border/50">
+                      <table class="w-full text-left text-xs sm:text-sm">
+                        <tbody class="divide-y divide-brand-border/30">
+                          <tr v-for="inj in familyPlanning.injectables" :key="inj.service" class="hover:bg-brand-soft/30 transition-colors">
+                            <td class="py-3 px-4 font-bold text-neutral-900">
+                              {{ inj.service }}
+                              <span class="block text-[11px] font-normal text-text-secondary">{{ inj.duration }}</span>
+                            </td>
+                            <td class="py-3 px-4 text-right font-extrabold text-brand-primary">{{ inj.formattedPrice }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- Category: Other -->
+                  <div class="space-y-2">
+                    <h4 class="text-xs font-extrabold text-neutral-900 uppercase tracking-wider flex items-center gap-1.5">
+                      <Sparkles class="w-3.5 h-3.5 text-brand-primary" />
+                      <span>Other</span>
+                    </h4>
+                    <div class="overflow-x-auto rounded-2xl border border-brand-border/50">
+                      <table class="w-full text-left text-xs sm:text-sm">
+                        <tbody class="divide-y divide-brand-border/30">
+                          <tr v-for="oth in familyPlanning.others" :key="oth.service" class="hover:bg-brand-soft/30 transition-colors">
+                            <td class="py-3 px-4 font-bold text-neutral-900">
+                              {{ oth.service }}
+                              <span class="block text-[11px] font-normal text-text-secondary">{{ oth.duration }}</span>
+                            </td>
+                            <td class="py-3 px-4 text-right font-extrabold text-brand-primary">{{ oth.formattedPrice }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ================= SUBSECTION 2: ANTENATAL CARE PACKAGES ================= -->
+            <div class="space-y-6 text-left">
+              <div class="space-y-1">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-soft text-brand-primary border border-brand-border/60 text-[11px] font-extrabold uppercase tracking-wider rounded-full">
+                  <Baby class="w-3.5 h-3.5" />
+                  <span>PRENATAL CLINICAL PACKAGES</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-950">
+                  Antenatal Care Packages
+                </h3>
+                <p class="text-xs sm:text-sm text-text-secondary">
+                  Specialized antenatal and labor monitoring packages with full PhilHealth Case Rate coverage comparison.
+                </p>
+              </div>
+
+              <!-- 2 Cards Grid for ANCO1 and ANCO2 -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                
+                <div 
+                  v-for="pkg in antenatalCarePackages" 
+                  :key="pkg.code"
+                  class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border/60 shadow-card flex flex-col justify-between space-y-6"
+                >
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2.5">
+                        <span class="px-3 py-1 rounded-full bg-brand-primary text-white text-xs font-extrabold shadow-brand-sm">
+                          {{ pkg.code }}
+                        </span>
+                        <h4 class="text-base sm:text-lg font-extrabold text-neutral-950">
+                          {{ pkg.title }}
+                        </h4>
+                      </div>
+                      <span v-if="pkg.icdCode" class="text-[11px] font-semibold px-2.5 py-0.5 bg-neutral-100 text-neutral-700 rounded-lg">
+                        ICD: {{ pkg.icdCode }} | RVS: {{ pkg.rvsCode }}
+                      </span>
+                    </div>
+
+                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed bg-brand-subtle/60 p-3.5 rounded-2xl border border-brand-border/40">
+                      {{ pkg.description }}
+                    </p>
+
+                    <!-- Case Rate Breakdown Banner -->
+                    <div class="p-3 bg-neutral-50 rounded-xl border border-neutral-200 flex flex-wrap justify-between items-center text-xs gap-2">
+                      <span class="font-bold text-neutral-700">PhilHealth Case Rate: <strong class="text-neutral-900 font-extrabold">{{ pkg.caseRate }}</strong></span>
+                      <span class="text-neutral-500">HCI: {{ pkg.includes.hci }} • PF: {{ pkg.includes.professionalFee }}</span>
+                    </div>
+                  </div>
+
+                  <!-- Side-by-Side Comparison: With vs Without PhilHealth -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-brand-border/40">
+                    
+                    <!-- WITH PHILHEALTH -->
+                    <div class="p-4 bg-emerald-50/80 rounded-2xl border border-emerald-200 space-y-2 flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center gap-1.5 text-emerald-800 text-xs font-extrabold uppercase tracking-wider">
+                          <CheckCircle2 class="w-3.5 h-3.5" />
+                          <span>WITH PHILHEALTH</span>
+                        </div>
+                        <span class="inline-block mt-1 px-2.5 py-0.5 bg-emerald-600 text-white text-[10px] font-extrabold rounded-full">
+                          NO BALANCE BILLING
+                        </span>
+                      </div>
+                      <div class="pt-2">
+                        <span class="text-[11px] text-emerald-700 block">Total Out-of-Pocket:</span>
+                        <span class="text-2xl font-extrabold text-emerald-800">{{ pkg.withPhilHealth.totalOutOfPocket }}</span>
+                        <span class="text-[11px] font-bold text-emerald-700 block mt-0.5">{{ pkg.withPhilHealth.notes }}</span>
+                      </div>
+                    </div>
+
+                    <!-- WITHOUT PHILHEALTH -->
+                    <div class="p-4 bg-neutral-50 rounded-2xl border border-neutral-200 space-y-2 flex flex-col justify-between">
+                      <div>
+                        <div class="flex items-center gap-1.5 text-neutral-800 text-xs font-extrabold uppercase tracking-wider">
+                          <AlertCircle class="w-3.5 h-3.5 text-neutral-500" />
+                          <span>WITHOUT PHILHEALTH</span>
+                        </div>
+                        <div class="text-[11px] text-neutral-600 space-y-0.5 mt-1">
+                          <div class="flex justify-between"><span>Professional Fee:</span> <strong class="font-bold">{{ pkg.withoutPhilHealth.professionalFee }}</strong></div>
+                          <div class="flex justify-between"><span>Supplies:</span> <strong class="font-bold">{{ pkg.withoutPhilHealth.supplies }}</strong></div>
+                        </div>
+                      </div>
+                      <div class="pt-2 border-t border-neutral-200">
+                        <span class="text-[11px] text-neutral-600 block">Total Out-of-Pocket:</span>
+                        <span class="text-xl font-extrabold text-neutral-900">{{ pkg.withoutPhilHealth.totalOutOfPocket }}</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ================= SUBSECTION 3: PHILHEALTH SERVICE PACKAGES ================= -->
+            <div class="space-y-6 text-left">
+              <div class="space-y-1">
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-soft text-brand-primary border border-brand-border/60 text-[11px] font-extrabold uppercase tracking-wider rounded-full">
+                  <ShieldCheck class="w-3.5 h-3.5" />
+                  <span>INPATIENT MATERNAL & NEWBORN PACKAGES</span>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-950">
+                  PhilHealth Service Packages
+                </h3>
+                <p class="text-xs sm:text-sm text-text-secondary">
+                  Complete birthing, spontaneous delivery, and newborn packages with transparent with/without PhilHealth price breakdowns.
+                </p>
+              </div>
+
+              <!-- 3 Column / Stacked Cards for MCP01, NSDO1, NCP -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                
+                <div 
+                  v-for="pkg in philHealthServicePackages" 
+                  :key="pkg.code"
+                  class="bg-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 shadow-card flex flex-col justify-between space-y-6"
+                >
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                      <span class="px-3 py-1 rounded-full bg-brand-primary text-white text-xs font-extrabold shadow-brand-sm">
+                        {{ pkg.code }}
+                      </span>
+                      <span class="text-xs font-extrabold text-brand-primary">Case Rate: {{ pkg.caseRate }}</span>
+                    </div>
+
+                    <div>
+                      <h4 class="text-lg font-extrabold text-neutral-950">{{ pkg.title }}</h4>
+                      <p class="text-xs text-text-secondary mt-1 leading-relaxed">{{ pkg.description }}</p>
+                    </div>
+
+                    <!-- HCI & PF Split -->
+                    <div class="p-2.5 bg-brand-soft/50 rounded-xl border border-brand-border/40 text-[11px] text-brand-primary-dark flex justify-between">
+                      <span>HCI: <strong>{{ pkg.includes.hci }}</strong></span>
+                      <span>PF: <strong>{{ pkg.includes.professionalFee }}</strong></span>
+                    </div>
+                  </div>
+
+                  <div class="space-y-4 pt-2 border-t border-brand-border/40">
+                    <!-- WITH PHILHEALTH -->
+                    <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-left">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs font-extrabold text-emerald-800">WITH PHILHEALTH</span>
+                        <span class="px-2 py-0.5 bg-emerald-600 text-white text-[10px] font-extrabold rounded-full">NO BALANCE BILLING</span>
+                      </div>
+                      <div class="mt-2 flex items-baseline justify-between">
+                        <span class="text-xs text-emerald-700">Out-of-Pocket:</span>
+                        <span class="text-xl font-extrabold text-emerald-800">{{ pkg.withPhilHealth.totalOutOfPocket }}</span>
+                      </div>
+                      <span class="text-[10px] font-bold text-emerald-600 block mt-0.5">{{ pkg.withPhilHealth.notes }}</span>
+                    </div>
+
+                    <!-- WITHOUT PHILHEALTH -->
+                    <div class="p-3.5 bg-neutral-50 rounded-2xl border border-neutral-200 text-left space-y-2">
+                      <span class="text-xs font-extrabold text-neutral-800 block">WITHOUT PHILHEALTH</span>
+                      
+                      <div class="text-[11px] text-neutral-600 space-y-1 divide-y divide-neutral-100">
+                        <div v-for="item in pkg.withoutPhilHealth.breakdown" :key="item.item" class="flex justify-between pt-0.5">
+                          <span>{{ item.item }}</span>
+                          <strong class="font-bold text-neutral-800">{{ item.amount }}</strong>
+                        </div>
+                      </div>
+
+                      <div class="pt-2 border-t border-neutral-200 flex items-baseline justify-between">
+                        <span class="text-xs font-bold text-neutral-700">Total Out-of-Pocket:</span>
+                        <span class="text-lg font-extrabold text-neutral-950">{{ pkg.withoutPhilHealth.totalOutOfPocket }}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ================= SUBSECTION 4: MEDICINES & SUPPLIES ================= -->
+            <div class="space-y-6 text-left">
+              <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-2">
+                <div class="space-y-1">
+                  <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-soft text-brand-primary border border-brand-border/60 text-[11px] font-extrabold uppercase tracking-wider rounded-full">
+                    <Pill class="w-3.5 h-3.5" />
+                    <span>ITEMIZED CLINICAL INVENTORY</span>
+                  </div>
+                  <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-950">
+                    Medicines & Supplies
+                  </h3>
+                  <p class="text-xs sm:text-sm text-text-secondary">
+                    Official clinic item pricing for administered medications, clinical consumables, and maternity supplies.
+                  </p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full md:w-72">
+                  <Search class="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input 
+                    v-model="searchQuery" 
+                    type="text" 
+                    placeholder="Search medicine or supply..." 
+                    class="w-full pl-9 pr-4 py-2 bg-white border border-brand-border/70 rounded-full text-xs font-medium text-neutral-900 focus:outline-none focus:ring-2 focus:ring-brand-primary/40 shadow-xs"
+                  />
+                </div>
+              </div>
+
+              <!-- Tables Grid: Medicines (Left) & Supplies (Right) -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                
+                <!-- Medicines Table -->
+                <div class="bg-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 shadow-card space-y-4">
+                  <div class="flex items-center justify-between pb-2 border-b border-brand-border/40">
+                    <h4 class="text-base font-extrabold text-neutral-950 flex items-center gap-2">
+                      <Pill class="w-4 h-4 text-brand-primary" />
+                      <span>Medicines ({{ filteredMedicines.length }})</span>
+                    </h4>
+                    <span class="text-[11px] font-bold text-text-muted">Per Ampule / Bottle / Unit</span>
+                  </div>
+
+                  <div class="max-h-[500px] overflow-y-auto overflow-x-auto rounded-2xl border border-brand-border/50">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                      <thead class="bg-brand-soft/80 text-neutral-950 font-bold border-b border-brand-border/50 sticky top-0 backdrop-blur-md">
+                        <tr>
+                          <th class="py-2.5 px-4">Medicine</th>
+                          <th class="py-2.5 px-4">Quantity / Unit</th>
+                          <th class="py-2.5 px-4 text-right">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-brand-border/30">
+                        <tr v-for="med in filteredMedicines" :key="med.name" class="hover:bg-brand-soft/30 transition-colors">
+                          <td class="py-2.5 px-4 font-bold text-neutral-900">{{ med.name }}</td>
+                          <td class="py-2.5 px-4 text-text-secondary text-xs">{{ med.quantity }}</td>
+                          <td class="py-2.5 px-4 text-right font-extrabold text-brand-primary">{{ med.formattedPrice }}</td>
+                        </tr>
+                        <tr v-if="filteredMedicines.length === 0">
+                          <td colspan="3" class="py-6 text-center text-text-muted text-xs">No matching medicines found.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Supplies Table -->
+                <div class="bg-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 shadow-card space-y-4">
+                  <div class="flex items-center justify-between pb-2 border-b border-brand-border/40">
+                    <h4 class="text-base font-extrabold text-neutral-950 flex items-center gap-2">
+                      <Syringe class="w-4 h-4 text-brand-primary" />
+                      <span>Clinic Supplies ({{ filteredSupplies.length }})</span>
+                    </h4>
+                    <span class="text-[11px] font-bold text-text-muted">Consumables & Maternity</span>
+                  </div>
+
+                  <div class="max-h-[500px] overflow-y-auto overflow-x-auto rounded-2xl border border-brand-border/50">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                      <thead class="bg-brand-soft/80 text-neutral-950 font-bold border-b border-brand-border/50 sticky top-0 backdrop-blur-md">
+                        <tr>
+                          <th class="py-2.5 px-4">Supply Item</th>
+                          <th class="py-2.5 px-4">Quantity</th>
+                          <th class="py-2.5 px-4 text-right">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody class="divide-y divide-brand-border/30">
+                        <tr v-for="sup in filteredSupplies" :key="sup.name" class="hover:bg-brand-soft/30 transition-colors">
+                          <td class="py-2.5 px-4 font-bold text-neutral-900">{{ sup.name }}</td>
+                          <td class="py-2.5 px-4 text-text-secondary text-xs">{{ sup.quantity }}</td>
+                          <td class="py-2.5 px-4 text-right font-extrabold text-brand-primary">{{ sup.formattedPrice }}</td>
+                        </tr>
+                        <tr v-if="filteredSupplies.length === 0">
+                          <td colspan="3" class="py-6 text-center text-text-muted text-xs">No matching supplies found.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ================= FINAL INQUIRY & BOOKING BANNER ================= -->
+            <div class="p-6 sm:p-8 bg-gradient-to-r from-brand-primary via-brand-primary-hover to-brand-primary-dark rounded-3xl text-white shadow-brand-lg flex flex-col md:flex-row justify-between items-center gap-6 text-left">
+              <div class="space-y-1.5 max-w-xl">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-brand-soft/90">TRANSPARENT MATERNAL HEALTHCARE</span>
+                <h4 class="text-xl sm:text-2xl font-extrabold">Have questions about specific packages or PhilHealth eligibility?</h4>
+                <p class="text-xs sm:text-sm text-brand-soft/90 leading-relaxed">
+                  Our front desk and midwives are ready to assist you with complete package inclusions, payment plans, and PhilHealth document verification.
+                </p>
+              </div>
+              <router-link 
+                to="/contact" 
+                class="px-8 py-3.5 rounded-full bg-white text-brand-primary hover:bg-brand-soft text-sm font-extrabold shadow-md hover:shadow-lg transition-all active:scale-[0.98] flex-shrink-0"
+              >
+                Inquire or Schedule Visit
+              </router-link>
+            </div>
+
+          </div>
         </div>
       </div>
 
@@ -426,17 +849,46 @@ import {
   CheckCircle2, 
   Users, 
   FileText, 
-  Sparkles 
+  Sparkles,
+  Search,
+  Pill,
+  Syringe,
+  Baby,
+  Calendar,
+  AlertCircle,
+  FileCheck
 } from '@lucide/vue'
+import {
+  pricingNotice,
+  otherServices,
+  familyPlanning,
+  antenatalCarePackages,
+  philHealthServicePackages,
+  medicinesList,
+  suppliesList
+} from '../data/pricingData.js'
 
 const route = useRoute()
 const router = useRouter()
 const activeTab = ref('overview')
 const expandedServiceId = ref(null)
+const searchQuery = ref('')
 
 const toggleService = (id) => {
   expandedServiceId.value = expandedServiceId.value === id ? null : id
 }
+
+const filteredMedicines = computed(() => {
+  if (!searchQuery.value.trim()) return medicinesList
+  const q = searchQuery.value.toLowerCase()
+  return medicinesList.filter(m => m.name.toLowerCase().includes(q) || m.quantity.toLowerCase().includes(q))
+})
+
+const filteredSupplies = computed(() => {
+  if (!searchQuery.value.trim()) return suppliesList
+  const q = searchQuery.value.toLowerCase()
+  return suppliesList.filter(s => s.name.toLowerCase().includes(q) || s.quantity.toLowerCase().includes(q))
+})
 
 const tabTitle = computed(() => {
   if (activeTab.value === 'pricing') return 'Service Pricing & Fees'
@@ -471,7 +923,7 @@ const servicesData = [
       'Birth plan counseling and delivery readiness preparation'
     ],
     notes: 'Please bring your maternity booklet, valid ID, and any recent lab or ultrasound results.',
-    pricing: 'Accessible consultation fee • PhilHealth / Maternal benefit assistance available'
+    pricing: 'ANCO1 & ANCO2 Packages • ₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱1,500 - ₱2,000 without PhilHealth'
   },
   {
     id: 'newborn-screening',
@@ -488,7 +940,7 @@ const servicesData = [
       'Results release, physician consultation, and medical records documentation'
     ],
     notes: 'Must be done at least 24 hours after birth. Covered under the PhilHealth Newborn Care Package (NCP).',
-    pricing: 'DOH standard expanded NBS package • Included in PhilHealth NCP'
+    pricing: 'NCP Package • ₱0.00 Out-of-Pocket with PhilHealth • ₱5,000 without PhilHealth (Screening + Vaccines + Care)'
   },
   {
     id: 'normal-spontaneous-delivery',
@@ -506,7 +958,7 @@ const servicesData = [
       'Postpartum recovery room stay, maternal observation, and lactation assistance'
     ],
     notes: 'Please bring your complete prenatal records, baby clothes, receiving blankets, maternity pads, and PhilHealth documents upon admission.',
-    pricing: 'Complete birthing packages available • PhilHealth Maternity Care Package (MCP) accredited'
+    pricing: 'NSDO1 & MCP01 Packages • ₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱11,000 - ₱12,500 without PhilHealth'
   },
   {
     id: 'vaccination',
@@ -523,7 +975,7 @@ const servicesData = [
       'Official Baby Book / Immunization card issuance and schedule monitoring'
     ],
     notes: 'Please bring your child’s baby booklet / immunization card to every visit.',
-    pricing: 'DOH essential immunization schedule • Transparent package & per-vaccine rates'
+    pricing: 'BCG: ₱400 • Hep B: ₱450 • Tetanus Toxoid: ₱150 • Full list in Medicines & Supplies directory'
   }
 ]
 
