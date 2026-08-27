@@ -49,8 +49,55 @@
         </p>
       </div>
 
-      <!-- Contact Cards (2 Columns: Email & Facebook) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 max-w-3xl mx-auto">
+      <!-- Contact Cards (3 Columns: Phone, Email & Facebook) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 max-w-5xl mx-auto">
+        <!-- Phone Card -->
+        <a 
+          href="tel:09310693921" 
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center"
+          title="Click to call 0931 069 3921"
+        >
+          <!-- Phone Icon -->
+          <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-2.5 text-brand-primary">
+            <Phone class="w-7 h-7" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
+              Phone / Mobile
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 select-all font-mono">
+              0931 069 3921
+            </p>
+          </div>
+
+          <div v-if="phoneCopied" class="px-3.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full flex items-center gap-1.5 animate-pulse">
+            <Check class="w-3.5 h-3.5" />
+            <span>Number Copied!</span>
+          </div>
+          <span v-else class="text-xs font-bold text-brand-primary group-hover:underline flex items-center gap-1">
+            <span>Call or Text Directly →</span>
+          </span>
+
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-1" @click.stop>
+            <a 
+              href="tel:09310693921"
+              class="px-3.5 py-1.5 bg-brand-primary text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-brand-primary-hover hover:shadow-brand transition-all flex items-center gap-1 cursor-pointer"
+            >
+              <Phone class="w-3 h-3" />
+              <span>Call Now</span>
+            </a>
+            <button 
+              @click="copyPhone" 
+              type="button"
+              class="px-3.5 py-1.5 bg-brand-soft text-brand-primary border border-brand-border/80 text-[11px] font-bold rounded-full hover:bg-brand-primary hover:text-white transition-all flex items-center gap-1 cursor-pointer"
+            >
+              <Copy class="w-3 h-3" />
+              <span>{{ phoneCopied ? 'Copied! ✓' : 'Copy' }}</span>
+            </button>
+          </div>
+        </a>
+
         <!-- Email Card -->
         <div 
           @click="openEmail"
@@ -63,7 +110,7 @@
           </div>
           <div>
             <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-              Gmail / Email Support
+              Gmail Support
             </h3>
             <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all select-all">
               lapuzaltheajasmine@gmail.com
@@ -87,7 +134,7 @@
               rel="noopener noreferrer"
               class="px-3.5 py-1.5 bg-[#EA4335] text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-[#D93025] transition-all flex items-center gap-1.5 cursor-pointer"
             >
-              <span>Compose Gmail</span>
+              <span>Compose</span>
               <ExternalLink class="w-3 h-3" />
             </a>
             <button 
@@ -96,14 +143,14 @@
               class="px-3.5 py-1.5 bg-brand-soft text-brand-primary border border-brand-border/80 text-[11px] font-bold rounded-full hover:bg-brand-primary hover:text-white transition-all flex items-center gap-1 cursor-pointer"
             >
               <Copy class="w-3 h-3" />
-              <span>{{ copied ? 'Copied! ✓' : 'Copy Email' }}</span>
+              <span>{{ copied ? 'Copied! ✓' : 'Copy' }}</span>
             </button>
             <a 
               :href="mailtoUrl"
               class="px-3 py-1.5 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-[11px] font-bold rounded-full transition-colors flex items-center gap-1"
               title="Open default system mail client"
             >
-              <span>Mail App</span>
+              <span>App</span>
             </a>
           </div>
         </div>
@@ -132,7 +179,7 @@
             </p>
           </div>
           <span class="text-xs font-bold text-[#1877F2] group-hover:underline flex items-center gap-1">
-            <span>Visit Official Facebook Page</span>
+            <span>Visit Facebook Page</span>
             <ExternalLink class="w-3.5 h-3.5" />
           </span>
         </a>
@@ -205,7 +252,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Mail, MapPin, Sparkles, ExternalLink, Check, Copy } from '@lucide/vue'
+import { Phone, Mail, MapPin, Sparkles, ExternalLink, Check, Copy } from '@lucide/vue'
 
 const email = 'lapuzaltheajasmine@gmail.com'
 const subject = encodeURIComponent('Inquiry - Althea-Lapuz Lying-In Clinic')
@@ -213,6 +260,17 @@ const mailtoUrl = `mailto:${email}?subject=${subject}`
 const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}`
 
 const copied = ref(false)
+const phoneCopied = ref(false)
+
+const copyPhone = () => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText('09310693921')
+    phoneCopied.value = true
+    setTimeout(() => {
+      phoneCopied.value = false
+    }, 3000)
+  }
+}
 
 const copyEmail = () => {
   if (navigator.clipboard) {

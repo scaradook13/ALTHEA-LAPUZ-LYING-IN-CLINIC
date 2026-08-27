@@ -19,24 +19,24 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         <!-- Phone -->
         <a 
-          href="tel:+639171234567" 
-          class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group"
+          href="tel:09310693921" 
+          class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group cursor-pointer"
         >
           <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform">
             <Phone class="w-6 h-6" />
           </div>
           <div>
             <h3 class="text-xs font-extrabold uppercase tracking-wider text-text-muted">Direct Phone</h3>
-            <p class="text-sm font-bold text-neutral-950 mt-1">+63 917 123 4567</p>
+            <p class="text-sm font-bold text-neutral-950 mt-1 font-mono">0931 069 3921</p>
           </div>
         </a>
 
         <!-- Address -->
         <a 
-          href="https://maps.google.com/?q=Tilapayong,+Baliwag,+Bulacan" 
+          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group"
+          class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group cursor-pointer"
         >
           <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform">
             <MapPin class="w-6 h-6" />
