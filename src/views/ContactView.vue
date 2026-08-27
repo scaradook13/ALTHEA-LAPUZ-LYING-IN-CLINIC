@@ -52,9 +52,10 @@
       <!-- Contact Cards (2 Columns: Email & Facebook) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 max-w-3xl mx-auto">
         <!-- Email Card -->
-        <a 
-          href="mailto:lapuzaltheajasmine@gmail.com?subject=Inquiry%20-%20Althea-Lapuz%20Lying-In%20Clinic" 
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+        <div 
+          @click="openEmail"
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center relative"
+          title="Click to compose an email in Gmail or copy address"
         >
           <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
             <Mail class="w-7 h-7" />
@@ -63,12 +64,48 @@
             <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
               Email Support
             </h3>
-            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all">
+            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all select-all">
               lapuzaltheajasmine@gmail.com
             </p>
           </div>
-          <span class="text-xs font-bold text-brand-primary group-hover:underline">Send an Email →</span>
-        </a>
+
+          <!-- Dynamic Status Notification -->
+          <div v-if="copied" class="px-3.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full flex items-center gap-1.5 animate-pulse">
+            <Check class="w-3.5 h-3.5" />
+            <span>Email Copied & Opening Gmail!</span>
+          </div>
+          <span v-else class="text-xs font-bold text-brand-primary group-hover:underline flex items-center gap-1">
+            <span>Send Email via Gmail →</span>
+          </span>
+
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-1" @click.stop>
+            <a 
+              :href="gmailUrl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-3.5 py-1.5 bg-brand-primary text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-brand-primary-hover hover:shadow-brand transition-all flex items-center gap-1 cursor-pointer"
+            >
+              <span>Compose Gmail</span>
+              <ExternalLink class="w-3 h-3" />
+            </a>
+            <button 
+              @click="copyEmail" 
+              type="button"
+              class="px-3.5 py-1.5 bg-brand-soft text-brand-primary border border-brand-border/80 text-[11px] font-bold rounded-full hover:bg-brand-primary hover:text-white transition-all flex items-center gap-1 cursor-pointer"
+            >
+              <Copy class="w-3 h-3" />
+              <span>{{ copied ? 'Copied! ✓' : 'Copy Email' }}</span>
+            </button>
+            <a 
+              :href="mailtoUrl"
+              class="px-3 py-1.5 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-[11px] font-bold rounded-full transition-colors flex items-center gap-1"
+              title="Open default system mail client"
+            >
+              <span>Mail App</span>
+            </a>
+          </div>
+        </div>
 
         <!-- Facebook Card -->
         <a 
@@ -160,7 +197,31 @@
 </template>
 
 <script setup>
-import { Mail, MapPin, Sparkles, ExternalLink } from '@lucide/vue'
+import { ref } from 'vue'
+import { Mail, MapPin, Sparkles, ExternalLink, Check, Copy } from '@lucide/vue'
+
+const email = 'lapuzaltheajasmine@gmail.com'
+const subject = encodeURIComponent('Inquiry - Althea-Lapuz Lying-In Clinic')
+const mailtoUrl = `mailto:${email}?subject=${subject}`
+const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}`
+
+const copied = ref(false)
+
+const copyEmail = () => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(email)
+    copied.value = true
+    setTimeout(() => {
+      copied.value = false
+    }, 3000)
+  }
+}
+
+const openEmail = () => {
+  copyEmail()
+  // Opens Gmail web compose directly
+  window.open(gmailUrl, '_blank')
+}
 </script>
 
 
