@@ -152,7 +152,7 @@
               to="/contact" 
               class="px-5 py-2.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-bold shadow-brand-sm hover:bg-brand-primary-hover hover:shadow-brand transition-all"
             >
-              Inquire or Schedule Visit
+              Inquire with Us
             </router-link>
           </div>
 
@@ -279,7 +279,7 @@
                       @click.stop
                       class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-extrabold shadow-brand-sm hover:shadow-brand hover:bg-brand-primary-hover active:scale-[0.98] transition-all cursor-pointer"
                     >
-                      <span>Contact Us / Schedule Visit</span>
+                      <span>Inquire with Us</span>
                       <ArrowRight class="w-4 h-4" />
                     </router-link>
                   </div>
@@ -707,7 +707,7 @@
                 to="/contact" 
                 class="px-8 py-3.5 rounded-full bg-white text-brand-primary hover:bg-brand-soft text-sm font-extrabold shadow-md hover:shadow-lg transition-all active:scale-[0.98] flex-shrink-0"
               >
-                Inquire or Schedule Visit
+                Inquire with Us
               </router-link>
             </div>
 
