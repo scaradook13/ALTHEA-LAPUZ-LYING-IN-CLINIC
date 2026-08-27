@@ -109,10 +109,11 @@
 
         <!-- Facebook Card -->
         <a 
-          href="https://facebook.com" 
+          href="https://www.facebook.com/share/1F9n16Qjzo/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300"
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+          title="Visit Althea-Lapuz Lying-In Clinic on Facebook"
         >
           <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
             <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
@@ -127,7 +128,10 @@
               ALTHEA-LAPUZ LYING-IN CLINIC
             </p>
           </div>
-          <span class="text-xs font-bold text-brand-primary group-hover:underline">Visit Social Page →</span>
+          <span class="text-xs font-bold text-brand-primary group-hover:underline flex items-center gap-1">
+            <span>Visit Official Facebook Page</span>
+            <ExternalLink class="w-3.5 h-3.5" />
+          </span>
         </a>
       </div>
 
