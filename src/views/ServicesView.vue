@@ -156,139 +156,310 @@
             </router-link>
           </div>
 
-          <!-- Helper Prompt -->
-          <p class="text-xs sm:text-sm text-text-secondary">
-            💡 Click on any service card below to view comprehensive service details, inclusions, requirements, and schedule a consultation.
-          </p>
+          <!-- Service Selection & Full-Width Expanded State Area -->
+          <div id="service-pricing-anchor" class="space-y-6">
+            
+            <transition name="fade-service" mode="out-in">
+              <!-- STATE 1: Normal 2-Column Card Grid (When No Service Is Selected) -->
+              <div v-if="!selectedService" key="services-grid" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto items-stretch">
+                  <div 
+                    v-for="service in servicesData" 
+                    :key="service.id"
+                    @click="selectService(service.id)"
+                    @keydown.enter.prevent="selectService(service.id)"
+                    @keydown.space.prevent="selectService(service.id)"
+                    role="button"
+                    tabindex="0"
+                    class="bg-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary transition-all duration-300 text-left space-y-4 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary/40 select-none flex flex-col justify-between"
+                  >
+                    <div class="space-y-4">
+                      <!-- Card Header with Category Tag -->
+                      <div class="flex items-center justify-between gap-3">
+                        <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors flex items-center gap-2">
+                          <span class="text-brand-primary">•</span>
+                          <span>{{ service.title }}</span>
+                        </h3>
+                        <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60 flex-shrink-0">
+                          {{ service.tag }}
+                        </span>
+                      </div>
 
-          <!-- Interactive Expandable 2-Column Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto items-start">
-            <div 
-              v-for="service in servicesData" 
-              :key="service.id"
-              @click="toggleService(service.id)"
-              @keydown.enter.prevent="toggleService(service.id)"
-              @keydown.space.prevent="toggleService(service.id)"
-              role="button"
-              :aria-expanded="expandedServiceId === service.id"
-              tabindex="0"
-              class="bg-white p-6 sm:p-7 rounded-3xl border transition-all duration-300 text-left space-y-4 group cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-primary/40 select-none"
-              :class="expandedServiceId === service.id 
-                ? 'border-brand-primary shadow-brand ring-2 ring-brand-primary/10' 
-                : 'border-brand-border/60 shadow-card hover:shadow-card-hover hover:border-brand-primary/80'"
-            >
-              <!-- Card Header with Category Tag -->
-              <div class="flex items-center justify-between gap-3">
-                <h3 class="text-base sm:text-lg font-extrabold text-neutral-950 group-hover:text-brand-primary transition-colors flex items-center gap-2">
-                  <span class="text-brand-primary">•</span>
-                  <span>{{ service.title }}</span>
-                </h3>
-                <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-soft text-brand-primary border border-brand-border/60 flex-shrink-0">
-                  {{ service.tag }}
-                </span>
-              </div>
+                      <!-- High Resolution Image with Zoom -->
+                      <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-2xl border border-brand-border/50 overflow-hidden relative">
+                        <img 
+                          :src="service.image" 
+                          :alt="service.title" 
+                          class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/25 via-transparent to-transparent"></div>
+                      </div>
 
-              <!-- High Resolution Image with Zoom -->
-              <div class="w-full h-48 sm:h-56 bg-brand-soft rounded-2xl border border-brand-border/50 overflow-hidden relative">
-                <img 
-                  :src="service.image" 
-                  :alt="service.title" 
-                  class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/25 via-transparent to-transparent"></div>
-              </div>
+                      <!-- Short Summary Description -->
+                      <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                        {{ service.shortDescription }}
+                      </p>
+                    </div>
 
-              <!-- Short Summary Description -->
-              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                {{ service.shortDescription }}
-              </p>
+                    <!-- Interactive Click Indicator Bar -->
+                    <div class="pt-3 flex items-center justify-between border-t border-brand-border/30 text-xs font-extrabold text-brand-primary group-hover:text-brand-primary-hover">
+                      <span class="flex items-center gap-1.5">
+                        <Sparkles class="w-3.5 h-3.5 text-brand-primary" />
+                        <span>Click to view full specifications & pricing</span>
+                      </span>
+                      <div class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary group-hover:bg-brand-primary group-hover:text-white flex items-center justify-center transition-all duration-300 flex-shrink-0 shadow-xs">
+                        <ArrowRight class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
 
-              <!-- Interactive Click / Expand Indicator Bar -->
-              <div class="pt-3 flex items-center justify-between border-t border-brand-border/30 text-xs font-bold text-brand-primary">
-                <span class="flex items-center gap-1.5">
-                  <Sparkles class="w-3.5 h-3.5 text-brand-primary" />
-                  <span>{{ expandedServiceId === service.id ? 'Click to collapse details' : 'Click to view full specifications' }}</span>
-                </span>
-                <div 
-                  class="w-7 h-7 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center transition-transform duration-300 ease-out flex-shrink-0"
-                  :class="expandedServiceId === service.id ? 'rotate-180 bg-brand-primary text-white shadow-brand-sm' : ''"
-                >
-                  <ChevronDown class="w-4 h-4" />
+                  </div>
                 </div>
               </div>
 
-              <!-- Butter-Smooth Expandable Detail Area -->
-              <div 
-                class="grid transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                :class="expandedServiceId === service.id 
-                  ? 'grid-rows-[1fr] opacity-100 mt-4 pt-4 border-t border-brand-border/30' 
-                  : 'grid-rows-[0fr] opacity-0 pointer-events-none mt-0 pt-0 border-t-0'"
-              >
-                <div class="overflow-hidden space-y-5">
-                  
-                  <!-- Detailed Overview -->
-                  <div class="space-y-1.5 pt-1">
-                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Detailed Overview</h4>
-                    <p class="text-xs sm:text-sm text-neutral-800 leading-relaxed bg-brand-soft/60 p-3.5 rounded-2xl border border-brand-border/40 font-normal">
-                      {{ service.detailedDescription }}
-                    </p>
-                  </div>
+              <!-- STATE 2: Dedicated Full-Width Expanded Service Panel -->
+              <div v-else key="expanded-service-panel" class="space-y-6">
+                
+                <!-- Navigation & Controls Header Bar -->
+                <div class="flex flex-wrap items-center justify-between gap-4 p-4 sm:p-5 bg-white rounded-3xl border border-brand-border/70 shadow-sm">
+                  <!-- Back Button -->
+                  <button 
+                    @click="closeServiceDetail" 
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-soft text-brand-primary border border-brand-border/80 hover:bg-brand-primary hover:text-white text-xs sm:text-sm font-extrabold shadow-xs transition-all duration-200 cursor-pointer active:scale-95 group"
+                  >
+                    <ArrowLeft class="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                    <span>Back to All Services</span>
+                  </button>
 
-                  <!-- What's Included List -->
-                  <div class="space-y-2">
-                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-neutral-900 flex items-center gap-1.5">
-                      <CheckCircle2 class="w-3.5 h-3.5 text-brand-primary" />
-                      <span>What's Included</span>
-                    </h4>
-                    <ul class="space-y-2 text-xs sm:text-sm text-text-secondary bg-white p-3.5 rounded-2xl border border-brand-border/40">
-                      <li v-for="(item, idx) in service.includes" :key="idx" class="flex items-start gap-2.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-1.5 flex-shrink-0"></span>
-                        <span class="leading-relaxed">{{ item }}</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <!-- Who It's For -->
-                  <div class="bg-white p-3.5 rounded-2xl border border-brand-border/40 text-xs sm:text-sm space-y-1">
-                    <span class="text-xs font-bold text-neutral-900 flex items-center gap-1.5">
-                      <Users class="w-3.5 h-3.5 text-brand-primary" />
-                      <span>Who It's For</span>
-                    </span>
-                    <p class="text-text-secondary pl-5 leading-relaxed">{{ service.whoFor }}</p>
-                  </div>
-
-                  <!-- Important Notes / Preparation -->
-                  <div class="bg-brand-soft/40 p-3.5 rounded-2xl border border-brand-border/40 text-xs sm:text-sm space-y-1">
-                    <span class="text-xs font-bold text-neutral-900 flex items-center gap-1.5">
-                      <FileText class="w-3.5 h-3.5 text-brand-primary" />
-                      <span>Important Notes & Preparation</span>
-                    </span>
-                    <p class="text-text-secondary pl-5 leading-relaxed">{{ service.notes }}</p>
-                  </div>
-
-                  <!-- Pricing / Coverage Info -->
-                  <div class="p-3.5 bg-brand-subtle/90 rounded-2xl border border-brand-border/50 flex items-center gap-2.5 text-xs text-brand-primary-dark font-semibold">
-                    <Banknote class="w-4 h-4 text-brand-primary flex-shrink-0" />
-                    <span>{{ service.pricing }}</span>
-                  </div>
-
-                  <!-- Prominent Contact CTA Button -->
-                  <div class="pt-2">
-                    <router-link 
-                      to="/contact"
-                      @click.stop
-                      class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-primary text-white text-xs sm:text-sm font-extrabold shadow-brand-sm hover:shadow-brand hover:bg-brand-primary-hover active:scale-[0.98] transition-all cursor-pointer"
+                  <!-- Direct Service Switcher Tabs -->
+                  <div class="flex items-center gap-2 overflow-x-auto max-w-full py-1">
+                    <button 
+                      v-for="s in servicesData" 
+                      :key="s.id"
+                      @click="selectService(s.id)"
+                      :class="[
+                        'px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer',
+                        selectedServiceId === s.id 
+                          ? 'bg-brand-primary text-white shadow-brand-sm' 
+                          : 'bg-neutral-100 text-neutral-700 hover:bg-brand-soft hover:text-brand-primary'
+                      ]"
                     >
-                      <span>Inquire with Us</span>
-                      <ArrowRight class="w-4 h-4" />
-                    </router-link>
+                      {{ s.title }}
+                    </button>
                   </div>
 
+                  <!-- Close 'X' Button -->
+                  <button 
+                    @click="closeServiceDetail"
+                    class="w-9 h-9 rounded-full bg-neutral-100 text-neutral-600 hover:bg-brand-primary hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                    title="Close and return to service list"
+                  >
+                    <X class="w-4 h-4" />
+                  </button>
                 </div>
-              </div>
 
-            </div>
-          </div>
+                <!-- Full Width Service Detail Panel -->
+                <div class="bg-white rounded-3xl border-2 border-brand-primary/30 shadow-card-hover overflow-hidden p-6 sm:p-8 lg:p-10 space-y-8">
+                  
+                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                    
+                    <!-- ================= LEFT COLUMN: Visuals & Overview Badges (5 cols) ================= -->
+                    <div class="lg:col-span-5 space-y-6">
+                      <!-- Large High-Res Image -->
+                      <div class="w-full h-64 sm:h-80 md:h-96 rounded-2xl bg-brand-soft border border-brand-border/60 overflow-hidden relative shadow-md">
+                        <img 
+                          :src="selectedService.image" 
+                          :alt="selectedService.title" 
+                          class="w-full h-full object-cover" 
+                        />
+                        <div class="absolute top-4 left-4">
+                          <span class="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-brand-primary text-xs font-extrabold rounded-full border border-brand-border/80 shadow-xs">
+                            {{ selectedService.tag }}
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Title & Tag Header -->
+                      <div class="space-y-1.5">
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-brand-primary">
+                          {{ selectedService.tag }}
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                          {{ selectedService.title }}
+                        </h3>
+                      </div>
+
+                      <!-- Short Summary Card -->
+                      <div class="p-4 sm:p-5 rounded-2xl bg-brand-soft/70 border border-brand-border/60">
+                        <p class="text-xs sm:text-sm text-neutral-800 leading-relaxed font-medium">
+                          {{ selectedService.shortDescription }}
+                        </p>
+                      </div>
+
+                      <!-- Key Trust Badges -->
+                      <div class="grid grid-cols-2 gap-3 text-xs font-bold text-neutral-800">
+                        <div class="p-3 bg-brand-subtle rounded-xl border border-brand-border/40 flex items-center gap-2">
+                          <ShieldCheck class="w-4 h-4 text-brand-primary flex-shrink-0" />
+                          <span>PhilHealth Accredited</span>
+                        </div>
+                        <div class="p-3 bg-brand-subtle rounded-xl border border-brand-border/40 flex items-center gap-2">
+                          <Clock class="w-4 h-4 text-brand-primary flex-shrink-0" />
+                          <span>24/7 Facility Support</span>
+                        </div>
+                        <div class="p-3 bg-brand-subtle rounded-xl border border-brand-border/40 flex items-center gap-2">
+                          <Users class="w-4 h-4 text-brand-primary flex-shrink-0" />
+                          <span>Licensed Midwives</span>
+                        </div>
+                        <div class="p-3 bg-brand-subtle rounded-xl border border-brand-border/40 flex items-center gap-2">
+                          <FileCheck class="w-4 h-4 text-brand-primary flex-shrink-0" />
+                          <span>DOH / WHO Standard</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- ================= RIGHT COLUMN: Details, Inclusions, Pricing & CTA (7 cols) ================= -->
+                    <div class="lg:col-span-7 space-y-6">
+                      
+                      <!-- Detailed Description -->
+                      <div class="space-y-2">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary flex items-center gap-2">
+                          <Sparkles class="w-3.5 h-3.5" />
+                          <span>Comprehensive Clinical Overview</span>
+                        </h4>
+                        <p class="text-xs sm:text-sm text-neutral-800 leading-relaxed font-normal bg-neutral-50/90 p-4 sm:p-5 rounded-2xl border border-neutral-200/80">
+                          {{ selectedService.detailedDescription }}
+                        </p>
+                      </div>
+
+                      <!-- What's Included -->
+                      <div class="space-y-2">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-neutral-950 flex items-center gap-2">
+                          <CheckCircle2 class="w-4 h-4 text-brand-primary" />
+                          <span>What's Included in This Service</span>
+                        </h4>
+                        <ul class="space-y-2.5 text-xs sm:text-sm text-text-secondary bg-white p-4 sm:p-5 rounded-2xl border border-brand-border/60">
+                          <li v-for="(item, idx) in selectedService.includes" :key="idx" class="flex items-start gap-2.5">
+                            <div class="w-4 h-4 rounded-full bg-brand-soft text-brand-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                              <Check class="w-2.5 h-2.5" />
+                            </div>
+                            <span class="leading-relaxed text-neutral-800">{{ item }}</span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <!-- Pricing Breakdown / Relevant Package Cards -->
+                      <div class="space-y-3">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-neutral-950 flex items-center gap-2">
+                          <Banknote class="w-4 h-4 text-brand-primary" />
+                          <span>Pricing & PhilHealth Package Rates (A.O. No. 2021-0008)</span>
+                        </h4>
+
+                        <!-- Specific Structured Packages -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-brand-soft/60 border border-brand-border/70 space-y-3.5">
+                          
+                          <!-- Summary Pricing Notice -->
+                          <div class="flex items-center gap-3 p-3.5 bg-white rounded-xl border border-brand-border/60 shadow-xs">
+                            <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+                              <Banknote class="w-5 h-5" />
+                            </div>
+                            <div class="text-left">
+                              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-primary block">Official Package Pricing</span>
+                              <p class="text-xs sm:text-sm font-extrabold text-neutral-950">{{ selectedService.pricingSummary }}</p>
+                            </div>
+                          </div>
+
+                          <!-- Specific Structured Packages for each service -->
+                          <div v-if="selectedService.packageDetails && selectedService.packageDetails.length" class="space-y-3">
+                            <div 
+                              v-for="pkg in selectedService.packageDetails" 
+                              :key="pkg.code"
+                              class="p-4 bg-white rounded-xl border border-brand-border/60 space-y-2.5 shadow-xs"
+                            >
+                              <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                  <span class="px-2.5 py-0.5 bg-brand-primary text-white font-mono text-xs font-extrabold rounded-md">
+                                    {{ pkg.code }}
+                                  </span>
+                                  <h5 class="text-xs sm:text-sm font-bold text-neutral-950">{{ pkg.title }}</h5>
+                                </div>
+                                <span class="text-xs font-bold text-text-secondary">Case Rate: <strong class="text-neutral-950">{{ pkg.caseRate }}</strong></span>
+                              </div>
+
+                              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+                                <!-- With PhilHealth -->
+                                <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-900 flex justify-between items-center">
+                                  <div>
+                                    <span class="font-bold block">With PhilHealth (NBB)</span>
+                                    <span class="text-[11px] text-emerald-700">No Balance Billing</span>
+                                  </div>
+                                  <span class="text-sm font-extrabold text-emerald-800">{{ pkg.withPhilHealth }}</span>
+                                </div>
+                                <!-- Without PhilHealth -->
+                                <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200/80 text-neutral-800 flex justify-between items-center">
+                                  <div>
+                                    <span class="font-bold block">Without PhilHealth</span>
+                                    <span class="text-[11px] text-text-muted">Out-of-Pocket</span>
+                                  </div>
+                                  <span class="text-sm font-extrabold text-neutral-900">{{ pkg.withoutPhilHealthPrice }}</span>
+                                </div>
+                              </div>
+
+                              <p v-if="pkg.breakdownText" class="text-[11px] text-text-secondary pt-1 border-t border-neutral-100">
+                                ℹ️ {{ pkg.breakdownText }}
+                              </p>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <!-- Target Patients & Preparation Notes -->
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Target Patients -->
+                        <div class="p-4 rounded-2xl bg-white border border-brand-border/50 space-y-1">
+                          <span class="text-xs font-extrabold uppercase tracking-wider text-neutral-900 flex items-center gap-1.5">
+                            <Users class="w-3.5 h-3.5 text-brand-primary" />
+                            <span>Target Patients</span>
+                          </span>
+                          <p class="text-xs text-text-secondary leading-relaxed pl-5">{{ selectedService.whoFor }}</p>
+                        </div>
+
+                        <!-- Requirements & Preparation -->
+                        <div class="p-4 rounded-2xl bg-white border border-brand-border/50 space-y-1">
+                          <span class="text-xs font-extrabold uppercase tracking-wider text-neutral-900 flex items-center gap-1.5">
+                            <FileText class="w-3.5 h-3.5 text-brand-primary" />
+                            <span>What to Bring / Preparation</span>
+                          </span>
+                          <p class="text-xs text-text-secondary leading-relaxed pl-5">{{ selectedService.notes }}</p>
+                        </div>
+                      </div>
+
+                      <!-- Action CTAs -->
+                      <div class="pt-4 border-t border-brand-border/40 flex flex-col sm:flex-row items-center gap-3">
+                        <router-link 
+                          to="/contact"
+                          class="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-brand-primary text-white text-sm font-extrabold shadow-brand hover:shadow-brand-lg hover:bg-brand-primary-hover active:scale-[0.98] transition-all cursor-pointer"
+                        >
+                          <span>Contact Us / Schedule Visit</span>
+                          <ArrowRight class="w-4 h-4" />
+                        </router-link>
+
+                        <button 
+                          @click="closeServiceDetail"
+                          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-neutral-100 text-neutral-800 hover:bg-brand-soft hover:text-brand-primary text-sm font-bold transition-all cursor-pointer"
+                        >
+                          <ArrowLeft class="w-4 h-4" />
+                          <span>Back to All Services</span>
+                        </button>
+                      </div>
+
+                    </div> <!-- close lg:col-span-7 -->
+                  </div> <!-- close grid -->
+                </div> <!-- close detail panel -->
+
+              </div> <!-- close v-else state 2 -->
+            </transition>
+
+          </div> <!-- close #service-pricing-anchor -->
 
           <!-- ================================================================= -->
           <!-- ============= EXTENDED OFFICIAL CLINIC PRICE DIRECTORY ============ -->
@@ -839,14 +1010,16 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, nextTick, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { 
   ArrowRight, 
+  ArrowLeft,
   Banknote, 
   ShieldCheck, 
   ChevronDown, 
   CheckCircle2, 
+  Check,
   Users, 
   FileText, 
   Sparkles,
@@ -856,7 +1029,9 @@ import {
   Baby,
   Calendar,
   AlertCircle,
-  FileCheck
+  FileCheck,
+  Clock,
+  X
 } from '@lucide/vue'
 import {
   pricingNotice,
@@ -871,11 +1046,30 @@ import {
 const route = useRoute()
 const router = useRouter()
 const activeTab = ref('overview')
-const expandedServiceId = ref(null)
+const selectedServiceId = ref(null)
 const searchQuery = ref('')
 
-const toggleService = (id) => {
-  expandedServiceId.value = expandedServiceId.value === id ? null : id
+const selectedService = computed(() => {
+  if (!selectedServiceId.value) return null
+  return servicesData.find(s => s.id === selectedServiceId.value) || null
+})
+
+const selectService = async (id) => {
+  selectedServiceId.value = id
+  await nextTick()
+  const el = document.getElementById('service-pricing-anchor')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+const closeServiceDetail = async () => {
+  selectedServiceId.value = null
+  await nextTick()
+  const el = document.getElementById('service-pricing-anchor')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 }
 
 const filteredMedicines = computed(() => {
@@ -911,25 +1105,51 @@ const servicesData = [
     id: 'prenatal-checkups',
     title: 'Prenatal Checkups',
     tag: 'Standard & Specialized',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop',
     shortDescription: 'Comprehensive maternal assessment, ultrasound coordination, fetal heart monitoring, and health tracking throughout every trimester.',
     detailedDescription: 'Our prenatal checkup program provides continuous, compassionate clinical monitoring for expecting mothers. From the earliest weeks of pregnancy through final term preparation, our licensed midwives and medical practitioners ensure both maternal wellness and optimal fetal development.',
     whoFor: 'Expecting mothers in all stages of pregnancy (1st, 2nd, and 3rd trimester).',
     includes: [
-      'Maternal vital signs & blood pressure monitoring',
+      'Maternal vital signs, weight & blood pressure monitoring',
       'Fetal Doppler heartbeat check & fundic height measurement',
       'Nutritional guidance & prenatal vitamin prescription',
       'Ultrasound coordination & laboratory test interpretation',
-      'Birth plan counseling and delivery readiness preparation'
+      'Birth plan counseling, danger signs orientation & delivery readiness'
     ],
-    notes: 'Please bring your maternity booklet, valid ID, and any recent lab or ultrasound results.',
-    pricing: 'ANCO1 & ANCO2 Packages • ₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱1,500 - ₱2,000 without PhilHealth'
+    notes: 'Please bring your maternity booklet, valid ID, and any recent lab or ultrasound results upon every checkup visit.',
+    pricingSummary: '₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱1,500 - ₱2,000 without PhilHealth',
+    packageDetails: [
+      {
+        code: 'ANCO1',
+        title: 'Antenatal Care Package (4 Visits Minimum)',
+        caseRate: '₱2,925.00',
+        withPhilHealth: '₱0.00 (Walang Bayad)',
+        withoutPhilHealthPrice: '₱1,500.00',
+        breakdownText: 'Includes HCI (₱1,755) and Professional Fee (₱1,170). Non-PhilHealth: PF ₱800 + Supplies ₱700.'
+      },
+      {
+        code: 'ANCO2',
+        title: 'Antenatal Care with Labor Watch / Intrapartum',
+        caseRate: '₱4,192.50',
+        withPhilHealth: '₱0.00 (Walang Bayad)',
+        withoutPhilHealthPrice: '₱2,000.00',
+        breakdownText: 'Includes HCI (₱2,515) and Professional Fee (₱1,677). Non-PhilHealth: PF ₱1,200 + Supplies ₱800.'
+      },
+      {
+        code: 'CONSULT',
+        title: 'Outpatient Clinical Consultation',
+        caseRate: '₱100.00',
+        withPhilHealth: '₱100.00 (Out-of-Pocket)',
+        withoutPhilHealthPrice: '₱100.00',
+        breakdownText: 'Direct prenatal assessment and general clinical consultation per visit.'
+      }
+    ]
   },
   {
     id: 'newborn-screening',
     title: 'Newborn Screening',
     tag: 'Expanded (NBS)',
-    image: 'https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1581594549595-35f6edc7b762?q=80&w=1000&auto=format&fit=crop',
     shortDescription: 'Early diagnostic blood test to detect rare metabolic and congenital disorders, ensuring early medical care and newborn protection.',
     detailedDescription: 'Expanded Newborn Screening (ENBS) is a vital preventative health test conducted ideally within 24 to 72 hours after birth. A few drops of blood from the baby’s heel are screened for multiple life-threatening metabolic, endocrine, and genetic conditions before clinical symptoms appear.',
     whoFor: 'All newborn infants within 24 to 72 hours (up to 2 weeks) after birth.',
@@ -937,16 +1157,27 @@ const servicesData = [
       'Heel-prick blood sample collection by certified medical staff',
       'Screening for congenital hypothyroidism, CAH, G6PD deficiency, PKU, MSUD, and galactosemia',
       'Official Philippine Newborn Screening Center laboratory processing',
-      'Results release, physician consultation, and medical records documentation'
+      'Newborn Hearing Screening Test coordination',
+      'Essential newborn care supplies, Vitamin K, eye prophylaxis & birth vaccines'
     ],
-    notes: 'Must be done at least 24 hours after birth. Covered under the PhilHealth Newborn Care Package (NCP).',
-    pricing: 'NCP Package • ₱0.00 Out-of-Pocket with PhilHealth • ₱5,000 without PhilHealth (Screening + Vaccines + Care)'
+    notes: 'Must be conducted at least 24 hours after birth. Completely covered under the PhilHealth Newborn Care Package (NCP).',
+    pricingSummary: '₱0.00 Out-of-Pocket with PhilHealth (NCP) • ₱5,000.00 without PhilHealth',
+    packageDetails: [
+      {
+        code: 'NCP',
+        title: 'PhilHealth Newborn Care Package',
+        caseRate: '₱5,752.50',
+        withPhilHealth: '₱0.00 (Walang Bayad)',
+        withoutPhilHealthPrice: '₱5,000.00',
+        breakdownText: 'Includes Expanded NBS, Hearing Screening, Vitamin K, Eye Ointment, BCG & Hep B vaccines. Non-PhilHealth: PF ₱500 + Room ₱1,000 + Meds/Supplies ₱3,500.'
+      }
+    ]
   },
   {
     id: 'normal-spontaneous-delivery',
     title: 'Normal Spontaneous Delivery',
     tag: 'NSD Package',
-    image: 'https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=1000&auto=format&fit=crop',
     shortDescription: 'Safe birthing care assisted by licensed midwives and medical staff, including labor monitoring, sterile delivery setup, and recovery support.',
     detailedDescription: 'Our Normal Spontaneous Delivery (NSD) package provides round-the-clock maternal and newborn care in a clean, sterile, and family-centered birthing facility. Experienced licensed midwives closely guide you through labor progression, delivery, and immediate postnatal bonding.',
     whoFor: 'Low-risk pregnant mothers with full-term single pregnancies suitable for normal spontaneous vaginal delivery.',
@@ -958,29 +1189,91 @@ const servicesData = [
       'Postpartum recovery room stay, maternal observation, and lactation assistance'
     ],
     notes: 'Please bring your complete prenatal records, baby clothes, receiving blankets, maternity pads, and PhilHealth documents upon admission.',
-    pricing: 'NSDO1 & MCP01 Packages • ₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱11,000 - ₱12,500 without PhilHealth'
+    pricingSummary: '₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱11,000 - ₱12,500 without PhilHealth',
+    packageDetails: [
+      {
+        code: 'NSDO1',
+        title: 'Normal Spontaneous Delivery Package',
+        caseRate: '₱12,675.00',
+        withPhilHealth: '₱0.00 (Walang Bayad)',
+        withoutPhilHealthPrice: '₱11,000.00',
+        breakdownText: 'Includes Birthing Room, Midwife Professional Fee, Postpartum Room, Drugs & Sterile Supplies.'
+      },
+      {
+        code: 'MCP01',
+        title: 'Maternal Care Package (Full Maternity & Delivery)',
+        caseRate: '₱15,600.00',
+        withPhilHealth: '₱0.00 (Walang Bayad)',
+        withoutPhilHealthPrice: '₱12,500.00',
+        breakdownText: 'Comprehensive maternity care package covering antepartum care, vaginal delivery, and postpartum room stay.'
+      }
+    ]
   },
   {
     id: 'vaccination',
-    title: 'Vaccination',
+    title: 'Vaccination & Wellness',
     tag: 'Maternal & Infant',
-    image: 'https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=600&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=1000&auto=format&fit=crop',
     shortDescription: 'Essential immunizations including newborn BCG, Hepatitis B, and recommended maternal vaccines to protect against infectious diseases.',
     detailedDescription: 'Our clinical immunization program strictly adheres to Department of Health (DOH) and World Health Organization (WHO) schedules, protecting both mother and child against life-threatening infectious diseases through safe, sterile vaccine administration.',
-    whoFor: 'Newborns, infants, young children, and pregnant women requiring routine or catch-up immunization.',
+    whoFor: 'Newborns, infants, young children, and women requiring routine or catch-up immunization and family planning.',
     includes: [
       'Newborn first doses: BCG (Tuberculosis) and Hepatitis B birth dose',
-      'Routine infant vaccines (Pentavalent, Oral/Inactivated Polio, PCV, MMR)',
-      'Maternal Tetanus Toxoid (Td/Tdap) and Flu immunization',
+      'Routine infant vaccines & child growth monitoring',
+      'Maternal Tetanus Toxoid (Td/Tdap) immunization',
+      'Family planning contraceptives (DMPA 3-Mos & Norifam 1-Mo)',
       'Official Baby Book / Immunization card issuance and schedule monitoring'
     ],
-    notes: 'Please bring your child’s baby booklet / immunization card to every visit.',
-    pricing: 'BCG: ₱400 • Hep B: ₱450 • Tetanus Toxoid: ₱150 • Full list in Medicines & Supplies directory'
+    notes: 'Please bring your child’s baby booklet / immunization card to every vaccination visit.',
+    pricingSummary: 'Included in PhilHealth Packages • Itemized from ₱150.00 to ₱450.00',
+    packageDetails: [
+      {
+        code: 'BCG',
+        title: 'BCG Vaccine (Tuberculosis)',
+        caseRate: '₱400.00',
+        withPhilHealth: '₱0.00 (Covered under NCP)',
+        withoutPhilHealthPrice: '₱400.00',
+        breakdownText: 'Standard newborn tuberculosis immunization dose.'
+      },
+      {
+        code: 'HEPB',
+        title: 'Hepatitis B Vaccine Birth Dose',
+        caseRate: '₱450.00',
+        withPhilHealth: '₱0.00 (Covered under NCP)',
+        withoutPhilHealthPrice: '₱450.00',
+        breakdownText: 'Essential hepatitis B immunization given within 24 hours of birth.'
+      },
+      {
+        code: 'TT',
+        title: 'Tetanus Toxoid Vaccine',
+        caseRate: '₱150.00',
+        withPhilHealth: '₱0.00 (Covered under ANCO1)',
+        withoutPhilHealthPrice: '₱150.00',
+        breakdownText: 'Maternal tetanus immunization protection during pregnancy.'
+      },
+      {
+        code: 'FP-DMPA',
+        title: 'DMPA Injectable Contraceptive (3 Months)',
+        caseRate: '₱160.00',
+        withPhilHealth: '₱160.00 (Out-of-Pocket)',
+        withoutPhilHealthPrice: '₱160.00',
+        breakdownText: '3-month injectable contraceptive protection.'
+      },
+      {
+        code: 'FP-NORI',
+        title: 'Norifam Injectable Contraceptive (1 Month)',
+        caseRate: '₱350.00',
+        withPhilHealth: '₱350.00 (Out-of-Pocket)',
+        withoutPhilHealthPrice: '₱350.00',
+        breakdownText: '1-month injectable contraceptive protection.'
+      }
+    ]
   }
 ]
 
 const setTab = (tab) => {
   activeTab.value = tab
+  selectedServiceId.value = null
   router.replace({ query: tab === 'overview' ? {} : { tab } })
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
@@ -996,6 +1289,13 @@ const syncFromRoute = () => {
   } else {
     activeTab.value = 'overview'
   }
+
+  if (route.query.service) {
+    const found = servicesData.find(s => s.id === route.query.service)
+    if (found) {
+      selectedServiceId.value = found.id
+    }
+  }
 }
 
 onMounted(() => {
@@ -1006,6 +1306,23 @@ watch(() => route.query, () => {
   syncFromRoute()
 })
 </script>
+
+<style scoped>
+.fade-service-enter-active,
+.fade-service-leave-active {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-service-enter-from {
+  opacity: 0;
+  transform: translateY(14px) scale(0.99);
+}
+
+.fade-service-leave-to {
+  opacity: 0;
+  transform: translateY(-14px) scale(0.99);
+}
+</style>
 
 
 
