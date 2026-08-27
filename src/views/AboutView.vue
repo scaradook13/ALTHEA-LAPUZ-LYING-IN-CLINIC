@@ -18,6 +18,88 @@
         </p>
       </div>
 
+      <!-- ================= MISSION & VISION SECTION ================= -->
+      <div class="space-y-6 pt-4 text-left">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          <!-- Mission Card -->
+          <div class="bg-gradient-to-br from-brand-soft/70 via-white to-white p-8 sm:p-10 rounded-3xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 space-y-5 group">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-primary text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-brand-sm">
+                Our Purpose
+              </span>
+              <div class="w-10 h-10 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform">
+                <Target class="w-5 h-5" />
+              </div>
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight group-hover:text-brand-primary transition-colors">
+              Mission
+            </h2>
+            
+            <p class="text-text-secondary text-base leading-relaxed">
+              To deliver direct, trustworthy, and family-oriented maternity & maternal healthcare, providing transparent and accessible services that empower mothers and nurture child healthcare.
+            </p>
+          </div>
+
+          <!-- Vision Card -->
+          <div class="bg-gradient-to-br from-brand-soft/70 via-white to-white p-8 sm:p-10 rounded-3xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 space-y-5 group">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-primary text-white text-xs font-extrabold uppercase tracking-wider rounded-full shadow-brand-sm">
+                Our Future
+              </span>
+              <div class="w-10 h-10 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform">
+                <Compass class="w-5 h-5" />
+              </div>
+            </div>
+            
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight group-hover:text-brand-primary transition-colors">
+              Vision
+            </h2>
+            
+            <p class="text-text-secondary text-base leading-relaxed">
+              Championing healthcare future through immediate seamless determination and trauma-informed efficacy, becoming the benchmark for modern maternity care and healthcare excellence for every mom.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= CORE VALUES SECTION ================= -->
+      <div class="bg-gradient-to-r from-brand-subtle via-white to-brand-subtle p-8 sm:p-10 rounded-3xl border border-brand-border/60 shadow-card flex flex-col md:flex-row md:items-center justify-between gap-8">
+        <!-- Title & Badge -->
+        <div class="text-left space-y-1 md:max-w-xs">
+          <div class="inline-block text-[11px] font-extrabold uppercase tracking-widest text-brand-primary">
+            FOUNDATIONAL ETHOS
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+            Core Values
+          </h2>
+        </div>
+
+        <!-- Values with vertical dividers -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 flex-1">
+          <div class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left">
+            <div>
+              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">Transparency</span>
+              <p class="text-xs text-text-secondary mt-0.5">Clear pricing & clinical honesty</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left">
+            <div>
+              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">Clarity</span>
+              <p class="text-xs text-text-secondary mt-0.5">Direct patient communication</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left">
+            <div>
+              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">Precision</span>
+              <p class="text-xs text-text-secondary mt-0.5">Exact medical excellence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Why Choose Us Section -->
       <div class="space-y-12">
         <div class="text-left space-y-2">
@@ -162,7 +244,7 @@
 </template>
 
 <script setup>
-import { CheckCircle2, Users, Clock } from '@lucide/vue'
+import { CheckCircle2, Users, Clock, Target, Compass } from '@lucide/vue'
 </script>
 
 
