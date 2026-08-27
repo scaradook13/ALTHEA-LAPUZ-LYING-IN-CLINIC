@@ -59,14 +59,7 @@
         >
           <!-- Authentic Official Gmail Logo -->
           <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-2.5">
-            <svg class="w-full h-full" viewBox="0 0 48 48">
-              <path fill="#4285F4" d="M4 14.5V38.5C4 40.4 5.6 42 7.5 42H13V21L4 14.5Z"/>
-              <path fill="#34A853" d="M44 14.5V38.5C44 40.4 42.4 42 40.5 42H35V21L44 14.5Z"/>
-              <path fill="#EA4335" d="M35 10.5L24 18.5L13 10.5V6C13 4.3 14.3 3 16 3H32C33.7 3 35 4.3 35 6V10.5Z"/>
-              <path fill="#FBBC05" d="M13 21V42H35V21L24 29.5L13 21Z"/>
-              <path fill="#C5221F" d="M35 10.5L44 14.5V7C44 4.8 42.2 3 40 3H35V10.5Z"/>
-              <path fill="#1A73E8" d="M13 10.5L4 14.5V7C4 4.8 5.8 3 8 3H13V10.5Z"/>
-            </svg>
+            <img src="../assets/images/gmail-logo.png" alt="Gmail" class="w-full h-full object-contain" />
           </div>
           <div>
             <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
