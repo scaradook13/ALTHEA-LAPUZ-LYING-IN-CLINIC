@@ -57,12 +57,20 @@
           class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center relative"
           title="Click to compose an email in Gmail or copy address"
         >
-          <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
-            <Mail class="w-7 h-7" />
+          <!-- Authentic Official Gmail Logo -->
+          <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-2.5">
+            <svg class="w-full h-full" viewBox="0 0 48 48">
+              <path fill="#4285F4" d="M4 14.5V38.5C4 40.4 5.6 42 7.5 42H13V21L4 14.5Z"/>
+              <path fill="#34A853" d="M44 14.5V38.5C44 40.4 42.4 42 40.5 42H35V21L44 14.5Z"/>
+              <path fill="#EA4335" d="M35 10.5L24 18.5L13 10.5V6C13 4.3 14.3 3 16 3H32C33.7 3 35 4.3 35 6V10.5Z"/>
+              <path fill="#FBBC05" d="M13 21V42H35V21L24 29.5L13 21Z"/>
+              <path fill="#C5221F" d="M35 10.5L44 14.5V7C44 4.8 42.2 3 40 3H35V10.5Z"/>
+              <path fill="#1A73E8" d="M13 10.5L4 14.5V7C4 4.8 5.8 3 8 3H13V10.5Z"/>
+            </svg>
           </div>
           <div>
             <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-              Email Support
+              Gmail / Email Support
             </h3>
             <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all select-all">
               lapuzaltheajasmine@gmail.com
@@ -84,7 +92,7 @@
               :href="gmailUrl" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="px-3.5 py-1.5 bg-brand-primary text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-brand-primary-hover hover:shadow-brand transition-all flex items-center gap-1 cursor-pointer"
+              class="px-3.5 py-1.5 bg-[#EA4335] text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-[#D93025] transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <span>Compose Gmail</span>
               <ExternalLink class="w-3 h-3" />
@@ -112,12 +120,14 @@
           href="https://www.facebook.com/share/1F9n16Qjzo/" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center"
           title="Visit Althea-Lapuz Lying-In Clinic on Facebook"
         >
-          <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
-            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          <!-- Authentic Official Facebook Logo -->
+          <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-1.5">
+            <svg class="w-full h-full" viewBox="0 0 24 24">
+              <path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.415 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.585 23.094 24 18.1 24 12.073z"/>
+              <path fill="#FFFFFF" d="M16.671 15.563l.532-3.49h-3.328v-2.264c0-.956.465-1.886 1.956-1.886h1.491V4.952s-1.374-.236-2.686-.236c-2.741 0-4.533 1.672-4.533 4.697v2.66H7.078v3.49h3.047V24c.618.097 1.25.148 1.875.148s1.257-.051 1.875-.148v-8.437h2.796z"/>
             </svg>
           </div>
           <div>
@@ -128,7 +138,7 @@
               ALTHEA-LAPUZ LYING-IN CLINIC
             </p>
           </div>
-          <span class="text-xs font-bold text-brand-primary group-hover:underline flex items-center gap-1">
+          <span class="text-xs font-bold text-[#1877F2] group-hover:underline flex items-center gap-1">
             <span>Visit Official Facebook Page</span>
             <ExternalLink class="w-3.5 h-3.5" />
           </span>
