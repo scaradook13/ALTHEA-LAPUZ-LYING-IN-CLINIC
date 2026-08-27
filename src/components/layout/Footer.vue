@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gradient-to-b from-brand-subtle via-white to-brand-soft/60 text-text-primary border-t border-brand-border/40 mt-auto transition-colors duration-300">
+  <footer class="bg-gradient-to-b from-[#FCE4EF] via-[#F9D3E6] to-[#F5C2DC] text-neutral-900 border-t-2 border-brand-border/90 mt-auto transition-colors duration-300 shadow-inner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6">
       
       <!-- ================= MAIN FOOTER ROW ================= -->
@@ -10,19 +10,19 @@
             <img 
               src="../../assets/images/althea-lapuz-logo.png" 
               alt="Althea-Lapuz Lying In Clinic" 
-              class="w-full h-full rounded-full object-contain ring-2 ring-brand-border/60"
+              class="w-full h-full rounded-full object-contain ring-2 ring-brand-border/80 bg-white"
             />
           </div>
           <div class="text-left">
             <h3 class="text-sm font-extrabold text-neutral-950 uppercase tracking-wider">
               Althea-Lapuz Lying In Clinic
             </h3>
-            <p class="text-xs text-text-secondary">Compassionate Maternal & Newborn Care</p>
+            <p class="text-xs text-neutral-700 font-semibold">Compassionate Maternal & Newborn Care</p>
           </div>
         </div>
 
         <!-- Navigation Links + Small FAQ Toggle Button -->
-        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-bold text-text-secondary">
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm font-extrabold text-neutral-800">
           <router-link to="/" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">Home</router-link>
           <router-link to="/services" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">Services</router-link>
           <router-link to="/about" @click="isFaqVisible = false" class="hover:text-brand-primary transition-colors">About</router-link>
@@ -43,10 +43,10 @@
           <!-- Small FAQ Toggle Button -->
           <button 
             @click="toggleFaqVisibility"
-            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 focus:outline-none cursor-pointer active:scale-95"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 focus:outline-none cursor-pointer active:scale-95 shadow-xs"
             :class="isFaqVisible 
               ? 'bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/20' 
-              : 'bg-brand-soft text-brand-primary hover:bg-brand-light hover:text-brand-primary-dark border border-brand-border/60 hover:shadow-xs'"
+              : 'bg-white text-brand-primary hover:bg-brand-soft border border-brand-border/80 hover:shadow-sm'"
             :aria-expanded="isFaqVisible"
             aria-label="Toggle Frequently Asked Questions"
           >
@@ -151,7 +151,7 @@
       </div>
 
       <!-- ================= COPYRIGHT BAR ================= -->
-      <div class="pt-4 border-t border-brand-border/30 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-text-muted">
+      <div class="pt-4 border-t border-brand-border/70 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-neutral-700 font-semibold">
         <p>&copy; {{ new Date().getFullYear() }} Althea-Lapuz Lying In Clinic. All rights reserved.</p>
         <p>Tilapayong, City of Baliwag, Bulacan • 24/7 Maternal Care</p>
       </div>

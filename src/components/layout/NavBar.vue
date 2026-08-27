@@ -25,32 +25,32 @@
         </div>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-1.5 lg:space-x-3 text-sm lg:text-base font-bold">
+        <nav class="hidden md:flex items-center space-x-1.5 lg:space-x-2.5 text-sm lg:text-base font-bold">
           <router-link 
             to="/" 
-            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="text-brand-primary bg-brand-soft shadow-xs"
+            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
+            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
           >
             Home
           </router-link>
           <router-link 
             to="/services" 
-            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="text-brand-primary bg-brand-soft shadow-xs"
+            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
+            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
           >
             Services
           </router-link>
           <router-link 
             to="/about" 
-            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="text-brand-primary bg-brand-soft shadow-xs"
+            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
+            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
           >
             About
           </router-link>
           <router-link 
             to="/contact" 
-            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="text-brand-primary bg-brand-soft shadow-xs"
+            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
+            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
           >
             Contact Us
           </router-link>
@@ -85,7 +85,7 @@
             to="/" 
             @click="isOpen = false" 
             class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-soft text-brand-primary"
+            active-class="bg-brand-primary text-white shadow-brand-sm"
           >
             Home
           </router-link>
@@ -93,7 +93,7 @@
             to="/services" 
             @click="isOpen = false" 
             class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-soft text-brand-primary"
+            active-class="bg-brand-primary text-white shadow-brand-sm"
           >
             Services
           </router-link>
@@ -101,7 +101,7 @@
             to="/about" 
             @click="isOpen = false" 
             class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-soft text-brand-primary"
+            active-class="bg-brand-primary text-white shadow-brand-sm"
           >
             About
           </router-link>
@@ -109,7 +109,7 @@
             to="/contact" 
             @click="isOpen = false" 
             class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-soft text-brand-primary"
+            active-class="bg-brand-primary text-white shadow-brand-sm"
           >
             Contact Us
           </router-link>
