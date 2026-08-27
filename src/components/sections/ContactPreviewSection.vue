@@ -49,15 +49,15 @@
 
         <!-- Email -->
         <a 
-          href="mailto:althealapuzlyingin@gmail.com" 
-          class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group"
+          href="mailto:lapuzaltheajasmine@gmail.com?subject=Inquiry%20-%20Althea-Lapuz%20Lying-In%20Clinic" 
+          class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group cursor-pointer"
         >
           <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform">
             <Mail class="w-6 h-6" />
           </div>
           <div>
             <h3 class="text-xs font-extrabold uppercase tracking-wider text-text-muted">Email Inquiries</h3>
-            <p class="text-sm font-bold text-brand-primary mt-1 break-all">althealapuzlyingin@gmail.com</p>
+            <p class="text-sm font-bold text-brand-primary mt-1 break-all">lapuzaltheajasmine@gmail.com</p>
           </div>
         </a>
       </div>

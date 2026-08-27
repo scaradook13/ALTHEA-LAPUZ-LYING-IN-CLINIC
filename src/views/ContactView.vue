@@ -53,8 +53,8 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 max-w-3xl mx-auto">
         <!-- Email Card -->
         <a 
-          href="mailto:althealapuzlyingin@gmail.com" 
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300"
+          href="mailto:lapuzaltheajasmine@gmail.com?subject=Inquiry%20-%20Althea-Lapuz%20Lying-In%20Clinic" 
+          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer"
         >
           <div class="w-14 h-14 rounded-2xl bg-brand-primary group-hover:scale-110 transition-transform flex items-center justify-center text-white shadow-brand-sm">
             <Mail class="w-7 h-7" />
@@ -64,7 +64,7 @@
               Email Support
             </h3>
             <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all">
-              althealapuzlyingin@gmail.com
+              lapuzaltheajasmine@gmail.com
             </p>
           </div>
           <span class="text-xs font-bold text-brand-primary group-hover:underline">Send an Email →</span>

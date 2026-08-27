@@ -202,7 +202,7 @@ const faqs = [
   },
   {
     question: 'How can I reach or contact the clinic in Baliwag?',
-    answer: 'You can contact us via phone at +63 917 123 4567, email us at althealapuzlyingin@gmail.com, or visit our clinic located at Tilapayong, City of Baliwag, Bulacan.'
+    answer: 'You can contact us via phone at (044)-462-0789 / 0931-069-3921 / 0969-405-5108, email us at lapuzaltheajasmine@gmail.com, or visit our clinic located at 332 Ramon Magsaysay Street, Tilapayong, City of Baliwag, Bulacan.'
   }
 ]
 </script>
