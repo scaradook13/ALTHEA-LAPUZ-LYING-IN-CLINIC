@@ -70,7 +70,7 @@
                     <h3 class="text-sm sm:text-base font-bold text-neutral-950">
                       Althea-Lapuz Lying In Clinic
                     </h3>
-                    <p class="text-xs text-text-secondary">Tilapayong, City of Baliwag, Bulacan</p>
+                    <p class="text-xs text-text-secondary">332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan</p>
                   </div>
                   <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shadow-brand-sm">
                     Open 24/7

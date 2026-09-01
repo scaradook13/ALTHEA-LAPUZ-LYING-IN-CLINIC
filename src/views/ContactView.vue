@@ -45,7 +45,7 @@
           Althea-Lapuz Lying In Clinic
         </h2>
         <p class="text-sm sm:text-base text-text-secondary font-medium">
-          Tilapayong, City of Baliwag, Bulacan
+          332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan
         </p>
       </div>
 
@@ -195,7 +195,7 @@
             In-Person Medical Concierge
           </h4>
           <p class="text-xs sm:text-sm text-text-secondary">
-            For direct in-person assistance, our Medical Concierge desk is located at Tilapayong, City of Baliwag, Bulacan, open to serve you 24hrs, Monday to Saturday.
+            For direct in-person assistance, our Medical Concierge desk is located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan, open to serve you 24hrs, Monday to Saturday.
           </p>
         </div>
       </div>
@@ -207,7 +207,7 @@
             MAP: Althea-Lapuz Lying In Clinic
           </h3>
           <a 
-            href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+            href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Daan+Ramon+Magsaysay+Tilapayong+Baliwag+Bulacan" 
             target="_blank" 
             rel="noopener noreferrer"
             class="text-xs font-bold text-brand-primary hover:underline inline-flex items-center gap-1"
@@ -218,7 +218,7 @@
         </div>
 
         <a 
-          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Daan+Ramon+Magsaysay+Tilapayong+Baliwag+Bulacan" 
           target="_blank" 
           rel="noopener noreferrer"
           class="block w-full h-80 sm:h-96 bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group cursor-pointer"

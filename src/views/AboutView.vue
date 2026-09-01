@@ -233,7 +233,7 @@
             </div>
 
             <div class="p-4 bg-brand-soft/60 rounded-2xl border border-brand-border/60 text-xs text-brand-primary-dark font-medium">
-              📍 Direct consultations available at Tilapayong, City of Baliwag, Bulacan.
+              📍 Direct consultations available at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan.
             </div>
           </div>
         </div>

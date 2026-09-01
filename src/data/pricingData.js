@@ -5,7 +5,7 @@
 
 export const pricingNotice = {
   clinicName: 'ALTHEA-LAPUZ LYING-IN CLINIC',
-  address: '332 Ramon Magsaysay Street, Tilapayong, Baliwag, Bulacan',
+  address: '332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan',
   contactNumbers: ['(044)-462-0789', '0931-069-3921', '0969-405-5108'],
   email: 'lapuzaltheajasmine@gmail.com',
   effectiveDate: 'April 01, 2026',

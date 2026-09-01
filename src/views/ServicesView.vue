@@ -477,7 +477,7 @@
                   Official Price Directory & Fee Schedule
                 </h3>
                 <p class="text-xs sm:text-sm text-text-secondary">
-                  Althea-Lapuz Lying-In Clinic • 332 Ramon Magsaysay Street, Tilapayong, Baliwag, Bulacan
+                  Althea-Lapuz Lying-In Clinic • 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan
                 </p>
               </div>
 

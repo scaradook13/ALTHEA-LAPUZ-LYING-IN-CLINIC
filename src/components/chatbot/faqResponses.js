@@ -39,7 +39,7 @@ export const faqResponses = [
     id: 'contact',
     keywords: ['contact', 'phone', 'email', 'call', 'reach', 'number'],
     question: 'How can I contact the clinic?',
-    answer: 'You can reach us at (123) 456-7890 or +0912 345 6789. You can also send an email to inquiry@althealapuzclinic.com or send an inquiry through our Contact page.'
+    answer: 'You can reach us by phone at 0931 069 3921 / (044)-462-0789, email us at lapuzaltheajasmine@gmail.com, message our Facebook page, or visit our clinic at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan.'
   },
   {
     id: 'hours',

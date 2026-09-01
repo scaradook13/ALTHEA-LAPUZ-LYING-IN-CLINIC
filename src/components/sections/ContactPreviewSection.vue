@@ -19,7 +19,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
         <!-- Address -->
         <a 
-          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Daan+Ramon+Magsaysay+Tilapayong+Baliwag+Bulacan" 
           target="_blank"
           rel="noopener noreferrer"
           class="bg-white hover:bg-brand-subtle/50 p-6 rounded-2xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col items-center text-center space-y-3 group cursor-pointer"
@@ -29,7 +29,7 @@
           </div>
           <div>
             <h3 class="text-xs font-extrabold uppercase tracking-wider text-text-muted">Clinic Address</h3>
-            <p class="text-sm font-bold text-neutral-950 mt-1">Tilapayong, Baliwag, Bulacan</p>
+            <p class="text-sm font-bold text-neutral-950 mt-1">332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan</p>
           </div>
         </a>
 
@@ -88,7 +88,7 @@
       <!-- Wide Location Map Box -->
       <div class="max-w-5xl mx-auto">
         <a 
-          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Ramon+Magsaysay+Street+Tilapayong+Baliwag+Bulacan" 
+          href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Daan+Ramon+Magsaysay+Tilapayong+Baliwag+Bulacan" 
           target="_blank" 
           rel="noopener noreferrer"
           class="block w-full h-80 sm:h-[400px] bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group cursor-pointer"

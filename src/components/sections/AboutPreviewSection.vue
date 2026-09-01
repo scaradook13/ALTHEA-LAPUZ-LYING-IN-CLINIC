@@ -49,7 +49,7 @@
               About the Clinic
             </h2>
             <p class="text-text-secondary text-base sm:text-lg leading-relaxed font-normal">
-              Founded on the principles of transparency and dedicated patient care, our dedicated program entity has provided compassionate and specialized maternal healthcare since 2012. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
+              Founded on the principles of transparency and dedicated patient care, our dedicated program entity has provided compassionate and specialized maternal healthcare since November of 2024. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
             </p>
             <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
               Specialized, modern healthcare center focused on clinical comfort, proactive, medical excellence.
@@ -66,7 +66,7 @@
                 </h3>
               </div>
               <p class="text-2xl font-serif font-bold text-neutral-950">
-                2012
+                2024
               </p>
               <p class="text-xs text-text-secondary mt-1">Providing trustworthy maternal care in Bulacan</p>
             </div>
