@@ -1097,7 +1097,7 @@ const tabSubtitle = computed(() => {
   if (activeTab.value === 'accessibility') {
     return 'Our clinic premises are thoughtfully engineered for patient mobility, safety, and comfortable maternal care.'
   }
-  return 'We provide comprehensive maternity care, including prenatal checkups, delivery assistance, postnatal care, newborn care, and maternal health services.'
+  return 'We provide comprehensive maternity care primarily dedicated to pregnant women, postpartum mothers, newborns, and their families.'
 })
 
 const servicesData = [

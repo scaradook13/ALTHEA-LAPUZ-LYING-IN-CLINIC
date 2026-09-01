@@ -46,6 +46,12 @@ export const faqResponses = [
     keywords: ['hours', 'time', 'open', 'close', 'when', 'schedule'],
     question: 'What are the clinic\'s operating hours?',
     answer: 'Our prenatal checkups are available Monday to Sunday from 9:00 AM to 7:00 PM. Our clinic and delivery room are open 24 Hours (24/7) for maternity admissions and active deliveries.'
+  },
+  {
+    id: 'clients',
+    keywords: ['who', 'serve', 'patients', 'customers', 'client', 'family', 'mothers'],
+    question: 'Who are the primary patients of the clinic?',
+    answer: 'Our clinic primarily cares for pregnant women, postpartum mothers, newborns, and their families, providing affordable, compassionate, and expert maternity services in Bulacan.'
   }
 ];
 

@@ -23,7 +23,7 @@
 
           <!-- Body Description -->
           <p class="text-text-secondary text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-            Committed to delivering integrity to your health journey, partnering with them each step of patient care to ensure safety and clinical wellness.
+            Providing compassionate, affordable, and high-quality maternal and infant healthcare primarily dedicated to <strong class="text-neutral-950 font-bold">pregnant women, postpartum mothers, newborns, and their families</strong>.
           </p>
 
           <!-- CTAs -->
@@ -37,14 +37,18 @@
           </div>
 
           <!-- Feature Trust Badges -->
-          <div class="pt-4 border-t border-brand-border/30 flex flex-wrap items-center gap-6 text-xs font-semibold text-text-secondary">
+          <div class="pt-4 border-t border-brand-border/30 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-semibold text-text-secondary">
             <div class="flex items-center gap-2">
               <div class="w-5 h-5 rounded-full bg-brand-soft flex items-center justify-center text-brand-primary font-bold text-[11px]">✓</div>
-              <span>24/7 Delivery On-Call</span>
+              <span>Pregnant Women & Newborns</span>
             </div>
             <div class="flex items-center gap-2">
               <div class="w-5 h-5 rounded-full bg-brand-soft flex items-center justify-center text-brand-primary font-bold text-[11px]">✓</div>
-              <span>Licensed Healthcare Experts</span>
+              <span>Postpartum & Family Care</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-5 h-5 rounded-full bg-brand-soft flex items-center justify-center text-brand-primary font-bold text-[11px]">✓</div>
+              <span>24/7 Delivery On-Call</span>
             </div>
           </div>
         </div>

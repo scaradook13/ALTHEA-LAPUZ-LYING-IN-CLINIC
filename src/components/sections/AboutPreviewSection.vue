@@ -30,11 +30,11 @@
               <div class="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/95 border border-brand-border/70 rounded-2xl p-4 shadow-lg text-left">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center font-bold text-sm shadow-brand-sm">
-                    12+
+                    <Heart class="w-5 h-5 fill-current" />
                   </div>
                   <div>
-                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Years of Excellence</h4>
-                    <p class="text-xs text-text-secondary">Dedicated Maternal & Infant Healthcare</p>
+                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Our Primary Care</h4>
+                    <p class="text-xs text-text-secondary font-medium">Pregnant Women, Postpartum Mothers, Newborns & Families</p>
                   </div>
                 </div>
               </div>
@@ -49,10 +49,10 @@
               About the Clinic
             </h2>
             <p class="text-text-secondary text-base sm:text-lg leading-relaxed font-normal">
-              Founded on the principles of transparency and dedicated patient care, our dedicated program entity has provided compassionate and specialized maternal healthcare since November of 2024. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
+              Founded on the principles of transparency and dedicated patient care, our clinic provides compassionate, affordable, and specialized maternal healthcare since November of 2024. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
             </p>
-            <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
-              Specialized, modern healthcare center focused on clinical comfort, proactive, medical excellence.
+            <p class="text-text-secondary text-sm sm:text-base leading-relaxed font-medium">
+              Our primary care is dedicated to <strong class="text-neutral-950">pregnant women, postpartum mothers, newborns, and their families</strong>.
             </p>
           </div>
 
@@ -75,11 +75,11 @@
               <div class="flex items-center gap-2 mb-1.5">
                 <Heart class="w-4 h-4 text-brand-primary" />
                 <h3 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">
-                  Patient Focus
+                  Primary Patients
                 </h3>
               </div>
               <p class="text-xs sm:text-sm text-text-secondary leading-relaxed font-medium">
-                Specialized care & newborn services focused on safety, comfort, and direct medical excellence.
+                Pregnant Women, Postpartum Mothers, Newborns, and Families.
               </p>
             </div>
           </div>

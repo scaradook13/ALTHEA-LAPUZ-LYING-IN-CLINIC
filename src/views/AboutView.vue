@@ -100,6 +100,75 @@
         </div>
       </div>
 
+      <!-- ================= WHO WE SERVE / PRIMARY PATIENTS & FAMILIES ================= -->
+      <div class="space-y-8 text-left">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+            <span>Our Primary Clientele</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-neutral-950 tracking-tight">
+            Who We Serve
+          </h2>
+          <p class="text-text-secondary text-base sm:text-lg max-w-3xl leading-relaxed">
+            Our clinic is primarily dedicated to providing compassionate, accessible, and high-quality maternal and infant healthcare for:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- 1. Pregnant Women -->
+          <div class="bg-gradient-to-b from-brand-soft/60 via-white to-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 space-y-4 group">
+            <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform shadow-xs">
+              <Heart class="w-6 h-6 fill-current" />
+            </div>
+            <h3 class="text-xl font-bold text-neutral-950 group-hover:text-brand-primary transition-colors">
+              Pregnant Women
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Comprehensive prenatal monitoring, fetal health assessments, birthing readiness, and compassionate clinical guidance throughout every trimester.
+            </p>
+          </div>
+
+          <!-- 2. Postpartum Mothers -->
+          <div class="bg-gradient-to-b from-brand-soft/60 via-white to-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 space-y-4 group">
+            <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform shadow-xs">
+              <ShieldCheck class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-neutral-950 group-hover:text-brand-primary transition-colors">
+              Postpartum Mothers
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Attentive postpartum recovery care, maternal wellness monitoring, lactation and breastfeeding support, and family planning guidance.
+            </p>
+          </div>
+
+          <!-- 3. Newborns -->
+          <div class="bg-gradient-to-b from-brand-soft/60 via-white to-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 space-y-4 group">
+            <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform shadow-xs">
+              <Baby class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-neutral-950 group-hover:text-brand-primary transition-colors">
+              Newborns
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Essential Newborn Care (EINC), Expanded Newborn Screening (ENBS), newborn hearing test referrals, and vital birth dose immunizations.
+            </p>
+          </div>
+
+          <!-- 4. Families -->
+          <div class="bg-gradient-to-b from-brand-soft/60 via-white to-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 hover:border-brand-primary shadow-card hover:shadow-card-hover transition-all duration-300 space-y-4 group">
+            <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform shadow-xs">
+              <Users class="w-6 h-6" />
+            </div>
+            <h3 class="text-xl font-bold text-neutral-950 group-hover:text-brand-primary transition-colors">
+              Families
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Family planning counseling, newborn care education, parent counseling, and continuous healthcare support for growing households.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <!-- Why Choose Us Section -->
       <div class="space-y-12">
         <div class="text-left space-y-2">
@@ -244,7 +313,7 @@
 </template>
 
 <script setup>
-import { CheckCircle2, Users, Clock, Target, Compass } from '@lucide/vue'
+import { CheckCircle2, Users, Clock, Target, Compass, Heart, ShieldCheck, Baby } from '@lucide/vue'
 </script>
 
 
