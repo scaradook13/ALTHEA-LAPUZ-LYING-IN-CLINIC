@@ -27,7 +27,7 @@ export const faqResponses = [
     id: 'maternity',
     keywords: ['maternity', 'prenatal', 'ultrasound', 'pregnancy'],
     question: 'What maternity and prenatal care services are available?',
-    answer: 'Our prenatal care includes routine fetal monitoring, maternal health assessments, nutritional guidance, and ultrasound referrals. We provide continuous support throughout your entire pregnancy.'
+    answer: 'Our prenatal care includes routine fetal monitoring, maternal health assessments, nutritional guidance, and formal medical requests for required laboratory tests and ultrasound. Note: In-clinic lab tests and ultrasound are not performed directly; we provide official requests and interpret your results.'
   },
   {
     id: 'postpartum',

@@ -1106,17 +1106,18 @@ const servicesData = [
     title: 'Prenatal Checkups',
     tag: 'Standard & Specialized',
     image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop',
-    shortDescription: 'Comprehensive maternal assessment, ultrasound coordination, fetal heart monitoring, and health tracking throughout every trimester.',
-    detailedDescription: 'Our prenatal checkup program provides continuous, compassionate clinical monitoring for expecting mothers. From the earliest weeks of pregnancy through final term preparation, our licensed midwives and medical practitioners ensure both maternal wellness and optimal fetal development.',
+    shortDescription: 'Comprehensive maternal assessment, fetal heart monitoring, health tracking, and medical requests/referrals for required laboratory tests and ultrasound.',
+    detailedDescription: 'Our prenatal checkup program provides continuous, compassionate clinical monitoring for expecting mothers throughout every trimester. Please note that laboratory testing and ultrasound imaging are not performed in-clinic; our licensed practitioners issue official diagnostic requests/referrals and thoroughly interpret your external test results to guide your care.',
     whoFor: 'Expecting mothers in all stages of pregnancy (1st, 2nd, and 3rd trimester).',
     includes: [
       'Maternal vital signs, weight & blood pressure monitoring',
       'Fetal Doppler heartbeat check & fundic height measurement',
       'Nutritional guidance & prenatal vitamin prescription',
-      'Ultrasound coordination & laboratory test interpretation',
+      'Medical requests & referrals for required laboratory tests & ultrasound',
+      'Review and medical interpretation of laboratory & ultrasound results',
       'Birth plan counseling, danger signs orientation & delivery readiness'
     ],
-    notes: 'Please bring your maternity booklet, valid ID, and any recent lab or ultrasound results upon every checkup visit.',
+    notes: 'Please note: We do not perform lab tests or ultrasound in-clinic; official medical requests are provided. Please bring your maternity booklet, valid ID, and previous test results to every visit.',
     pricingSummary: '₱0.00 Out-of-Pocket with PhilHealth (No Balance Billing) • ₱1,500 - ₱2,000 without PhilHealth',
     packageDetails: [
       {
