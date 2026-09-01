@@ -19,7 +19,7 @@
           </h2>
           
           <p class="text-text-secondary text-base leading-relaxed">
-            To deliver direct, trustworthy, and family-oriented maternity & maternal healthcare, providing transparent and accessible services that empower mothers and nurture child healthcare.
+            To provide an affordable and quality maternal and child health care services in Bulacan and it's near provinces.
           </p>
         </div>
 
@@ -39,7 +39,7 @@
           </h2>
           
           <p class="text-text-secondary text-base leading-relaxed">
-            Championing healthcare future through immediate seamless determination and trauma-informed efficacy, becoming the benchmark for modern maternity care and healthcare excellence for every mom.
+            Aims to be the best lying-in clinic to give the safe environment for mother and child.
           </p>
         </div>
 
