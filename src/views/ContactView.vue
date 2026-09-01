@@ -195,7 +195,7 @@
             In-Person Medical Concierge
           </h4>
           <p class="text-xs sm:text-sm text-text-secondary">
-            For direct in-person assistance, our Medical Concierge desk is located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan, open to serve you 24hrs, Monday to Saturday.
+            For direct in-person assistance, our Medical Concierge desk is located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan, open 24 Hours, with prenatal checkups available Monday to Sunday from 9:00 AM to 7:00 PM.
           </p>
         </div>
       </div>

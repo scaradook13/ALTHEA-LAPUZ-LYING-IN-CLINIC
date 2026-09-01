@@ -95,22 +95,18 @@
               </div>
               <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                24/7 Delivery On-Call
+                Clinic Open 24 Hours
               </span>
             </div>
             
-            <ul class="text-text-secondary text-xs sm:text-sm space-y-1.5">
-              <li class="flex justify-between border-b border-neutral-100 pb-1">
-                <span class="font-medium text-neutral-800">Monday - Friday:</span>
-                <span>8:00 AM - 5:00 PM</span>
+            <ul class="text-text-secondary text-xs sm:text-sm space-y-2">
+              <li class="flex justify-between items-center border-b border-neutral-100 pb-1.5">
+                <span class="font-bold text-neutral-900">Prenatal Checkups:</span>
+                <span class="font-extrabold text-brand-primary">Mon - Sun (9:00 AM - 7:00 PM)</span>
               </li>
-              <li class="flex justify-between border-b border-neutral-100 pb-1">
-                <span class="font-medium text-neutral-800">Saturday:</span>
-                <span>8:00 AM - 12:00 PM</span>
-              </li>
-              <li class="flex justify-between text-brand-primary font-semibold pt-0.5">
-                <span>Sunday (Active Deliveries):</span>
-                <span>24/7 Emergency On-Call</span>
+              <li class="flex justify-between items-center text-emerald-700 font-bold pt-0.5">
+                <span>Maternity Delivery & Admissions:</span>
+                <span class="px-2 py-0.5 bg-emerald-50 rounded-full border border-emerald-200 text-xs">Open 24/7 (24 Hours)</span>
               </li>
             </ul>
           </div>

@@ -45,7 +45,7 @@ export const faqResponses = [
     id: 'hours',
     keywords: ['hours', 'time', 'open', 'close', 'when', 'schedule'],
     question: 'What are the clinic\'s operating hours?',
-    answer: 'Our regular checkup hours are Monday to Saturday from 8:00 AM to 5:00 PM. However, our delivery room and on-call birthing team are available 24/7 for any spontaneous deliveries.'
+    answer: 'Our prenatal checkups are available Monday to Sunday from 9:00 AM to 7:00 PM. Our clinic and delivery room are open 24 Hours (24/7) for maternity admissions and active deliveries.'
   }
 ];
 

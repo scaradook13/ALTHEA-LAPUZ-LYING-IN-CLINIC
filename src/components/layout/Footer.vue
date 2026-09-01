@@ -240,7 +240,7 @@ const faqs = [
   },
   {
     question: 'What are the clinic’s operating hours?',
-    answer: 'Our scheduled checkup and consultation hours run Monday to Friday (8:00 AM - 5:00 PM) and Saturday (8:00 AM - 12:00 PM). Our delivery suite and licensed midwife team are on-call 24/7 for active labors and childbirth.'
+    answer: 'Our prenatal checkups run Monday to Sunday from 9:00 AM to 7:00 PM. Our clinic and delivery room are open 24 Hours (24/7) with licensed midwives on-call for active labors and childbirth.'
   },
   {
     question: 'Do I need to schedule an appointment before visiting?',
