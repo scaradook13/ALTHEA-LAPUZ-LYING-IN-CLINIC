@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     question: 'What maternity and prenatal care services are available?',
-    answer: 'Our prenatal care includes routine fetal monitoring, maternal health assessments, nutritional guidance, and ultrasound referrals. We provide continuous support throughout your entire pregnancy.'
+    answer: 'Our prenatal care includes routine fetal monitoring, maternal health assessments, nutritional guidance, and formal medical requests for required laboratory tests and ultrasound. Note: In-clinic lab tests and ultrasound are not performed directly; we provide official requests and interpret your results.'
   },
   {
     question: 'Do you provide postpartum care?',
@@ -59,11 +59,11 @@ const faqs = [
   },
   {
     question: 'How can I contact the clinic for more information?',
-    answer: 'You can reach us at (123) 456-7890 or +0912 345 6789. You can also send an email to inquiry@althealapuzclinic.com or send an inquiry through our Contact page.'
+    answer: 'You can reach us by phone at 0931 069 3921 / (044)-462-0789, email us at lapuzaltheajasmine@gmail.com, or visit our clinic located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan.'
   },
   {
     question: 'What are the clinic\'s operating hours?',
-    answer: 'Our regular checkup hours are Monday to Saturday from 8:00 AM to 5:00 PM. However, our delivery room and on-call birthing team are available 24/7 for any spontaneous deliveries.'
+    answer: 'Our prenatal checkups run Monday to Sunday from 9:00 AM to 7:00 PM. Our clinic and delivery room are open 24 Hours (24/7) for maternity admissions and active deliveries.'
   }
 ]
 </script>

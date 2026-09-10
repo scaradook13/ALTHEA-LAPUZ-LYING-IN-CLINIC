@@ -30,11 +30,11 @@
               <div class="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/95 border border-brand-border/70 rounded-2xl p-4 shadow-lg text-left">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center font-bold text-sm shadow-brand-sm">
-                    12+
+                    <Heart class="w-5 h-5 fill-current" />
                   </div>
                   <div>
-                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Years of Excellence</h4>
-                    <p class="text-xs text-text-secondary">Dedicated Maternal & Infant Healthcare</p>
+                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Our Primary Care</h4>
+                    <p class="text-xs text-text-secondary font-medium">Pregnant Women, Postpartum Mothers, Newborns & Families</p>
                   </div>
                 </div>
               </div>
@@ -49,10 +49,10 @@
               About the Clinic
             </h2>
             <p class="text-text-secondary text-base sm:text-lg leading-relaxed font-normal">
-              Founded on the principles of transparency and dedicated patient care, our dedicated program entity has provided compassionate and specialized maternal healthcare since 2012. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
+              Founded on the principles of transparency and dedicated patient care, our clinic provides compassionate, affordable, and specialized maternal healthcare since November of 2024. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
             </p>
-            <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
-              Specialized, modern healthcare center focused on clinical comfort, proactive, medical excellence.
+            <p class="text-text-secondary text-sm sm:text-base leading-relaxed font-medium">
+              Our primary care is dedicated to <strong class="text-neutral-950">pregnant women, postpartum mothers, newborns, and their families</strong>.
             </p>
           </div>
 
@@ -66,7 +66,7 @@
                 </h3>
               </div>
               <p class="text-2xl font-serif font-bold text-neutral-950">
-                2012
+                2024
               </p>
               <p class="text-xs text-text-secondary mt-1">Providing trustworthy maternal care in Bulacan</p>
             </div>
@@ -75,11 +75,11 @@
               <div class="flex items-center gap-2 mb-1.5">
                 <Heart class="w-4 h-4 text-brand-primary" />
                 <h3 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">
-                  Patient Focus
+                  Primary Patients
                 </h3>
               </div>
               <p class="text-xs sm:text-sm text-text-secondary leading-relaxed font-medium">
-                Specialized care & newborn services focused on safety, comfort, and direct medical excellence.
+                Pregnant Women, Postpartum Mothers, Newborns, and Families.
               </p>
             </div>
           </div>
@@ -95,22 +95,18 @@
               </div>
               <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                24/7 Delivery On-Call
+                Clinic Open 24 Hours
               </span>
             </div>
             
-            <ul class="text-text-secondary text-xs sm:text-sm space-y-1.5">
-              <li class="flex justify-between border-b border-neutral-100 pb-1">
-                <span class="font-medium text-neutral-800">Monday - Friday:</span>
-                <span>8:00 AM - 5:00 PM</span>
+            <ul class="text-text-secondary text-xs sm:text-sm space-y-2">
+              <li class="flex justify-between items-center border-b border-neutral-100 pb-1.5">
+                <span class="font-bold text-neutral-900">Prenatal Checkups:</span>
+                <span class="font-extrabold text-brand-primary">Mon - Sun (9:00 AM - 7:00 PM)</span>
               </li>
-              <li class="flex justify-between border-b border-neutral-100 pb-1">
-                <span class="font-medium text-neutral-800">Saturday:</span>
-                <span>8:00 AM - 12:00 PM</span>
-              </li>
-              <li class="flex justify-between text-brand-primary font-semibold pt-0.5">
-                <span>Sunday (Active Deliveries):</span>
-                <span>24/7 Emergency On-Call</span>
+              <li class="flex justify-between items-center text-emerald-700 font-bold pt-0.5">
+                <span>Maternity Delivery & Admissions:</span>
+                <span class="px-2 py-0.5 bg-emerald-50 rounded-full border border-emerald-200 text-xs">Open 24/7 (24 Hours)</span>
               </li>
             </ul>
           </div>

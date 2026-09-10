@@ -195,7 +195,7 @@
       <!-- ================= COPYRIGHT BAR ================= -->
       <div class="pt-4 border-t border-brand-border/70 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-neutral-700 font-semibold">
         <p>&copy; {{ new Date().getFullYear() }} Althea-Lapuz Lying In Clinic. All rights reserved.</p>
-        <p>Tilapayong, City of Baliwag, Bulacan • 24/7 Maternal Care</p>
+        <p>332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan • 24/7 Maternal Care</p>
       </div>
 
     </div>
@@ -240,7 +240,7 @@ const faqs = [
   },
   {
     question: 'What are the clinic’s operating hours?',
-    answer: 'Our scheduled checkup and consultation hours run Monday to Friday (8:00 AM - 5:00 PM) and Saturday (8:00 AM - 12:00 PM). Our delivery suite and licensed midwife team are on-call 24/7 for active labors and childbirth.'
+    answer: 'Our prenatal checkups run Monday to Sunday from 9:00 AM to 7:00 PM. Our clinic and delivery room are open 24 Hours (24/7) with licensed midwives on-call for active labors and childbirth.'
   },
   {
     question: 'Do I need to schedule an appointment before visiting?',
@@ -256,7 +256,7 @@ const faqs = [
   },
   {
     question: 'How can I reach or contact the clinic in Baliwag?',
-    answer: 'You can contact us via phone at (044)-462-0789 / 0931-069-3921 / 0969-405-5108, email us at lapuzaltheajasmine@gmail.com, or visit our clinic located at 332 Ramon Magsaysay Street, Tilapayong, City of Baliwag, Bulacan.'
+    answer: 'You can contact us via phone at (044)-462-0789 / 0931-069-3921 / 0969-405-5108, email us at lapuzaltheajasmine@gmail.com, or visit our clinic located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan.'
   }
 ]
 
