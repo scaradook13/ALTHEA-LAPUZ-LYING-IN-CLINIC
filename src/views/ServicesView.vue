@@ -899,6 +899,45 @@
             </span>
           </div>
 
+          <!-- Featured Clinic Facility Photo Showcase -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-brand-subtle/70 via-white to-brand-soft/40 p-6 sm:p-8 lg:p-10 rounded-3xl border border-brand-border/70 shadow-sm">
+            <div class="lg:col-span-6 space-y-4 text-left">
+              <span class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/80 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+                <span>Modern Clinic Facility</span>
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                Designed for Maternal Comfort & Patient Safety
+              </h3>
+              <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
+                Our clinic reception, waiting area, and consultation spaces are barrier-free and engineered to provide an accessible, stress-free, and comfortable medical environment for pregnant women, recovering mothers, and families.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 bg-white rounded-full border border-brand-border/70 text-xs font-bold text-neutral-800 shadow-xs">✓ Ergonomic Seating</span>
+                <span class="px-3.5 py-1.5 bg-white rounded-full border border-brand-border/70 text-xs font-bold text-neutral-800 shadow-xs">✓ Barrier-Free Entrance</span>
+                <span class="px-3.5 py-1.5 bg-white rounded-full border border-brand-border/70 text-xs font-bold text-neutral-800 shadow-xs">✓ High-Traction Flooring</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6">
+              <div class="w-full h-80 sm:h-96 md:h-[440px] rounded-2xl bg-brand-soft border border-brand-border/70 overflow-hidden shadow-card relative group">
+                <img 
+                  src="../assets/images/clinic-reception.jpg" 
+                  alt="Althea-Lapuz Lying In Clinic Facility & Reception" 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3.5 border border-brand-border/80 shadow-md flex items-center justify-between">
+                  <div>
+                    <h4 class="text-xs font-extrabold text-neutral-950 uppercase">Althea-Lapuz Clinic Reception</h4>
+                    <p class="text-[11px] text-text-secondary">Comfortable, Accessible Maternal Facility</p>
+                  </div>
+                  <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shadow-brand-sm flex-shrink-0">
+                    Open 24/7
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
             
             <div class="p-5 bg-brand-subtle/70 rounded-2xl border border-brand-border/60 flex items-start gap-4 hover:border-brand-primary transition-colors">
