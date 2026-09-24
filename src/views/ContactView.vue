@@ -16,14 +16,14 @@
           </p>
         </div>
         <div>
-          <div class="w-36 h-24 sm:w-48 sm:h-28 bg-white rounded-2xl border border-brand-border/70 flex items-center justify-center shadow-card overflow-hidden relative group">
+          <div class="w-36 h-24 sm:w-48 sm:h-28 bg-neutral-100 rounded-2xl border border-brand-border/70 flex items-center justify-center shadow-card overflow-hidden relative group">
             <img 
-              src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=400&auto=format&fit=crop" 
-              alt="Clinic" 
-              class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" 
+              src="../assets/images/clinic-facade.jpg" 
+              alt="Althea-Lapuz Lying In Clinic Baliwag Facade" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
             />
-            <div class="absolute inset-0 bg-brand-primary/10 flex items-center justify-center">
-              <span class="text-[10px] font-extrabold uppercase text-white bg-neutral-950/70 px-2.5 py-1 rounded-full backdrop-blur-xs">
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <span class="text-[10px] font-extrabold uppercase text-white bg-neutral-950/70 px-2.5 py-1 rounded-full backdrop-blur-xs shadow-xs">
                 Baliwag Clinic
               </span>
             </div>
