@@ -194,13 +194,12 @@
             </p>
           </div>
           <div class="md:col-span-6">
-            <div class="w-full h-64 sm:h-80 bg-brand-soft rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
+            <div class="w-full h-64 sm:h-80 bg-neutral-100 rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
               <img 
                 src="../assets/images/clinic-hallway.jpg" 
                 alt="Experienced Staff - Althea-Lapuz Lying In Clinic Clinical Facility" 
-                class="w-full h-full object-cover object-center opacity-95 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" 
               />
-              <div class="absolute inset-0 bg-brand-primary/5"></div>
             </div>
           </div>
         </div>
@@ -208,13 +207,12 @@
         <!-- Feature Row 2: Quality Care (Image Left, Text Right) -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-14 items-center bg-white p-6 sm:p-10 rounded-3xl border border-brand-border/50 shadow-card hover:shadow-card-hover transition-all duration-300">
           <div class="md:col-span-6 order-2 md:order-1">
-            <div class="w-full h-64 sm:h-80 bg-brand-soft rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
+            <div class="w-full h-64 sm:h-80 bg-neutral-100 rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
               <img 
                 src="../assets/images/clinic-lobby-wide.jpg" 
                 alt="Quality Care - Althea-Lapuz Lying In Clinic Facility" 
-                class="w-full h-full object-cover opacity-95 group-hover:scale-105 transition-transform duration-700 ease-out"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div class="absolute inset-0 bg-brand-primary/5"></div>
             </div>
           </div>
           <div class="md:col-span-6 order-1 md:order-2 space-y-4 text-left">
