@@ -104,9 +104,9 @@
             <!-- Image -->
             <div class="w-full h-60 sm:h-72 bg-brand-soft relative overflow-hidden flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" 
-                alt="Accessibility Features" 
-                class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
+                src="../assets/images/clinic-information-desk.jpg" 
+                alt="Althea-Lapuz Lying In Clinic Information Desk & Accessibility" 
+                class="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out" 
               />
               <div class="absolute top-4 left-4">
                 <span class="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-brand-primary text-xs font-extrabold rounded-full border border-brand-border/80 shadow-xs">
