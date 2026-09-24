@@ -196,11 +196,11 @@
           <div class="md:col-span-6">
             <div class="w-full h-64 sm:h-80 bg-brand-soft rounded-2xl border border-brand-border/60 relative overflow-hidden shadow-xs group">
               <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" 
-                alt="Experienced Staff" 
-                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                src="../assets/images/clinic-hallway.jpg" 
+                alt="Experienced Staff - Althea-Lapuz Lying In Clinic Clinical Facility" 
+                class="w-full h-full object-cover object-center opacity-95 group-hover:scale-105 transition-transform duration-700 ease-out" 
               />
-              <div class="absolute inset-0 bg-brand-primary/10"></div>
+              <div class="absolute inset-0 bg-brand-primary/5"></div>
             </div>
           </div>
         </div>
