@@ -1081,6 +1081,7 @@ import {
   medicinesList,
   suppliesList
 } from '../data/pricingData.js'
+import normalDeliveryImg from '../assets/images/normal-delivery.jpg'
 
 const route = useRoute()
 const router = useRouter()
@@ -1217,7 +1218,7 @@ const servicesData = [
     id: 'normal-spontaneous-delivery',
     title: 'Normal Spontaneous Delivery',
     tag: 'NSD Package',
-    image: 'https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=1000&auto=format&fit=crop',
+    image: normalDeliveryImg,
     shortDescription: 'Safe birthing care assisted by licensed midwives and medical staff, including labor monitoring, sterile delivery setup, and recovery support.',
     detailedDescription: 'Our Normal Spontaneous Delivery (NSD) package provides round-the-clock maternal and newborn care in a clean, sterile, and family-centered birthing facility. Experienced licensed midwives closely guide you through labor progression, delivery, and immediate postnatal bonding.',
     whoFor: 'Low-risk pregnant mothers with full-term single pregnancies suitable for normal spontaneous vaginal delivery.',

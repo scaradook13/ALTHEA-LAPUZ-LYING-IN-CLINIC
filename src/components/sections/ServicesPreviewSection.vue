@@ -72,6 +72,7 @@
 <script setup>
 import { ArrowRight } from '@lucide/vue'
 import prenatalCheckupImg from '../../assets/images/prenatal-checkup.jpg'
+import normalDeliveryImg from '../../assets/images/normal-delivery.jpg'
 
 const highlightedServices = [
   {
@@ -82,7 +83,7 @@ const highlightedServices = [
   {
     title: 'Normal Spontaneous Delivery (NSD)',
     description: 'Professional care and support for mothers during normal vaginal delivery. Our team ensures a safe and comfortable childbirth experience.',
-    image: 'https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=800&auto=format&fit=crop'
+    image: normalDeliveryImg
   },
   {
     title: 'Newborn Screening (NBS)',
