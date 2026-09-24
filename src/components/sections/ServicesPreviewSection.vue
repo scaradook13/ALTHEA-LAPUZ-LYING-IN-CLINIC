@@ -71,12 +71,13 @@
 
 <script setup>
 import { ArrowRight } from '@lucide/vue'
+import prenatalCheckupImg from '../../assets/images/prenatal-checkup.jpg'
 
 const highlightedServices = [
   {
     title: 'Prenatal Checkups',
     description: 'Regular check-ups to monitor the health of both mother and baby throughout pregnancy. Get proper guidance and care for a safe and healthy pregnancy.',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop'
+    image: prenatalCheckupImg
   },
   {
     title: 'Normal Spontaneous Delivery (NSD)',
