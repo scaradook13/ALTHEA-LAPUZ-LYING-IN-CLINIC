@@ -1082,6 +1082,7 @@ import {
   suppliesList
 } from '../data/pricingData.js'
 import normalDeliveryImg from '../assets/images/normal-delivery.jpg'
+import vaccinationWellnessImg from '../assets/images/vaccination-wellness.jpg'
 
 const route = useRoute()
 const router = useRouter()
@@ -1254,7 +1255,7 @@ const servicesData = [
     id: 'vaccination',
     title: 'Vaccination & Wellness',
     tag: 'Maternal & Infant',
-    image: 'https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=1000&auto=format&fit=crop',
+    image: vaccinationWellnessImg,
     shortDescription: 'Essential immunizations including newborn BCG, Hepatitis B, and recommended maternal vaccines to protect against infectious diseases.',
     detailedDescription: 'Our clinical immunization program strictly adheres to Department of Health (DOH) and World Health Organization (WHO) schedules, protecting both mother and child against life-threatening infectious diseases through safe, sterile vaccine administration.',
     whoFor: 'Newborns, infants, young children, and women requiring routine or catch-up immunization and family planning.',
