@@ -8,7 +8,7 @@
           <span>About Our Practice</span>
         </div>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-950 tracking-tight leading-[1.15]">
-          Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-primary-dark">Althea-Lapuz</span> Lying In Clinic
+          Welcome to <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-primary-dark">{{ clinicStore.clinicInfo.name }}</span>
         </h1>
         <p class="text-xl font-bold text-brand-primary-dark font-sans">
           Your trusted partner in maternal and general healthcare.
@@ -37,7 +37,7 @@
             </h2>
             
             <p class="text-text-secondary text-base leading-relaxed">
-              To provide an affordable and quality maternal and child health care services in Bulacan and it's near provinces.
+              {{ clinicStore.missionVision.mission }}
             </p>
           </div>
 
@@ -57,7 +57,7 @@
             </h2>
             
             <p class="text-text-secondary text-base leading-relaxed">
-              Aims to be the best lying-in clinic to give the safe environment for mother and child.
+              {{ clinicStore.missionVision.vision }}
             </p>
           </div>
         </div>
@@ -77,24 +77,14 @@
 
         <!-- Values with vertical dividers -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-10 flex-1">
-          <div class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left">
+          <div 
+            v-for="(val, idx) in clinicStore.missionVision.coreValues" 
+            :key="idx" 
+            class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left"
+          >
             <div>
-              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">Transparency</span>
-              <p class="text-xs text-text-secondary mt-0.5">Clear pricing & clinical honesty</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left">
-            <div>
-              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">Clarity</span>
-              <p class="text-xs text-text-secondary mt-0.5">Direct patient communication</p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-4 pl-4 border-l-4 border-brand-primary text-left">
-            <div>
-              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">Precision</span>
-              <p class="text-xs text-text-secondary mt-0.5">Exact medical excellence</p>
+              <span class="text-lg sm:text-xl font-bold text-neutral-950 block">{{ val.name }}</span>
+              <p class="text-xs text-text-secondary mt-0.5">{{ val.desc }}</p>
             </div>
           </div>
         </div>
@@ -290,17 +280,17 @@
                   </h3>
                 </div>
                 <span class="px-3 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold rounded-full">
-                  Active On-Call
+                  {{ clinicStore.healthcareTeam.availabilityStatus }}
                 </span>
               </div>
               
               <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
-                Our certified midwives are accessible for scheduled consultations, continuous monitoring, and emergency delivery support. We maintain a vigorous 24/7 rotation to ensure expert maternal care is always available when you need it most.
+                {{ clinicStore.healthcareTeam.midwifeAvailability }}
               </p>
             </div>
 
             <div class="p-4 bg-brand-soft/60 rounded-2xl border border-brand-border/60 text-xs text-brand-primary-dark font-medium">
-              📍 Direct consultations available at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan.
+              📍 Direct consultations available at {{ clinicStore.clinicInfo.address }}.
             </div>
           </div>
         </div>
@@ -312,6 +302,7 @@
 
 <script setup>
 import { CheckCircle2, Users, Clock, Target, Compass, Heart, ShieldCheck, Baby } from '@lucide/vue'
+import { clinicStore } from '../stores/clinicStore.js'
 </script>
 
 

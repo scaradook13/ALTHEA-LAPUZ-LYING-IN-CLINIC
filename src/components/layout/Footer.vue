@@ -194,8 +194,14 @@
 
       <!-- ================= COPYRIGHT BAR ================= -->
       <div class="pt-4 border-t border-brand-border/70 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-neutral-700 font-semibold">
-        <p>&copy; {{ new Date().getFullYear() }} Althea-Lapuz Lying In Clinic. All rights reserved.</p>
-        <p>332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan • 24/7 Maternal Care</p>
+        <p>&copy; {{ new Date().getFullYear() }} {{ clinicStore.clinicInfo.name }}. All rights reserved.</p>
+        <div class="flex items-center gap-3">
+          <span>{{ clinicStore.clinicInfo.address }} • {{ clinicStore.clinicInfo.operatingHoursDelivery }}</span>
+          <span class="text-neutral-400">•</span>
+          <router-link to="/admin" class="hover:text-brand-primary underline font-bold transition-colors">
+            Admin Portal
+          </router-link>
+        </div>
       </div>
 
     </div>
@@ -206,6 +212,7 @@
 import { ref, computed, nextTick, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { HelpCircle, ChevronDown, MessageCircleQuestion, X } from '@lucide/vue'
+import { clinicStore } from '../../stores/clinicStore.js'
 
 const route = useRoute()
 const isFaqVisible = ref(false)

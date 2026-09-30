@@ -72,9 +72,9 @@
                       MODERN HEALTHCARE FACILITY
                     </span>
                     <h3 class="text-sm sm:text-base font-bold text-neutral-950">
-                      Althea-Lapuz Lying In Clinic
+                      {{ clinicStore.clinicInfo.name }}
                     </h3>
-                    <p class="text-xs text-text-secondary">332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan</p>
+                    <p class="text-xs text-text-secondary">{{ clinicStore.clinicInfo.address }}</p>
                   </div>
                   <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shadow-brand-sm flex-shrink-0">
                     Open 24/7
@@ -92,6 +92,7 @@
 <script setup>
 import { ArrowRight } from '@lucide/vue'
 import BaseButton from '../common/BaseButton.vue'
+import { clinicStore } from '../../stores/clinicStore.js'
 </script>
 
 

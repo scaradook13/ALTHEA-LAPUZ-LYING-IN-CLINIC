@@ -477,14 +477,14 @@
                   Official Price Directory & Fee Schedule
                 </h3>
                 <p class="text-xs sm:text-sm text-text-secondary">
-                  Althea-Lapuz Lying-In Clinic • 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan
+                  {{ clinicStore.clinicInfo.name }} • {{ clinicStore.clinicInfo.address }}
                 </p>
               </div>
 
               <div class="flex items-center gap-3 bg-brand-subtle px-4 py-2.5 rounded-2xl border border-brand-border/60 flex-shrink-0">
                 <Calendar class="w-4 h-4 text-brand-primary" />
                 <span class="text-xs font-extrabold text-brand-primary-dark uppercase tracking-wider">
-                  Price Information — As of April 01, 2026
+                  Price Information — As of {{ clinicStore.clinicInfo.effectiveDate }}
                 </span>
               </div>
             </div>
@@ -1072,15 +1072,7 @@ import {
   Clock,
   X
 } from '@lucide/vue'
-import {
-  pricingNotice,
-  otherServices,
-  familyPlanning,
-  antenatalCarePackages,
-  philHealthServicePackages,
-  medicinesList,
-  suppliesList
-} from '../data/pricingData.js'
+import { clinicStore } from '../stores/clinicStore.js'
 import normalDeliveryImg from '../assets/images/normal-delivery.jpg'
 import vaccinationWellnessImg from '../assets/images/vaccination-wellness.jpg'
 
@@ -1089,6 +1081,14 @@ const router = useRouter()
 const activeTab = ref('overview')
 const selectedServiceId = ref(null)
 const searchQuery = ref('')
+
+const pricingNotice = computed(() => clinicStore.pricing.notice)
+const otherServices = computed(() => clinicStore.pricing.otherServices)
+const familyPlanning = computed(() => clinicStore.pricing.familyPlanning)
+const antenatalCarePackages = computed(() => clinicStore.pricing.antenatalCarePackages)
+const philHealthServicePackages = computed(() => clinicStore.pricing.philHealthServicePackages)
+const medicinesList = computed(() => clinicStore.pricing.medicinesList)
+const suppliesList = computed(() => clinicStore.pricing.suppliesList)
 
 const selectedService = computed(() => {
   if (!selectedServiceId.value) return null
@@ -1114,15 +1114,17 @@ const closeServiceDetail = async () => {
 }
 
 const filteredMedicines = computed(() => {
-  if (!searchQuery.value.trim()) return medicinesList
+  const list = clinicStore.pricing.medicinesList
+  if (!searchQuery.value.trim()) return list
   const q = searchQuery.value.toLowerCase()
-  return medicinesList.filter(m => m.name.toLowerCase().includes(q) || m.quantity.toLowerCase().includes(q))
+  return list.filter(m => m.name.toLowerCase().includes(q) || (m.quantity && m.quantity.toLowerCase().includes(q)))
 })
 
 const filteredSupplies = computed(() => {
-  if (!searchQuery.value.trim()) return suppliesList
+  const list = clinicStore.pricing.suppliesList
+  if (!searchQuery.value.trim()) return list
   const q = searchQuery.value.toLowerCase()
-  return suppliesList.filter(s => s.name.toLowerCase().includes(q) || s.quantity.toLowerCase().includes(q))
+  return list.filter(s => s.name.toLowerCase().includes(q) || (s.quantity && s.quantity.toLowerCase().includes(q)))
 })
 
 const tabTitle = computed(() => {

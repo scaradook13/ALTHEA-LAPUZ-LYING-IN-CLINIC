@@ -29,7 +29,7 @@
           </div>
           <div>
             <h3 class="text-xs font-extrabold uppercase tracking-wider text-text-muted">Clinic Address</h3>
-            <p class="text-sm font-bold text-neutral-950 mt-1">332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan</p>
+            <p class="text-sm font-bold text-neutral-950 mt-1">{{ clinicStore.clinicInfo.address }}</p>
           </div>
         </a>
 
@@ -45,7 +45,7 @@
           </div>
           <div>
             <h3 class="text-xs font-extrabold uppercase tracking-wider text-text-muted">Gmail Support</h3>
-            <p class="text-sm font-bold text-brand-primary mt-1 break-all select-all">lapuzaltheajasmine@gmail.com</p>
+            <p class="text-sm font-bold text-brand-primary mt-1 break-all select-all font-mono">{{ clinicStore.clinicInfo.email }}</p>
           </div>
 
           <div v-if="copied" class="px-3 py-0.5 bg-emerald-100 text-emerald-800 text-[11px] font-bold rounded-full flex items-center gap-1 animate-pulse">
@@ -123,17 +123,13 @@
 <script setup>
 import { ref } from 'vue'
 import { MapPin, Mail, ExternalLink, Check, Copy } from '@lucide/vue'
-
-const email = 'lapuzaltheajasmine@gmail.com'
-const subject = encodeURIComponent('Inquiry - Althea-Lapuz Lying-In Clinic')
-const mailtoUrl = `mailto:${email}?subject=${subject}`
-const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}`
+import { clinicStore } from '../../stores/clinicStore.js'
 
 const copied = ref(false)
 
 const copyEmail = () => {
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(email)
+    navigator.clipboard.writeText(clinicStore.clinicInfo.email)
     copied.value = true
     setTimeout(() => {
       copied.value = false
@@ -143,6 +139,8 @@ const copyEmail = () => {
 
 const openEmail = () => {
   copyEmail()
+  const subject = encodeURIComponent(`Inquiry - ${clinicStore.clinicInfo.name}`)
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${clinicStore.clinicInfo.email}&su=${subject}`
   window.open(gmailUrl, '_blank')
 }
 </script>

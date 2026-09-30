@@ -39,13 +39,13 @@
       <div class="space-y-3">
         <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold shadow-xs">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          24 Hours a Day • 7 Days a Week Active Care
+          {{ clinicStore.clinicInfo.operatingHoursDelivery }}
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-primary-dark tracking-tight">
-          Althea-Lapuz Lying In Clinic
+          {{ clinicStore.clinicInfo.name }}
         </h2>
         <p class="text-sm sm:text-base text-text-secondary font-medium">
-          332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan
+          {{ clinicStore.clinicInfo.address }}
         </p>
       </div>
 
@@ -53,9 +53,9 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 max-w-5xl mx-auto">
         <!-- Phone Card -->
         <a 
-          href="tel:09310693921" 
+          :href="`tel:${clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, '')}`" 
           class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center"
-          title="Click to call 0931 069 3921"
+          :title="`Click to call ${clinicStore.clinicInfo.phonePrimary}`"
         >
           <!-- Phone Icon -->
           <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-2.5 text-brand-primary">
@@ -66,7 +66,7 @@
               Phone / Mobile
             </h3>
             <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 select-all font-mono">
-              0931 069 3921
+              {{ clinicStore.clinicInfo.phonePrimary }}
             </p>
           </div>
 
@@ -81,7 +81,7 @@
           <!-- Quick Action Buttons -->
           <div class="flex flex-wrap items-center justify-center gap-2 pt-1" @click.stop>
             <a 
-              href="tel:09310693921"
+              :href="`tel:${clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, '')}`"
               class="px-3.5 py-1.5 bg-brand-primary text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-brand-primary-hover hover:shadow-brand transition-all flex items-center gap-1 cursor-pointer"
             >
               <Phone class="w-3 h-3" />
@@ -112,8 +112,8 @@
             <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
               Gmail Support
             </h3>
-            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all select-all">
-              lapuzaltheajasmine@gmail.com
+            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all select-all font-mono">
+              {{ clinicStore.clinicInfo.email }}
             </p>
           </div>
 
@@ -157,7 +157,7 @@
 
         <!-- Facebook Card -->
         <a 
-          href="https://www.facebook.com/share/1F9n16Qjzo/" 
+          :href="clinicStore.clinicInfo.facebookUrl" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center"
@@ -175,7 +175,7 @@
               Facebook Page
             </h3>
             <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 tracking-wide uppercase">
-              ALTHEA-LAPUZ LYING-IN CLINIC
+              {{ clinicStore.clinicInfo.name }}
             </p>
           </div>
           <span class="text-xs font-bold text-[#1877F2] group-hover:underline flex items-center gap-1">
@@ -195,7 +195,7 @@
             In-Person Medical Concierge
           </h4>
           <p class="text-xs sm:text-sm text-text-secondary">
-            For direct in-person assistance, our Medical Concierge desk is located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan, open 24 Hours, with prenatal checkups available Monday to Sunday from 9:00 AM to 7:00 PM.
+            For direct in-person assistance, our Medical Concierge desk is located at {{ clinicStore.clinicInfo.address }}, open {{ clinicStore.clinicInfo.operatingHoursDelivery }}, with prenatal checkups available {{ clinicStore.clinicInfo.operatingHoursPrenatal }}.
           </p>
         </div>
       </div>
@@ -251,20 +251,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Phone, Mail, MapPin, Sparkles, ExternalLink, Check, Copy } from '@lucide/vue'
+import { clinicStore } from '../stores/clinicStore.js'
 
-const email = 'lapuzaltheajasmine@gmail.com'
-const subject = encodeURIComponent('Inquiry - Althea-Lapuz Lying-In Clinic')
-const mailtoUrl = `mailto:${email}?subject=${subject}`
-const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}`
+const subject = computed(() => encodeURIComponent(`Inquiry - ${clinicStore.clinicInfo.name}`))
+const mailtoUrl = computed(() => `mailto:${clinicStore.clinicInfo.email}?subject=${subject.value}`)
+const gmailUrl = computed(() => `https://mail.google.com/mail/?view=cm&fs=1&to=${clinicStore.clinicInfo.email}&su=${subject.value}`)
 
 const copied = ref(false)
 const phoneCopied = ref(false)
 
 const copyPhone = () => {
   if (navigator.clipboard) {
-    navigator.clipboard.writeText('09310693921')
+    navigator.clipboard.writeText(clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, ''))
     phoneCopied.value = true
     setTimeout(() => {
       phoneCopied.value = false
@@ -274,7 +274,7 @@ const copyPhone = () => {
 
 const copyEmail = () => {
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(email)
+    navigator.clipboard.writeText(clinicStore.clinicInfo.email)
     copied.value = true
     setTimeout(() => {
       copied.value = false
@@ -284,8 +284,7 @@ const copyEmail = () => {
 
 const openEmail = () => {
   copyEmail()
-  // Opens Gmail web compose directly
-  window.open(gmailUrl, '_blank')
+  window.open(gmailUrl.value, '_blank')
 }
 </script>
 

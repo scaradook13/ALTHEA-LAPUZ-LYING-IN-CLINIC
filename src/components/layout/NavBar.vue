@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-20 md:h-24">
         
-        <!-- Logo & Clinic Title -->
+        <!-- Logo & Clinic Title (Reactive from clinicStore) -->
         <div class="flex-shrink-0 flex items-center min-w-0">
           <router-link to="/" class="flex items-center gap-2.5 sm:gap-4 group min-w-0">
             <div class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 flex-shrink-0 relative">
@@ -15,10 +15,10 @@
             </div>
             <div class="flex flex-col text-left min-w-0">
               <span class="text-xs sm:text-base md:text-xl font-extrabold text-neutral-950 tracking-wide uppercase group-hover:text-brand-primary transition-colors truncate">
-                ALTHEA-LAPUZ LYING IN CLINIC
+                {{ clinicStore.clinicInfo.name }}
               </span>
               <span class="text-[9px] sm:text-[11px] md:text-xs font-bold tracking-widest text-text-muted uppercase truncate">
-                Maternal & Newborn Care
+                {{ clinicStore.clinicInfo.tagline }}
               </span>
             </div>
           </router-link>
@@ -53,6 +53,18 @@
             active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
           >
             Contact Us
+          </router-link>
+
+          <!-- Admin Portal Access Button -->
+          <router-link 
+            to="/admin" 
+            class="ml-2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold border border-brand-border/70 hover:bg-brand-soft text-brand-primary transition-all duration-200 shadow-2xs"
+            active-class="bg-brand-primary text-white !text-white shadow-brand-sm"
+            title="Clinic Staff & Administration Portal"
+          >
+            <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-600" />
+            <Lock v-else class="w-3.5 h-3.5" />
+            <span>{{ auth.isAuthenticated.value ? 'Admin Dashboard' : 'Admin Login' }}</span>
           </router-link>
         </nav>
 
@@ -113,6 +125,20 @@
           >
             Contact Us
           </router-link>
+
+          <!-- Mobile Admin Portal Link -->
+          <router-link 
+            to="/admin" 
+            @click="isOpen = false" 
+            class="flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-bold text-brand-primary bg-brand-soft/80 border border-brand-border/70 hover:bg-brand-primary hover:text-white transition-colors"
+          >
+            <span class="flex items-center gap-2">
+              <ShieldCheck v-if="auth.isAuthenticated.value" class="w-4 h-4 text-emerald-600" />
+              <Lock v-else class="w-4 h-4" />
+              <span>{{ auth.isAuthenticated.value ? 'Admin Dashboard' : 'Admin Login' }}</span>
+            </span>
+            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-white text-brand-primary shadow-2xs">Portal</span>
+          </router-link>
         </div>
       </div>
     </transition>
@@ -121,11 +147,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Menu, X } from '@lucide/vue'
+import { Menu, X, ShieldCheck, Lock } from '@lucide/vue'
+import { clinicStore, auth } from '../../stores/clinicStore.js'
 
 const isOpen = ref(false)
 </script>
-
-
-
-

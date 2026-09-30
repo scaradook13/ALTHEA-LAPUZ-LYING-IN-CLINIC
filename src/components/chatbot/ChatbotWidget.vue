@@ -102,7 +102,8 @@ import { Bot, X, Send } from '@lucide/vue'
 import ChatbotHeader from './ChatbotHeader.vue'
 import ChatMessage from './ChatMessage.vue'
 import QuickReplies from './QuickReplies.vue'
-import { faqResponses, fallbackResponse, quickReplyIds } from './faqResponses'
+import { clinicStore } from '../../stores/clinicStore.js'
+import { quickReplyIds } from './faqResponses'
 
 const isOpen = ref(false)
 const userInput = ref('')
@@ -122,7 +123,7 @@ const displayedQuickReplies = computed(() => {
   if (hasAskedQuestion.value) {
     return [{ id: 'ask_more', question: 'Ask another question' }]
   }
-  return quickReplyIds.map(id => faqResponses.find(faq => faq.id === id)).filter(Boolean)
+  return quickReplyIds.map(id => clinicStore.chatbot.faqResponses.find(faq => faq.id === id)).filter(Boolean)
 })
 
 const scrollToBottom = async () => {
@@ -171,7 +172,7 @@ const handleInputSubmit = () => {
   let bestMatch = null
   let maxMatchCount = 0
 
-  for (const faq of faqResponses) {
+  for (const faq of clinicStore.chatbot.faqResponses) {
     let matchCount = 0
     for (const keyword of faq.keywords) {
       if (lowerText.includes(keyword)) {
@@ -187,7 +188,7 @@ const handleInputSubmit = () => {
   if (bestMatch && maxMatchCount > 0) {
     addBotResponse(bestMatch.answer)
   } else {
-    addBotResponse(fallbackResponse)
+    addBotResponse(clinicStore.chatbot.fallbackResponse)
   }
 }
 </script>
