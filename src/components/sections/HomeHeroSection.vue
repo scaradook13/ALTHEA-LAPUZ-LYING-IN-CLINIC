@@ -59,14 +59,14 @@
             <!-- Ambient Glow behind image -->
             <div class="absolute -inset-2 bg-gradient-to-r from-brand-primary/20 to-brand-muted/20 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <div class="relative w-full h-80 sm:h-96 md:h-[440px] bg-brand-soft rounded-3xl border border-brand-border/60 overflow-hidden shadow-card flex items-center justify-center">
+            <div class="relative w-full h-96 sm:h-[450px] md:h-[500px] lg:h-[540px] bg-brand-soft rounded-3xl border border-brand-border/60 overflow-hidden shadow-card flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop" 
-                alt="Althea-Lapuz Lying In Clinic" 
-                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out"
+                src="../../assets/images/clinic-reception.jpg" 
+                alt="Althea-Lapuz Lying In Clinic Reception & Facility" 
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8">
-                <div class="backdrop-blur-md bg-white/90 border border-brand-border/80 rounded-2xl p-4 sm:p-5 shadow-lg flex items-center justify-between">
+              <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-neutral-950/15 to-transparent flex flex-col justify-end p-5 sm:p-7">
+                <div class="backdrop-blur-md bg-white/95 border border-brand-border/80 rounded-2xl p-4 sm:p-5 shadow-lg flex items-center justify-between">
                   <div class="text-left">
                     <span class="text-[11px] font-extrabold uppercase tracking-widest text-brand-primary block">
                       MODERN HEALTHCARE FACILITY
@@ -76,7 +76,7 @@
                     </h3>
                     <p class="text-xs text-text-secondary">332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan</p>
                   </div>
-                  <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shadow-brand-sm">
+                  <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shadow-brand-sm flex-shrink-0">
                     Open 24/7
                   </span>
                 </div>

@@ -68,9 +68,9 @@
             <!-- Image -->
             <div class="w-full h-60 sm:h-72 bg-brand-soft relative overflow-hidden flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop" 
-                alt="Service Prices and Fees" 
-                class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
+                src="../assets/images/services-pricing-cover.jpg" 
+                alt="Service Prices and Fees - Compassionate Maternal Care" 
+                class="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out" 
               />
               <div class="absolute top-4 left-4">
                 <span class="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-brand-primary text-xs font-extrabold rounded-full border border-brand-border/80 shadow-xs">
@@ -104,9 +104,9 @@
             <!-- Image -->
             <div class="w-full h-60 sm:h-72 bg-brand-soft relative overflow-hidden flex items-center justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop" 
-                alt="Accessibility Features" 
-                class="w-full h-full object-cover opacity-90 group-hover:scale-108 transition-transform duration-700 ease-out" 
+                src="../assets/images/clinic-information-desk.jpg" 
+                alt="Althea-Lapuz Lying In Clinic Information Desk & Accessibility" 
+                class="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out" 
               />
               <div class="absolute top-4 left-4">
                 <span class="px-3.5 py-1.5 bg-white/95 backdrop-blur-md text-brand-primary text-xs font-extrabold rounded-full border border-brand-border/80 shadow-xs">
@@ -899,6 +899,45 @@
             </span>
           </div>
 
+          <!-- Featured Clinic Facility Photo Showcase -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-brand-subtle/70 via-white to-brand-soft/40 p-6 sm:p-8 lg:p-10 rounded-3xl border border-brand-border/70 shadow-sm">
+            <div class="lg:col-span-6 space-y-4 text-left">
+              <span class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/80 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+                <span>Modern Clinic Facility</span>
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+                Designed for Maternal Comfort & Patient Safety
+              </h3>
+              <p class="text-text-secondary text-sm sm:text-base leading-relaxed">
+                Our clinic reception, waiting area, and consultation spaces are barrier-free and engineered to provide an accessible, stress-free, and comfortable medical environment for pregnant women, recovering mothers, and families.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3.5 py-1.5 bg-white rounded-full border border-brand-border/70 text-xs font-bold text-neutral-800 shadow-xs">✓ Ergonomic Seating</span>
+                <span class="px-3.5 py-1.5 bg-white rounded-full border border-brand-border/70 text-xs font-bold text-neutral-800 shadow-xs">✓ Barrier-Free Entrance</span>
+                <span class="px-3.5 py-1.5 bg-white rounded-full border border-brand-border/70 text-xs font-bold text-neutral-800 shadow-xs">✓ High-Traction Flooring</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6">
+              <div class="w-full h-80 sm:h-96 md:h-[440px] rounded-2xl bg-brand-soft border border-brand-border/70 overflow-hidden shadow-card relative group">
+                <img 
+                  src="../assets/images/clinic-reception.jpg" 
+                  alt="Althea-Lapuz Lying In Clinic Facility & Reception" 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3.5 border border-brand-border/80 shadow-md flex items-center justify-between">
+                  <div>
+                    <h4 class="text-xs font-extrabold text-neutral-950 uppercase">Althea-Lapuz Clinic Reception</h4>
+                    <p class="text-[11px] text-text-secondary">Comfortable, Accessible Maternal Facility</p>
+                  </div>
+                  <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shadow-brand-sm flex-shrink-0">
+                    Open 24/7
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
             
             <div class="p-5 bg-brand-subtle/70 rounded-2xl border border-brand-border/60 flex items-start gap-4 hover:border-brand-primary transition-colors">
@@ -1042,6 +1081,8 @@ import {
   medicinesList,
   suppliesList
 } from '../data/pricingData.js'
+import normalDeliveryImg from '../assets/images/normal-delivery.jpg'
+import vaccinationWellnessImg from '../assets/images/vaccination-wellness.jpg'
 
 const route = useRoute()
 const router = useRouter()
@@ -1178,7 +1219,7 @@ const servicesData = [
     id: 'normal-spontaneous-delivery',
     title: 'Normal Spontaneous Delivery',
     tag: 'NSD Package',
-    image: 'https://images.unsplash.com/photo-1551076805-e1869043e560?q=80&w=1000&auto=format&fit=crop',
+    image: normalDeliveryImg,
     shortDescription: 'Safe birthing care assisted by licensed midwives and medical staff, including labor monitoring, sterile delivery setup, and recovery support.',
     detailedDescription: 'Our Normal Spontaneous Delivery (NSD) package provides round-the-clock maternal and newborn care in a clean, sterile, and family-centered birthing facility. Experienced licensed midwives closely guide you through labor progression, delivery, and immediate postnatal bonding.',
     whoFor: 'Low-risk pregnant mothers with full-term single pregnancies suitable for normal spontaneous vaginal delivery.',
@@ -1214,7 +1255,7 @@ const servicesData = [
     id: 'vaccination',
     title: 'Vaccination & Wellness',
     tag: 'Maternal & Infant',
-    image: 'https://images.unsplash.com/photo-1631815587646-b85a1bb02246?q=80&w=1000&auto=format&fit=crop',
+    image: vaccinationWellnessImg,
     shortDescription: 'Essential immunizations including newborn BCG, Hepatitis B, and recommended maternal vaccines to protect against infectious diseases.',
     detailedDescription: 'Our clinical immunization program strictly adheres to Department of Health (DOH) and World Health Organization (WHO) schedules, protecting both mother and child against life-threatening infectious diseases through safe, sterile vaccine administration.',
     whoFor: 'Newborns, infants, young children, and women requiring routine or catch-up immunization and family planning.',
