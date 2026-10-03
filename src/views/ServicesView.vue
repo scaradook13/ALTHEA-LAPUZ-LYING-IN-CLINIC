@@ -17,7 +17,7 @@
         </p>
 
         <!-- Segmented Tab Switcher -->
-        <div class="inline-flex p-1.5 bg-brand-soft/80 border border-brand-border/70 rounded-full shadow-xs max-w-full overflow-x-auto">
+        <div class="inline-flex p-1.5 bg-brand-soft/80 border border-brand-border/70 rounded-full shadow-xs max-w-full overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <button 
             @click="setTab('overview')"
             :class="[
