@@ -44,6 +44,19 @@
           </button>
 
           <button 
+            @click="setTab('directory')"
+            :class="[
+              'px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold transition-all duration-200 whitespace-nowrap flex items-center gap-2',
+              activeTab === 'directory' 
+                ? 'bg-brand-primary text-white shadow-brand-sm' 
+                : 'text-neutral-700 hover:text-brand-primary hover:bg-white/60'
+            ]"
+          >
+            <FileText class="w-4 h-4" />
+            <span>Official Price Directory</span>
+          </button>
+
+          <button 
             @click="setTab('accessibility')"
             :class="[
               'px-5 py-2 rounded-full text-xs sm:text-sm font-extrabold transition-all duration-200 whitespace-nowrap flex items-center gap-2',
@@ -460,11 +473,12 @@
             </transition>
 
           </div> <!-- close #service-pricing-anchor -->
+        </div>
+      </div>
 
-          <!-- ================================================================= -->
-          <!-- ============= EXTENDED OFFICIAL CLINIC PRICE DIRECTORY ============ -->
-          <!-- ================================================================= -->
-          <div class="pt-12 border-t border-brand-border/50 space-y-12">
+      <!-- ================= TAB 3: OFFICIAL PRICE DIRECTORY ================= -->
+      <div v-else-if="activeTab === 'directory'" class="space-y-8 text-left pt-2">
+        <div class="space-y-12">
             
             <!-- Official Notice & Regulatory Header -->
             <div class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border/70 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
@@ -884,7 +898,6 @@
 
           </div>
         </div>
-      </div>
 
       <!-- ================= TAB 3: ACCESSIBILITY FEATURES ================= -->
       <div v-else-if="activeTab === 'accessibility'" class="space-y-8 text-left pt-2">
@@ -1129,6 +1142,7 @@ const filteredSupplies = computed(() => {
 
 const tabTitle = computed(() => {
   if (activeTab.value === 'pricing') return 'Service Pricing & Fees'
+  if (activeTab.value === 'directory') return 'Official Price Directory'
   if (activeTab.value === 'accessibility') return 'Accessibility Features'
   return 'Detailed Services'
 })
@@ -1136,6 +1150,9 @@ const tabTitle = computed(() => {
 const tabSubtitle = computed(() => {
   if (activeTab.value === 'pricing') {
     return 'Explore our transparent maternal care packages, newborn screening, and clinical diagnostic fees.'
+  }
+  if (activeTab.value === 'directory') {
+    return 'Official itemized fee schedules, PhilHealth package rates, medicines, and clinical supplies list (A.O. No. 2021-0008).'
   }
   if (activeTab.value === 'accessibility') {
     return 'Our clinic premises are thoughtfully engineered for patient mobility, safety, and comfortable maternal care.'
@@ -1326,6 +1343,8 @@ const syncFromRoute = () => {
   const queryTab = route.query.tab || route.query.view
   if (queryTab === 'pricing' || queryTab === 'prices' || queryTab === 'fees') {
     activeTab.value = 'pricing'
+  } else if (queryTab === 'directory' || queryTab === 'official' || queryTab === 'pricelist') {
+    activeTab.value = 'directory'
   } else if (queryTab === 'accessibility' || queryTab === 'features') {
     activeTab.value = 'accessibility'
   } else if (queryTab === 'details') {
