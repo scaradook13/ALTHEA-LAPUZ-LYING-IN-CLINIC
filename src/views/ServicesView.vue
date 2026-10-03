@@ -1335,20 +1335,21 @@ const servicesData = [
 const setTab = (tab) => {
   activeTab.value = tab
   selectedServiceId.value = null
-  router.replace({ query: tab === 'overview' ? {} : { tab } })
+  const currentTab = route.query.tab || route.query.view || 'overview'
+  if (currentTab !== tab) {
+    router.replace({ query: tab === 'overview' ? {} : { tab } })
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 const syncFromRoute = () => {
   const queryTab = route.query.tab || route.query.view
-  if (queryTab === 'pricing' || queryTab === 'prices' || queryTab === 'fees') {
-    activeTab.value = 'pricing'
-  } else if (queryTab === 'directory' || queryTab === 'official' || queryTab === 'pricelist') {
+  if (queryTab === 'directory' || queryTab === 'official' || queryTab === 'pricelist') {
     activeTab.value = 'directory'
+  } else if (queryTab === 'pricing' || queryTab === 'prices' || queryTab === 'fees' || queryTab === 'details') {
+    activeTab.value = 'pricing'
   } else if (queryTab === 'accessibility' || queryTab === 'features') {
     activeTab.value = 'accessibility'
-  } else if (queryTab === 'details') {
-    activeTab.value = 'pricing'
   } else {
     activeTab.value = 'overview'
   }
@@ -1365,9 +1366,12 @@ onMounted(() => {
   syncFromRoute()
 })
 
-watch(() => route.query, () => {
-  syncFromRoute()
-})
+watch(
+  () => [route.query.tab, route.query.view, route.query.service],
+  () => {
+    syncFromRoute()
+  }
+)
 </script>
 
 <style scoped>
