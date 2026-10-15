@@ -7,8 +7,8 @@
         <div class="flex items-center justify-between h-16 sm:h-20">
           
           <!-- Brand & Role Indicator -->
-          <div class="flex items-center gap-3 sm:gap-4">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full p-0.5 bg-white ring-2 ring-brand-primary flex-shrink-0 shadow-xs">
+          <router-link to="/" class="flex items-center gap-3 sm:gap-4 group cursor-pointer" title="Return to Public Website">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full p-0.5 bg-white ring-2 ring-brand-primary group-hover:scale-105 transition-transform flex-shrink-0 shadow-xs">
               <img 
                 src="../../assets/images/althea-lapuz-logo.png" 
                 alt="Clinic Logo" 
@@ -17,7 +17,7 @@
             </div>
             <div class="text-left">
               <div class="flex items-center gap-2">
-                <span class="text-xs sm:text-sm font-extrabold uppercase text-neutral-950 tracking-wider">
+                <span class="text-xs sm:text-sm font-extrabold uppercase text-neutral-950 tracking-wider group-hover:text-brand-primary transition-colors">
                   Althea-Lapuz Clinic
                 </span>
                 <span class="px-2 py-0.5 rounded-full bg-brand-soft border border-brand-border/70 text-[10px] font-extrabold text-brand-primary uppercase">
@@ -28,7 +28,7 @@
                 In-Memory Live Editor • Real-time synchronization
               </p>
             </div>
-          </div>
+          </router-link>
 
           <!-- Header Actions -->
           <div class="flex items-center gap-2 sm:gap-3">
@@ -46,7 +46,6 @@
             <!-- View Live Website -->
             <router-link
               to="/"
-              target="_blank"
               class="px-3 sm:px-4 py-2 rounded-xl bg-white border border-brand-border/80 text-brand-primary hover:bg-brand-soft text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs"
             >
               <ExternalLink class="w-3.5 h-3.5" />

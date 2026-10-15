@@ -1,7 +1,20 @@
 <template>
-  <header class="fixed top-0 w-full bg-white/95 backdrop-blur-xl z-50 border-b border-brand-border/50 transition-all duration-300 shadow-card">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20 md:h-24">
+  <header class="fixed top-0 w-full z-50 transition-all duration-300">
+    <!-- Top Announcement Bar (Configured via Admin Portal) -->
+    <div 
+      v-if="clinicStore.clinicInfo.announcement.enabled" 
+      class="bg-brand-primary text-white text-xs py-2 px-4 text-center font-bold tracking-wide flex items-center justify-center gap-2 shadow-xs transition-all"
+    >
+      <span class="px-2 py-0.5 rounded-full bg-white text-brand-primary text-[10px] font-extrabold uppercase flex-shrink-0">
+        {{ clinicStore.clinicInfo.announcement.badge }}
+      </span>
+      <span class="truncate max-w-3xl">{{ clinicStore.clinicInfo.announcement.text }}</span>
+    </div>
+
+    <!-- Main Navigation Bar Container -->
+    <div class="w-full bg-white/95 backdrop-blur-xl border-b border-brand-border/50 shadow-card">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20 md:h-24">
         
         <!-- Logo & Clinic Title (Reactive from clinicStore) -->
         <div class="flex-shrink-0 flex items-center min-w-0">
@@ -80,6 +93,7 @@
           </button>
         </div>
       </div>
+    </div>
     </div>
     
     <!-- Mobile dropdown menu -->
