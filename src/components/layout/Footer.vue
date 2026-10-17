@@ -97,7 +97,7 @@
               <div class="space-y-4">
                 <div 
                   v-for="faq in leftFaqs" 
-                  :key="faq.question"
+                  :key="faq.id || faq.originalIndex"
                   class="bg-white rounded-2xl border border-brand-border/70 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
                 >
                   <button 
@@ -134,7 +134,7 @@
               <div class="space-y-4">
                 <div 
                   v-for="faq in rightFaqs" 
-                  :key="faq.question"
+                  :key="faq.id || faq.originalIndex"
                   class="bg-white rounded-2xl border border-brand-border/70 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-primary/60"
                 >
                   <button 
@@ -240,35 +240,9 @@ const toggleFaq = (index) => {
   openFaqIndex.value = openFaqIndex.value === index ? -1 : index
 }
 
-const faqs = [
-  {
-    question: 'What maternal and newborn services do you offer?',
-    answer: 'We offer comprehensive maternity care including Prenatal Checkups, Normal Spontaneous Delivery (NSD), Expanded Newborn Screening (NBS), Maternal & Infant Vaccinations, and Postpartum monitoring.'
-  },
-  {
-    question: 'What are the clinic’s operating hours?',
-    answer: 'Our prenatal checkups run Monday to Sunday from 9:00 AM to 7:00 PM. Our clinic and delivery room are open 24 Hours (24/7) with licensed midwives on-call for active labors and childbirth.'
-  },
-  {
-    question: 'Do I need to schedule an appointment before visiting?',
-    answer: 'Appointments are recommended for routine prenatal checkups to reduce wait times. However, walk-ins are warmly accepted for urgent maternal needs and active labor cases 24/7.'
-  },
-  {
-    question: 'What should I prepare and bring for checkups or delivery?',
-    answer: 'For prenatal visits, please bring your existing health records and recent ultrasound results. For delivery admission, bring your maternity booklet, baby clothes, receiving blankets, and a personal hygiene kit.'
-  },
-  {
-    question: 'Are there accessibility accommodations for pregnant women and wheelchair users?',
-    answer: 'Yes! Our facility is equipped with a street-level wheelchair ramp, non-slip flooring, wide doorways, support handrails, ergonomic waiting areas, and priority assistance for expecting mothers.'
-  },
-  {
-    question: 'How can I reach or contact the clinic in Baliwag?',
-    answer: 'You can contact us via phone at (044)-462-0789 / 0931-069-3921 / 0969-405-5108, email us at lapuzaltheajasmine@gmail.com, or visit our clinic located at 332 Daan Ramon Magsaysay, Tilapayong, Baliwag, Bulacan.'
-  }
-]
-
 const faqsWithIndex = computed(() => {
-  return faqs.map((faq, index) => ({ ...faq, originalIndex: index }))
+  const items = clinicStore.chatbot?.faqResponses || []
+  return items.map((faq, index) => ({ ...faq, originalIndex: index }))
 })
 
 const leftFaqs = computed(() => {

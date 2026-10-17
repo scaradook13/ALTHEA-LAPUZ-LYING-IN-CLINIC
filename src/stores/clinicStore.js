@@ -1,4 +1,4 @@
-import { reactive, ref } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import {
   pricingNotice,
   otherServices as initialOtherServices,
@@ -16,6 +16,9 @@ import {
 
 // Deep clone helper
 const clone = (obj) => JSON.parse(JSON.stringify(obj))
+
+const STORAGE_KEY = 'althea_lapuz_clinic_data_demo'
+const AUTH_KEY = 'althea_lapuz_clinic_admin_auth'
 
 // Initial default state factory
 export const getDefaultClinicData = () => ({
@@ -75,12 +78,97 @@ export const getDefaultClinicData = () => ({
   }
 })
 
-// Global reactive in-memory state
-// Note: When the user reloads the browser, this state automatically resets back to default!
-export const clinicStore = reactive(getDefaultClinicData())
+// Load saved data from localStorage, falling back to defaults
+const loadStoredData = () => {
+  const defaults = getDefaultClinicData()
+  if (typeof window === 'undefined') return defaults
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (raw) {
+      const parsed = JSON.parse(raw)
+      return {
+        clinicInfo: { ...defaults.clinicInfo, ...(parsed.clinicInfo || {}) },
+        missionVision: { ...defaults.missionVision, ...(parsed.missionVision || {}) },
+        healthcareTeam: { ...defaults.healthcareTeam, ...(parsed.healthcareTeam || {}) },
+        pricing: {
+          notice: { ...defaults.pricing.notice, ...(parsed.pricing?.notice || {}) },
+          otherServices: parsed.pricing?.otherServices || defaults.pricing.otherServices,
+          familyPlanning: parsed.pricing?.familyPlanning || defaults.pricing.familyPlanning,
+          antenatalCarePackages: parsed.pricing?.antenatalCarePackages || defaults.pricing.antenatalCarePackages,
+          philHealthServicePackages: parsed.pricing?.philHealthServicePackages || defaults.pricing.philHealthServicePackages,
+          medicinesList: parsed.pricing?.medicinesList || defaults.pricing.medicinesList,
+          suppliesList: parsed.pricing?.suppliesList || defaults.pricing.suppliesList
+        },
+        chatbot: {
+          faqResponses: parsed.chatbot?.faqResponses || defaults.chatbot.faqResponses,
+          fallbackResponse: parsed.chatbot?.fallbackResponse || defaults.chatbot.fallbackResponse,
+          quickReplyIds: parsed.chatbot?.quickReplyIds || defaults.chatbot.quickReplyIds
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to load clinic data from storage:', e)
+  }
+  return defaults
+}
+
+// Global reactive state
+export const clinicStore = reactive(loadStoredData())
+
+// Save current reactive state to localStorage
+export const saveClinicStore = () => {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(clinicStore))
+  } catch (e) {
+    console.error('Failed to save clinic data to storage:', e)
+  }
+}
+
+// Automatically save changes on any mutation
+watch(
+  clinicStore,
+  () => {
+    saveClinicStore()
+  },
+  { deep: true }
+)
+
+// Listen for storage events across browser tabs/windows
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', (event) => {
+    if (event.key === STORAGE_KEY && event.newValue) {
+      try {
+        const parsed = JSON.parse(event.newValue)
+        if (parsed.clinicInfo) Object.assign(clinicStore.clinicInfo, parsed.clinicInfo)
+        if (parsed.missionVision) Object.assign(clinicStore.missionVision, parsed.missionVision)
+        if (parsed.healthcareTeam) Object.assign(clinicStore.healthcareTeam, parsed.healthcareTeam)
+        if (parsed.pricing) {
+          if (parsed.pricing.notice) Object.assign(clinicStore.pricing.notice, parsed.pricing.notice)
+          if (parsed.pricing.otherServices) clinicStore.pricing.otherServices = parsed.pricing.otherServices
+          if (parsed.pricing.familyPlanning) clinicStore.pricing.familyPlanning = parsed.pricing.familyPlanning
+          if (parsed.pricing.antenatalCarePackages) clinicStore.pricing.antenatalCarePackages = parsed.pricing.antenatalCarePackages
+          if (parsed.pricing.philHealthServicePackages) clinicStore.pricing.philHealthServicePackages = parsed.pricing.philHealthServicePackages
+          if (parsed.pricing.medicinesList) clinicStore.pricing.medicinesList = parsed.pricing.medicinesList
+          if (parsed.pricing.suppliesList) clinicStore.pricing.suppliesList = parsed.pricing.suppliesList
+        }
+        if (parsed.chatbot) {
+          if (parsed.chatbot.faqResponses) clinicStore.chatbot.faqResponses = parsed.chatbot.faqResponses
+          if (parsed.chatbot.fallbackResponse) clinicStore.chatbot.fallbackResponse = parsed.chatbot.fallbackResponse
+        }
+      } catch (err) {
+        console.error('Failed to synchronize cross-tab storage:', err)
+      }
+    }
+  })
+}
 
 // Auth state (session-only demo authentication)
-const isAuthenticated = ref(false)
+const isAuthenticated = ref(
+  typeof window !== 'undefined' &&
+    (sessionStorage.getItem(AUTH_KEY) === 'true' || localStorage.getItem(AUTH_KEY) === 'true')
+)
+
 const currentUser = ref({
   username: 'admin',
   name: 'Clinic Administrator',
@@ -95,6 +183,9 @@ export const auth = {
     const validPass = password.trim() === 'admin123'
     if (validUser && validPass) {
       isAuthenticated.value = true
+      try {
+        sessionStorage.setItem(AUTH_KEY, 'true')
+      } catch (e) {}
       return { success: true }
     }
     return {
@@ -104,15 +195,25 @@ export const auth = {
   },
   logout() {
     isAuthenticated.value = false
+    try {
+      sessionStorage.removeItem(AUTH_KEY)
+      localStorage.removeItem(AUTH_KEY)
+    } catch (e) {}
   }
 }
 
-// Action helper to reset all in-memory changes back to initial state
+// Action helper to reset all changes back to default initial state
 export const resetStoreToDefaults = () => {
+  if (typeof window !== 'undefined') {
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+    } catch (e) {}
+  }
   const fresh = getDefaultClinicData()
   Object.assign(clinicStore.clinicInfo, fresh.clinicInfo)
   Object.assign(clinicStore.missionVision, fresh.missionVision)
   Object.assign(clinicStore.healthcareTeam, fresh.healthcareTeam)
+  clinicStore.pricing.notice = fresh.pricing.notice
   clinicStore.pricing.otherServices = fresh.pricing.otherServices
   clinicStore.pricing.familyPlanning = fresh.pricing.familyPlanning
   clinicStore.pricing.antenatalCarePackages = fresh.pricing.antenatalCarePackages
@@ -120,4 +221,7 @@ export const resetStoreToDefaults = () => {
   clinicStore.pricing.medicinesList = fresh.pricing.medicinesList
   clinicStore.pricing.suppliesList = fresh.pricing.suppliesList
   clinicStore.chatbot.faqResponses = fresh.chatbot.faqResponses
+  clinicStore.chatbot.fallbackResponse = fresh.chatbot.fallbackResponse
+  clinicStore.chatbot.quickReplyIds = fresh.chatbot.quickReplyIds
+  saveClinicStore()
 }

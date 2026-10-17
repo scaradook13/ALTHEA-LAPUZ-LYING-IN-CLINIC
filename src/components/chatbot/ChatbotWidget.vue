@@ -170,22 +170,43 @@ const handleInputSubmit = () => {
 
   const lowerText = text.toLowerCase()
   let bestMatch = null
-  let maxMatchCount = 0
+  let maxScore = 0
 
   for (const faq of clinicStore.chatbot.faqResponses) {
-    let matchCount = 0
-    for (const keyword of faq.keywords) {
-      if (lowerText.includes(keyword)) {
-        matchCount++
+    let score = 0
+    
+    // Check keywords
+    if (faq.keywords && Array.isArray(faq.keywords)) {
+      for (const keyword of faq.keywords) {
+        if (lowerText.includes(keyword.toLowerCase())) {
+          score += 3
+        }
       }
     }
-    if (matchCount > maxMatchCount) {
-      maxMatchCount = matchCount
+
+    // Check direct question match
+    if (faq.question) {
+      const qLower = faq.question.toLowerCase()
+      if (lowerText.includes(qLower) || qLower.includes(lowerText)) {
+        score += 5
+      } else {
+        // Check matching words
+        const words = lowerText.split(/\s+/).filter(w => w.length > 2)
+        for (const w of words) {
+          if (qLower.includes(w)) {
+            score += 1
+          }
+        }
+      }
+    }
+
+    if (score > maxScore) {
+      maxScore = score
       bestMatch = faq
     }
   }
 
-  if (bestMatch && maxMatchCount > 0) {
+  if (bestMatch && maxScore > 0) {
     addBotResponse(bestMatch.answer)
   } else {
     addBotResponse(clinicStore.chatbot.fallbackResponse)

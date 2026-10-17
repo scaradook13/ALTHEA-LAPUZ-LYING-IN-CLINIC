@@ -46,6 +46,7 @@
             <!-- View Live Website -->
             <router-link
               to="/"
+              @click="saveClinicStore"
               class="px-3 sm:px-4 py-2 rounded-xl bg-white border border-brand-border/80 text-brand-primary hover:bg-brand-soft text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs"
             >
               <ExternalLink class="w-3.5 h-3.5" />
@@ -67,12 +68,12 @@
       </div>
     </header>
 
-    <!-- In-Memory Mode Banner Reminder -->
-    <div class="bg-gradient-to-r from-amber-500/10 via-brand-soft to-amber-500/10 border-b border-brand-border/50 py-2.5 px-4 text-center">
+    <!-- Live Synced Mode Banner Reminder -->
+    <div class="bg-gradient-to-r from-emerald-500/10 via-brand-soft to-emerald-500/10 border-b border-brand-border/50 py-2.5 px-4 text-center">
       <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 text-xs text-neutral-800 font-medium">
         <Sparkles class="w-4 h-4 text-brand-primary flex-shrink-0 animate-pulse" />
         <span>
-          <strong>In-Memory Demo Active</strong>: Changes saved here immediately update the website across all views in real time. Reloading (F5) will restore original defaults.
+          <strong>Live Synced Mode</strong>: All updates are automatically saved and synchronize across all pages, open tabs, and browser reloads.
         </span>
       </div>
     </div>
@@ -613,11 +614,11 @@
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
             <div>
-              <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">AI Assistant Knowledge Base</h2>
-              <p class="text-xs sm:text-sm text-text-secondary mt-1">Edit the responses the chatbot uses to answer user questions on the live website.</p>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">FAQs & AI Chatbot Knowledge Base</h2>
+              <p class="text-xs sm:text-sm text-text-secondary mt-1">Updates questions and answers displayed in the website FAQ drawer and used by the AI assistant.</p>
             </div>
             <button 
-              @click="triggerToast('Chatbot FAQs updated successfully!')"
+              @click="triggerToast('FAQs and Chatbot knowledge updated successfully!')"
               class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all"
             >
               Save Changes
@@ -747,7 +748,7 @@ import {
   Trash2, 
   X 
 } from '@lucide/vue'
-import { clinicStore, auth, resetStoreToDefaults } from '../../stores/clinicStore.js'
+import { clinicStore, auth, resetStoreToDefaults, saveClinicStore } from '../../stores/clinicStore.js'
 
 const router = useRouter()
 const activeTab = ref('info')
@@ -755,6 +756,7 @@ const toastMessage = ref('')
 let toastTimer = null
 
 const triggerToast = (msg) => {
+  saveClinicStore()
   toastMessage.value = msg
   if (toastTimer) clearTimeout(toastTimer)
   toastTimer = setTimeout(() => {
@@ -767,7 +769,7 @@ const tabs = [
   { id: 'mission', name: 'Mission & Vision', icon: Target },
   { id: 'pricing', name: 'Services & Pricing', icon: Banknote },
   { id: 'inventory', name: 'Pharmacy & Supplies', icon: Pill },
-  { id: 'chatbot', name: 'AI Chatbot FAQs', icon: MessageSquare }
+  { id: 'chatbot', name: 'FAQs & AI Chatbot', icon: MessageSquare }
 ]
 
 // Inventory sub-tab & search
