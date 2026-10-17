@@ -614,8 +614,18 @@
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-brand-border/40 pb-4 gap-4">
             <div>
-              <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">FAQs & AI Chatbot Knowledge Base</h2>
-              <p class="text-xs sm:text-sm text-text-secondary mt-1">Updates questions, answers, and trigger keywords displayed in the website FAQ drawer and used by the AI assistant.</p>
+              <div class="flex items-center gap-3">
+                <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">FAQs & AI Chatbot Knowledge Base</h2>
+                <span 
+                  class="px-2.5 py-0.5 rounded-full text-xs font-bold border transition-colors shadow-2xs"
+                  :class="clinicStore.chatbot.faqResponses.length >= 10 
+                    ? 'bg-amber-100 text-amber-800 border-amber-300 font-extrabold' 
+                    : 'bg-brand-soft text-brand-primary border-brand-border/80'"
+                >
+                  {{ clinicStore.chatbot.faqResponses.length }} / 10 FAQs
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-text-secondary mt-1">Updates questions, answers, and trigger keywords displayed in the website FAQ drawer and used by the AI assistant (maximum policy of 10 FAQs).</p>
             </div>
             <div class="flex items-center gap-2.5 w-full sm:w-auto">
               <button 
@@ -632,6 +642,17 @@
                 Save Changes
               </button>
             </div>
+          </div>
+
+          <!-- 10 FAQ Maximum Policy Notice Banner -->
+          <div 
+            v-if="clinicStore.chatbot.faqResponses.length >= 10" 
+            class="p-4 bg-amber-50 border border-amber-200 rounded-2xl flex items-center gap-3 text-xs text-amber-800 shadow-2xs"
+          >
+            <span class="font-extrabold px-2.5 py-0.5 bg-amber-200 text-amber-900 rounded-lg text-[11px] uppercase tracking-wide">
+              Max Limit Reached
+            </span>
+            <span>Policy limit of <strong>10 FAQs</strong> has been reached. To add another question, please delete or edit an existing FAQ.</span>
           </div>
 
           <div class="space-y-4">
@@ -803,10 +824,15 @@
       <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-5 text-left border border-brand-border/60">
         <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
           <div>
-            <h3 class="text-base font-extrabold text-neutral-950">
-              Add New Frequently Asked Question
-            </h3>
-            <p class="text-xs text-text-secondary mt-0.5">Will appear in the website FAQ drawer and the AI Chatbot knowledge base.</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h3 class="text-base font-extrabold text-neutral-950">
+                Add New Frequently Asked Question
+              </h3>
+              <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-brand-soft text-brand-primary border border-brand-border/70">
+                Slot {{ clinicStore.chatbot.faqResponses.length + 1 }} of 10
+              </span>
+            </div>
+            <p class="text-xs text-text-secondary mt-0.5">Maximum policy of 10 FAQs allowed in the knowledge base.</p>
           </div>
           <button @click="showAddFaqModal = false" class="text-neutral-400 hover:text-neutral-700 cursor-pointer p-1">
             <X class="w-5 h-5" />
@@ -1000,6 +1026,10 @@ const removeKeyword = (faq, kIdx) => {
 }
 
 const openAddFaqModal = () => {
+  if (clinicStore.chatbot.faqResponses.length >= 10) {
+    triggerToast('Policy Limit: Maximum of 10 FAQs reached. Please delete an existing FAQ first.')
+    return
+  }
   newFaq.value = {
     question: '',
     answer: '',
@@ -1009,12 +1039,17 @@ const openAddFaqModal = () => {
 }
 
 const saveNewFaq = () => {
+  if (clinicStore.chatbot.faqResponses.length >= 10) {
+    triggerToast('Policy Limit: Maximum of 10 FAQs reached. Please delete an existing FAQ first.')
+    showAddFaqModal.value = false
+    return
+  }
   if (!newFaq.value.question.trim()) {
-    alert('Please enter a question.')
+    triggerToast('Please enter a question.')
     return
   }
   if (!newFaq.value.answer.trim()) {
-    alert('Please enter an answer.')
+    triggerToast('Please enter an answer.')
     return
   }
 

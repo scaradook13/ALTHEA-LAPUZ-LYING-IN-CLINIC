@@ -100,7 +100,7 @@ const loadStoredData = () => {
           suppliesList: parsed.pricing?.suppliesList || defaults.pricing.suppliesList
         },
         chatbot: {
-          faqResponses: parsed.chatbot?.faqResponses || defaults.chatbot.faqResponses,
+          faqResponses: (parsed.chatbot?.faqResponses || defaults.chatbot.faqResponses).slice(0, 10),
           fallbackResponse: parsed.chatbot?.fallbackResponse || defaults.chatbot.fallbackResponse,
           quickReplyIds: parsed.chatbot?.quickReplyIds || defaults.chatbot.quickReplyIds
         }
@@ -153,7 +153,7 @@ if (typeof window !== 'undefined') {
           if (parsed.pricing.suppliesList) clinicStore.pricing.suppliesList = parsed.pricing.suppliesList
         }
         if (parsed.chatbot) {
-          if (parsed.chatbot.faqResponses) clinicStore.chatbot.faqResponses = parsed.chatbot.faqResponses
+          if (parsed.chatbot.faqResponses) clinicStore.chatbot.faqResponses = parsed.chatbot.faqResponses.slice(0, 10)
           if (parsed.chatbot.fallbackResponse) clinicStore.chatbot.fallbackResponse = parsed.chatbot.fallbackResponse
         }
       } catch (err) {
