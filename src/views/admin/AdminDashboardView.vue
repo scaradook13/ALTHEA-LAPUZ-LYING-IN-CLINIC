@@ -671,10 +671,10 @@
                 </div>
                 <button 
                   @click="deleteFaq(idx)" 
-                  class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-neutral-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 hover:border-rose-300 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer group"
                   title="Delete this FAQ"
                 >
-                  <Trash2 class="w-3.5 h-3.5" />
+                  <Trash2 class="w-3.5 h-3.5 text-rose-500 group-hover:text-rose-600 transition-colors" />
                   <span>Delete</span>
                 </button>
               </div>
