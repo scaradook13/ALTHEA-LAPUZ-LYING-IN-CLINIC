@@ -612,47 +612,115 @@
       <!-- ================= TAB 5: CHATBOT FAQS ================= -->
       <div v-else-if="activeTab === 'chatbot'" class="space-y-6 text-left">
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
-          <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-brand-border/40 pb-4 gap-4">
             <div>
               <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">FAQs & AI Chatbot Knowledge Base</h2>
-              <p class="text-xs sm:text-sm text-text-secondary mt-1">Updates questions and answers displayed in the website FAQ drawer and used by the AI assistant.</p>
+              <p class="text-xs sm:text-sm text-text-secondary mt-1">Updates questions, answers, and trigger keywords displayed in the website FAQ drawer and used by the AI assistant.</p>
             </div>
-            <button 
-              @click="triggerToast('FAQs and Chatbot knowledge updated successfully!')"
-              class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all"
-            >
-              Save Changes
-            </button>
+            <div class="flex items-center gap-2.5 w-full sm:w-auto">
+              <button 
+                @click="openAddFaqModal"
+                class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-brand-soft hover:bg-brand-soft/80 text-brand-primary text-xs font-bold border border-brand-border/70 flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
+              >
+                <Plus class="w-4 h-4" />
+                <span>Add FAQ</span>
+              </button>
+              <button 
+                @click="triggerToast('FAQs and Chatbot knowledge updated successfully!')"
+                class="flex-1 sm:flex-none px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all cursor-pointer active:scale-95"
+              >
+                Save Changes
+              </button>
+            </div>
           </div>
 
-          <div class="space-y-6">
+          <div class="space-y-4">
             <div 
               v-for="(faq, idx) in clinicStore.chatbot.faqResponses" 
-              :key="faq.id"
-              class="p-5 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-3"
+              :key="faq.id || idx"
+              class="p-5 sm:p-6 rounded-2xl bg-neutral-50/70 border border-neutral-200 space-y-3.5 hover:border-brand-border/80 transition-all shadow-xs"
             >
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-extrabold text-brand-primary uppercase">FAQ #{{ idx + 1 }} • ID: {{ faq.id }}</span>
-                <span class="text-[11px] text-neutral-400 font-mono">Keywords: {{ faq.keywords.join(', ') }}</span>
+              <!-- Card Top Header -->
+              <div class="flex items-center justify-between border-b border-neutral-200/60 pb-2.5">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-brand-soft text-brand-primary uppercase">
+                    FAQ #{{ idx + 1 }}
+                  </span>
+                  <span class="text-[11px] text-neutral-400 font-mono">ID: {{ faq.id }}</span>
+                </div>
+                <button 
+                  @click="deleteFaq(idx)" 
+                  class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold text-neutral-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                  title="Delete this FAQ"
+                >
+                  <Trash2 class="w-3.5 h-3.5" />
+                  <span>Delete</span>
+                </button>
               </div>
 
+              <!-- Question Field -->
               <div>
-                <label class="block text-[11px] font-bold uppercase text-neutral-600 mb-1">User Question</label>
+                <label class="block text-[11px] font-bold uppercase text-neutral-700 mb-1">
+                  User Question <span class="text-rose-500">*</span>
+                </label>
                 <input 
                   v-model="faq.question" 
                   type="text" 
-                  class="w-full px-3 py-1.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold"
+                  class="w-full px-3.5 py-2 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-neutral-900 focus:border-brand-primary focus:outline-none"
+                  placeholder="e.g. What services does Althea-Lapuz Lying-In Clinic offer?"
                 />
               </div>
 
+              <!-- Answer Field -->
               <div>
-                <label class="block text-[11px] font-bold uppercase text-neutral-600 mb-1">Chatbot Automated Answer</label>
+                <label class="block text-[11px] font-bold uppercase text-neutral-700 mb-1">
+                  Chatbot & FAQ Drawer Answer <span class="text-rose-500">*</span>
+                </label>
                 <textarea 
                   v-model="faq.answer" 
                   rows="2"
-                  class="w-full px-3 py-1.5 bg-white border border-neutral-300 rounded-xl text-xs font-medium"
+                  class="w-full px-3.5 py-2 bg-white border border-neutral-300 rounded-xl text-xs font-medium text-neutral-800 focus:border-brand-primary focus:outline-none leading-relaxed"
+                  placeholder="e.g. We offer comprehensive maternal and newborn care..."
                 ></textarea>
               </div>
+
+              <!-- Editable Keywords Field -->
+              <div class="pt-1">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                  <label class="block text-[11px] font-bold uppercase text-neutral-700">
+                    AI Chatbot Trigger Keywords (comma-separated)
+                  </label>
+                  <span class="text-[10px] text-text-secondary">Words typed by visitors that trigger this answer in the AI Chatbot</span>
+                </div>
+                <input 
+                  :value="getFaqKeywordsDraft(faq)" 
+                  @input="onKeywordInput(faq, $event.target.value)"
+                  type="text" 
+                  class="w-full px-3.5 py-2 bg-white border border-neutral-300 rounded-xl text-xs font-medium text-neutral-800 focus:border-brand-primary focus:outline-none font-mono"
+                  placeholder="e.g. services, prenatal, delivery, checkup, ultrasound"
+                />
+
+                <!-- Active Trigger Pills Display -->
+                <div v-if="faq.keywords && faq.keywords.length" class="flex flex-wrap items-center gap-1.5 pt-2">
+                  <span class="text-[10px] uppercase font-bold text-neutral-400 mr-1">Active Triggers:</span>
+                  <span 
+                    v-for="(kw, kIdx) in faq.keywords" 
+                    :key="kIdx"
+                    class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-white border border-brand-border/80 text-brand-primary shadow-2xs group"
+                  >
+                    <span>{{ kw }}</span>
+                    <button 
+                      @click="removeKeyword(faq, kIdx)" 
+                      type="button" 
+                      class="text-neutral-400 hover:text-rose-600 text-xs font-bold leading-none cursor-pointer p-0.5"
+                      title="Remove keyword"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -727,11 +795,90 @@
       </div>
     </div>
 
+    <!-- Modal: Add New FAQ -->
+    <div 
+      v-if="showAddFaqModal" 
+      class="fixed inset-0 z-50 bg-neutral-950/60 backdrop-blur-xs flex items-center justify-center p-4"
+    >
+      <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-5 text-left border border-brand-border/60">
+        <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
+          <div>
+            <h3 class="text-base font-extrabold text-neutral-950">
+              Add New Frequently Asked Question
+            </h3>
+            <p class="text-xs text-text-secondary mt-0.5">Will appear in the website FAQ drawer and the AI Chatbot knowledge base.</p>
+          </div>
+          <button @click="showAddFaqModal = false" class="text-neutral-400 hover:text-neutral-700 cursor-pointer p-1">
+            <X class="w-5 h-5" />
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-neutral-700 mb-1">
+              User Question <span class="text-rose-500">*</span>
+            </label>
+            <input 
+              v-model="newFaq.question" 
+              type="text" 
+              placeholder="e.g. Do you accept PhilHealth for maternity packages?" 
+              class="w-full px-3.5 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-bold text-neutral-900 focus:border-brand-primary focus:bg-white focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase text-neutral-700 mb-1">
+              Answer / Response <span class="text-rose-500">*</span>
+            </label>
+            <textarea 
+              v-model="newFaq.answer" 
+              rows="3"
+              placeholder="e.g. Yes! Our clinic is PhilHealth-accredited. PhilHealth covers our maternity and newborn care packages..." 
+              class="w-full px-3.5 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-neutral-800 focus:border-brand-primary focus:bg-white focus:outline-none leading-relaxed"
+            ></textarea>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="block text-xs font-bold uppercase text-neutral-700">
+                Trigger Keywords (comma-separated)
+              </label>
+              <span class="text-[10px] text-text-secondary">Used by AI chatbot</span>
+            </div>
+            <input 
+              v-model="newFaq.keywordsInput" 
+              type="text" 
+              placeholder="e.g. philhealth, insurance, package, coverage, discount" 
+              class="w-full px-3.5 py-2.5 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium text-neutral-800 focus:border-brand-primary focus:bg-white focus:outline-none font-mono"
+            />
+            <p class="text-[11px] text-text-secondary mt-1">
+              Enter trigger words separated by commas. If omitted, keywords will be generated automatically.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2 border-t border-neutral-100">
+          <button 
+            @click="showAddFaqModal = false" 
+            class="px-4 py-2 rounded-xl border border-neutral-300 text-xs font-bold hover:bg-neutral-50 cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button 
+            @click="saveNewFaq" 
+            class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm cursor-pointer active:scale-95 transition-all"
+          >
+            Add FAQ
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { 
   Building2, 
@@ -818,10 +965,110 @@ const saveNewInventoryItem = () => {
   triggerToast('New item added to inventory catalog!')
 }
 
+// FAQ & Keywords management
+const keywordDrafts = reactive({})
+const showAddFaqModal = ref(false)
+const newFaq = ref({
+  question: '',
+  answer: '',
+  keywordsInput: ''
+})
+
+const getFaqKeywordsDraft = (faq) => {
+  const key = faq.id || faq.question
+  if (keywordDrafts[key] === undefined) {
+    keywordDrafts[key] = Array.isArray(faq.keywords) ? faq.keywords.join(', ') : ''
+  }
+  return keywordDrafts[key]
+}
+
+const onKeywordInput = (faq, val) => {
+  const key = faq.id || faq.question
+  keywordDrafts[key] = val
+  faq.keywords = val
+    .split(',')
+    .map(k => k.trim())
+    .filter(Boolean)
+}
+
+const removeKeyword = (faq, kIdx) => {
+  if (Array.isArray(faq.keywords)) {
+    faq.keywords.splice(kIdx, 1)
+    const key = faq.id || faq.question
+    keywordDrafts[key] = faq.keywords.join(', ')
+  }
+}
+
+const openAddFaqModal = () => {
+  newFaq.value = {
+    question: '',
+    answer: '',
+    keywordsInput: ''
+  }
+  showAddFaqModal.value = true
+}
+
+const saveNewFaq = () => {
+  if (!newFaq.value.question.trim()) {
+    alert('Please enter a question.')
+    return
+  }
+  if (!newFaq.value.answer.trim()) {
+    alert('Please enter an answer.')
+    return
+  }
+
+  let parsedKeywords = newFaq.value.keywordsInput
+    ? newFaq.value.keywordsInput.split(',').map(k => k.trim()).filter(Boolean)
+    : []
+
+  if (parsedKeywords.length === 0) {
+    parsedKeywords = newFaq.value.question
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .split(/\s+/)
+      .filter(w => w.length > 3)
+  }
+
+  const generatedId = 'faq_' + Date.now().toString(36)
+
+  const created = {
+    id: generatedId,
+    question: newFaq.value.question.trim(),
+    answer: newFaq.value.answer.trim(),
+    keywords: parsedKeywords
+  }
+
+  clinicStore.chatbot.faqResponses.push(created)
+  keywordDrafts[generatedId] = parsedKeywords.join(', ')
+  saveClinicStore()
+
+  showAddFaqModal.value = false
+  newFaq.value = { question: '', answer: '', keywordsInput: '' }
+  triggerToast('New FAQ successfully added to website & AI Chatbot!')
+}
+
+const deleteFaq = (idx) => {
+  if (clinicStore.chatbot.faqResponses.length <= 1) {
+    alert('You must keep at least 1 FAQ in the knowledge base.')
+    return
+  }
+  const item = clinicStore.chatbot.faqResponses[idx]
+  if (confirm(`Are you sure you want to delete FAQ #${idx + 1} ("${item.question}")?`)) {
+    const deleted = clinicStore.chatbot.faqResponses.splice(idx, 1)
+    if (deleted[0] && deleted[0].id) {
+      delete keywordDrafts[deleted[0].id]
+    }
+    saveClinicStore()
+    triggerToast('FAQ deleted successfully!')
+  }
+}
+
 // Reset and logout
 const handleResetDefaults = () => {
   if (confirm('Are you sure you want to reset all data back to initial official defaults?')) {
     resetStoreToDefaults()
+    Object.keys(keywordDrafts).forEach(k => delete keywordDrafts[k])
     triggerToast('All data successfully restored to default values!')
   }
 }

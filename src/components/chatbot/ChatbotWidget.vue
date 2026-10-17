@@ -178,7 +178,7 @@ const handleInputSubmit = () => {
     // Check keywords
     if (faq.keywords && Array.isArray(faq.keywords)) {
       for (const keyword of faq.keywords) {
-        if (lowerText.includes(keyword.toLowerCase())) {
+        if (typeof keyword === 'string' && keyword.trim() && lowerText.includes(keyword.trim().toLowerCase())) {
           score += 3
         }
       }
