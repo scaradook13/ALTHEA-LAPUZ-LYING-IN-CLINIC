@@ -502,25 +502,31 @@
       <div v-else-if="activeTab === 'inventory'" class="space-y-6 text-left">
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-brand-border/40 pb-4">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-brand-border/40 pb-4">
             <div>
               <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">Pharmacy & Medical Supplies Catalog</h2>
               <p class="text-xs sm:text-sm text-text-secondary mt-1">Live price directory conforming to DOH A.O. No. 2021-0008.</p>
             </div>
             
-            <div class="flex items-center gap-3">
+            <div class="flex flex-wrap items-center gap-2.5">
               <input 
                 v-model="searchInventory" 
                 type="text" 
                 placeholder="Search item name..." 
-                class="px-4 py-2 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium focus:border-brand-primary focus:outline-none w-48 sm:w-64"
+                class="px-3.5 py-2 bg-neutral-50 border border-neutral-300 rounded-xl text-xs font-medium focus:border-brand-primary focus:bg-white focus:outline-none w-44 sm:w-56"
               />
               <button 
                 @click="showAddInventoryModal = true"
-                class="px-4 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                class="px-4 py-2 rounded-xl bg-brand-soft hover:bg-brand-soft/80 text-brand-primary text-xs font-bold border border-brand-border/70 flex items-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
               >
                 <Plus class="w-3.5 h-3.5" />
                 <span>Add Item</span>
+              </button>
+              <button 
+                @click="triggerToast('Pharmacy & medical supplies updated successfully!')"
+                class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all cursor-pointer active:scale-95"
+              >
+                Save Changes
               </button>
             </div>
           </div>
@@ -595,10 +601,11 @@
                   <td class="p-3.5 text-right">
                     <button 
                       @click="deleteInventoryItem(idx)" 
-                      class="p-1.5 text-neutral-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors cursor-pointer"
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-rose-600 hover:text-rose-700 bg-rose-50 hover:bg-rose-100 border border-rose-200 hover:border-rose-300 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer group"
                       title="Delete item"
                     >
-                      <Trash2 class="w-3.5 h-3.5" />
+                      <Trash2 class="w-3.5 h-3.5 text-rose-500 group-hover:text-rose-600 transition-colors" />
+                      <span>Delete</span>
                     </button>
                   </td>
                 </tr>
