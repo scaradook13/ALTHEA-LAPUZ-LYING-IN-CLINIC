@@ -4,7 +4,8 @@
       
       <!-- Section Heading -->
       <div class="text-left mb-14 md:mb-18 space-y-3">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border-2 border-neutral-900 text-brand-primary-dark text-xs font-extrabold uppercase tracking-wider rounded-full shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
           <span>Our Clinical Focus</span>
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-950 tracking-tight">
@@ -20,11 +21,11 @@
         <div 
           v-for="(service, idx) in highlightedServices" 
           :key="service.title"
-          class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white hover:bg-brand-subtle/50 p-6 sm:p-8 lg:p-10 rounded-3xl border border-brand-border/50 hover:border-brand-primary/50 shadow-card hover:shadow-card-hover transition-all duration-300 group"
+          class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white hover:bg-slate-50/50 p-6 sm:p-8 lg:p-10 rounded-3xl border border-neutral-200/90 hover:border-brand-primary/40 shadow-card hover:shadow-card-hover transition-all duration-300 group"
         >
           <!-- Left Content -->
           <div class="lg:col-span-7 space-y-4 text-left">
-            <div class="inline-block text-xs font-bold text-brand-primary bg-brand-soft px-3 py-1 rounded-full border border-brand-border/60">
+            <div class="inline-block text-xs font-bold text-neutral-900 bg-white px-3 py-1 rounded-full border-2 border-neutral-900 shadow-2xs">
               0{{ idx + 1 }} • Specialization
             </div>
             
@@ -39,10 +40,12 @@
             <div class="pt-2">
               <router-link 
                 to="/services?tab=pricing" 
-                class="inline-flex items-center gap-2 text-sm font-bold text-brand-primary hover:text-brand-primary-dark group-hover:translate-x-1 transition-all"
+                class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-soft/90 hover:bg-gradient-to-r hover:from-brand-primary hover:to-brand-primary-hover text-brand-primary-dark hover:text-white border border-brand-border/70 hover:border-transparent text-xs sm:text-sm font-bold transition-all duration-300 shadow-2xs group/link"
               >
                 <span>View service specifications & pricing</span>
-                <ArrowRight class="w-4 h-4" />
+                <div class="w-5 h-5 rounded-full bg-white/90 text-brand-primary group-hover/link:bg-white/20 group-hover/link:text-white flex items-center justify-center transition-colors flex-shrink-0 shadow-xs">
+                  <ArrowRight class="w-3.5 h-3.5 group-hover/link:translate-x-0.5 transition-transform" />
+                </div>
               </router-link>
             </div>
           </div>

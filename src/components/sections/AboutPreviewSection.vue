@@ -1,13 +1,14 @@
 <template>
-  <section id="about" class="py-20 md:py-28 bg-gradient-to-b from-brand-subtle/50 via-white to-white border-t border-brand-border/30">
+  <section id="about" class="py-20 md:py-28 bg-gradient-to-b from-slate-50/50 via-white to-white border-t border-neutral-200/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Top Tag / Pill Button -->
       <div class="text-center mb-14">
         <router-link 
           to="/about"
-          class="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-soft hover:bg-brand-primary text-brand-primary-dark hover:text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-full border border-brand-border/70 shadow-brand-sm hover:shadow-brand transition-all duration-300 group"
+          class="inline-flex items-center gap-2 px-6 py-2.5 bg-white hover:bg-neutral-900 text-neutral-900 hover:text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-full border-2 border-neutral-900 shadow-2xs hover:shadow-md transition-all duration-300 group"
         >
+          <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
           <span>LEARN MORE ABOUT US</span>
           <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </router-link>

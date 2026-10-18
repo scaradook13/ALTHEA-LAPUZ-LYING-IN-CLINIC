@@ -381,43 +381,64 @@
                           </div>
 
                           <!-- Specific Structured Packages for each service -->
-                          <div v-if="selectedService.packageDetails && selectedService.packageDetails.length" class="space-y-3">
+                          <div v-if="selectedService.packageDetails && selectedService.packageDetails.length" class="space-y-3.5">
                             <div 
                               v-for="pkg in selectedService.packageDetails" 
                               :key="pkg.code"
-                              class="p-4 bg-white rounded-xl border border-brand-border/60 space-y-2.5 shadow-xs"
+                              :class="[
+                                'p-4 sm:p-5 rounded-2xl space-y-3 transition-all duration-200',
+                                getPackageMeta(pkg.code).cardBg
+                              ]"
                             >
-                              <div class="flex flex-wrap items-center justify-between gap-2">
-                                <div class="flex items-center gap-2">
-                                  <span class="px-2.5 py-0.5 bg-brand-primary text-white font-mono text-xs font-extrabold rounded-md">
+                              <!-- Top Header: Badge, Title & Category Tag -->
+                              <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-brand-border/30">
+                                <div class="flex flex-wrap items-center gap-2">
+                                  <span :class="['px-2.5 py-1 font-mono text-xs font-extrabold rounded-lg', getPackageMeta(pkg.code).badgeBg]">
                                     {{ pkg.code }}
                                   </span>
                                   <h5 class="text-xs sm:text-sm font-bold text-neutral-950">{{ pkg.title }}</h5>
                                 </div>
-                                <span class="text-xs font-bold text-text-secondary">Case Rate: <strong class="text-neutral-950">{{ pkg.caseRate }}</strong></span>
+                                <span :class="['px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border shadow-2xs', getPackageMeta(pkg.code).tagBg]">
+                                  {{ getPackageMeta(pkg.code).categoryTag }}
+                                </span>
                               </div>
 
-                              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+                              <!-- Case Rate Bar -->
+                              <div class="flex items-center justify-between text-xs px-3 py-1.5 rounded-lg bg-white/70 border border-brand-border/40">
+                                <span class="text-text-secondary font-medium">Official PhilHealth Case Rate:</span>
+                                <span class="font-extrabold text-neutral-950">{{ pkg.caseRate }}</span>
+                              </div>
+
+                              <!-- Pricing Comparison: With vs Without PhilHealth -->
+                              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-0.5">
                                 <!-- With PhilHealth -->
-                                <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-900 flex justify-between items-center">
+                                <div class="p-2.5 rounded-xl bg-emerald-50/90 border border-emerald-200/90 text-emerald-950 flex justify-between items-center shadow-2xs">
                                   <div>
-                                    <span class="font-bold block">With PhilHealth (NBB)</span>
-                                    <span class="text-[11px] text-emerald-700">No Balance Billing</span>
+                                    <div class="flex items-center gap-1.5 font-bold">
+                                      <CheckCircle2 class="w-3.5 h-3.5 text-emerald-600" />
+                                      <span>With PhilHealth (NBB)</span>
+                                    </div>
+                                    <span class="text-[11px] text-emerald-700 block font-medium">No Balance Billing</span>
                                   </div>
                                   <span class="text-sm font-extrabold text-emerald-800">{{ pkg.withPhilHealth }}</span>
                                 </div>
                                 <!-- Without PhilHealth -->
-                                <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200/80 text-neutral-800 flex justify-between items-center">
+                                <div class="p-2.5 rounded-xl bg-white/90 border border-neutral-200/90 text-neutral-900 flex justify-between items-center shadow-2xs">
                                   <div>
-                                    <span class="font-bold block">Without PhilHealth</span>
-                                    <span class="text-[11px] text-text-muted">Out-of-Pocket</span>
+                                    <div class="flex items-center gap-1.5 font-bold">
+                                      <AlertCircle class="w-3.5 h-3.5 text-neutral-400" />
+                                      <span>Without PhilHealth</span>
+                                    </div>
+                                    <span class="text-[11px] text-text-muted block font-medium">Out-of-Pocket Rate</span>
                                   </div>
                                   <span class="text-sm font-extrabold text-neutral-900">{{ pkg.withoutPhilHealthPrice }}</span>
                                 </div>
                               </div>
 
-                              <p v-if="pkg.breakdownText" class="text-[11px] text-text-secondary pt-1 border-t border-neutral-100">
-                                ℹ️ {{ pkg.breakdownText }}
+                              <!-- Breakdown Text -->
+                              <p v-if="pkg.breakdownText" class="text-[11px] text-text-secondary pt-1.5 border-t border-brand-border/30 flex items-start gap-1.5 leading-relaxed">
+                                <span class="text-brand-primary font-bold">ℹ</span>
+                                <span>{{ pkg.breakdownText }}</span>
                               </p>
                             </div>
                           </div>
@@ -627,21 +648,29 @@
                 <div 
                   v-for="pkg in antenatalCarePackages" 
                   :key="pkg.code"
-                  class="bg-white p-6 sm:p-8 rounded-3xl border border-brand-border/60 shadow-card flex flex-col justify-between space-y-6"
+                  :class="[
+                    'p-6 sm:p-8 rounded-3xl flex flex-col justify-between space-y-6 transition-all duration-200',
+                    getPackageMeta(pkg.code).cardBg
+                  ]"
                 >
                   <div class="space-y-4">
-                    <div class="flex items-center justify-between">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
                       <div class="flex items-center gap-2.5">
-                        <span class="px-3 py-1 rounded-full bg-brand-primary text-white text-xs font-extrabold shadow-brand-sm">
+                        <span :class="['px-3 py-1 rounded-full text-xs font-extrabold', getPackageMeta(pkg.code).badgeBg]">
                           {{ pkg.code }}
                         </span>
                         <h4 class="text-base sm:text-lg font-extrabold text-neutral-950">
                           {{ pkg.title }}
                         </h4>
                       </div>
-                      <span v-if="pkg.icdCode" class="text-[11px] font-semibold px-2.5 py-0.5 bg-neutral-100 text-neutral-700 rounded-lg">
-                        ICD: {{ pkg.icdCode }} | RVS: {{ pkg.rvsCode }}
-                      </span>
+                      <div class="flex items-center gap-2">
+                        <span :class="['px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border shadow-2xs', getPackageMeta(pkg.code).tagBg]">
+                          {{ getPackageMeta(pkg.code).categoryTag }}
+                        </span>
+                        <span v-if="pkg.icdCode" class="text-[11px] font-semibold px-2.5 py-0.5 bg-neutral-100 text-neutral-700 rounded-lg">
+                          ICD: {{ pkg.icdCode }} | RVS: {{ pkg.rvsCode }}
+                        </span>
+                      </div>
                     </div>
 
                     <p class="text-xs sm:text-sm text-text-secondary leading-relaxed bg-brand-subtle/60 p-3.5 rounded-2xl border border-brand-border/40">
@@ -721,14 +750,22 @@
                 <div 
                   v-for="pkg in philHealthServicePackages" 
                   :key="pkg.code"
-                  class="bg-white p-6 sm:p-7 rounded-3xl border border-brand-border/60 shadow-card flex flex-col justify-between space-y-6"
+                  :class="[
+                    'p-6 sm:p-7 rounded-3xl flex flex-col justify-between space-y-6 transition-all duration-200',
+                    getPackageMeta(pkg.code).cardBg
+                  ]"
                 >
                   <div class="space-y-4">
-                    <div class="flex items-center justify-between">
-                      <span class="px-3 py-1 rounded-full bg-brand-primary text-white text-xs font-extrabold shadow-brand-sm">
-                        {{ pkg.code }}
-                      </span>
-                      <span class="text-xs font-extrabold text-brand-primary">Case Rate: {{ pkg.caseRate }}</span>
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                      <div class="flex items-center gap-2">
+                        <span :class="['px-3 py-1 rounded-full text-xs font-extrabold', getPackageMeta(pkg.code).badgeBg]">
+                          {{ pkg.code }}
+                        </span>
+                        <span :class="['px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wide border shadow-2xs', getPackageMeta(pkg.code).tagBg]">
+                          {{ getPackageMeta(pkg.code).categoryTag }}
+                        </span>
+                      </div>
+                      <span class="text-xs font-extrabold text-brand-primary-dark">Case Rate: {{ pkg.caseRate }}</span>
                     </div>
 
                     <div>
@@ -1123,6 +1160,86 @@ const closeServiceDetail = async () => {
   const el = document.getElementById('service-pricing-anchor')
   if (el) {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+}
+
+const getPackageMeta = (code) => {
+  switch (code) {
+    case 'ANCO1':
+      return {
+        tier: 'comprehensive',
+        categoryTag: '⭐ Comprehensive Maternity Package (4 Visits)',
+        tagBg: 'bg-brand-soft text-brand-primary-dark border-brand-border/80',
+        badgeBg: 'bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white shadow-xs',
+        cardBg: 'bg-gradient-to-br from-brand-subtle via-white to-brand-soft/40 border-2 border-brand-primary/40 shadow-card'
+      }
+    case 'ANCO2':
+      return {
+        tier: 'specialized',
+        categoryTag: '⏱️ Extended / Intrapartum Labor Watch',
+        tagBg: 'bg-rose-50 text-brand-primary-dark border-brand-border/70',
+        badgeBg: 'bg-brand-primary-dark text-white shadow-xs',
+        cardBg: 'bg-white border-l-4 border-l-brand-primary-dark border-t border-r border-b border-brand-border/60 shadow-card'
+      }
+    case 'CONSULT':
+      return {
+        tier: 'outpatient',
+        categoryTag: '🩺 Routine Outpatient Consultation',
+        tagBg: 'bg-neutral-100 text-neutral-700 border-neutral-200',
+        badgeBg: 'bg-brand-soft text-brand-primary border border-brand-border/80 font-bold',
+        cardBg: 'bg-neutral-50/70 border border-neutral-200/90 shadow-2xs'
+      }
+    case 'MCP01':
+      return {
+        tier: 'comprehensive',
+        categoryTag: '⭐ Full Maternity & Birthing Package',
+        tagBg: 'bg-brand-soft text-brand-primary-dark border-brand-border/80',
+        badgeBg: 'bg-gradient-to-r from-brand-primary to-brand-primary-dark text-white shadow-xs',
+        cardBg: 'bg-gradient-to-br from-brand-subtle via-white to-brand-soft/40 border-2 border-brand-primary/40 shadow-card'
+      }
+    case 'NSDO1':
+      return {
+        tier: 'comprehensive',
+        categoryTag: '👶 Normal Spontaneous Delivery Birthing Suite',
+        tagBg: 'bg-brand-soft text-brand-primary-dark border-brand-border/80',
+        badgeBg: 'bg-gradient-to-r from-brand-primary to-brand-primary-hover text-white shadow-xs',
+        cardBg: 'bg-gradient-to-br from-brand-subtle via-white to-brand-soft/40 border-2 border-brand-primary/40 shadow-card'
+      }
+    case 'NCP':
+      return {
+        tier: 'comprehensive',
+        categoryTag: '🍼 Newborn Care & Expanded Screening (ENBS)',
+        tagBg: 'bg-brand-soft text-brand-primary-dark border-brand-border/80',
+        badgeBg: 'bg-gradient-to-r from-brand-primary to-brand-primary-dark text-white shadow-xs',
+        cardBg: 'bg-gradient-to-br from-brand-subtle via-white to-brand-soft/40 border-2 border-brand-primary/40 shadow-card'
+      }
+    case 'BCG':
+    case 'HEPB':
+    case 'TT':
+      return {
+        tier: 'vaccine',
+        categoryTag: '💉 Standard Clinical Immunization',
+        tagBg: 'bg-neutral-100 text-neutral-700 border-neutral-200',
+        badgeBg: 'bg-brand-soft text-brand-primary border border-brand-border/80 font-bold',
+        cardBg: 'bg-neutral-50/60 border border-neutral-200/80 shadow-2xs'
+      }
+    case 'FP-DMPA':
+    case 'FP-NORI':
+      return {
+        tier: 'contraceptive',
+        categoryTag: '🌸 Family Planning Contraceptive',
+        tagBg: 'bg-brand-soft text-brand-primary-dark border-brand-border/60',
+        badgeBg: 'bg-brand-soft text-brand-primary border border-brand-border/80 font-bold',
+        cardBg: 'bg-neutral-50/60 border border-brand-border/40 shadow-2xs'
+      }
+    default:
+      return {
+        tier: 'standard',
+        categoryTag: 'Clinical Package',
+        tagBg: 'bg-brand-soft text-brand-primary border-brand-border/60',
+        badgeBg: 'bg-brand-primary text-white shadow-xs',
+        cardBg: 'bg-white border border-brand-border/60 shadow-xs'
+      }
   }
 }
 

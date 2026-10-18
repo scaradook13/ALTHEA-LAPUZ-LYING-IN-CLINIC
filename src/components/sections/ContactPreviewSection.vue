@@ -4,7 +4,8 @@
       
       <!-- Contact Info Header -->
       <div class="text-center max-w-2xl mx-auto space-y-4">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border-2 border-neutral-900 text-brand-primary-dark text-xs font-extrabold uppercase tracking-wider rounded-full shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-brand-primary"></span>
           <span>Get In Touch</span>
         </div>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-950 tracking-tight">

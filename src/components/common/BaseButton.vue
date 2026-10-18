@@ -48,11 +48,14 @@ const sizeClasses = computed(() => {
 })
 
 const variantClasses = computed(() => {
-  if (props.variant === 'primary' || props.variant === 'dark') {
+  if (props.variant === 'dark') {
+    return 'bg-neutral-900 text-white hover:bg-neutral-800 active:bg-neutral-950 shadow-sm hover:shadow-md active:scale-[0.98] font-bold tracking-wide border border-neutral-800'
+  }
+  if (props.variant === 'primary') {
     return 'bg-brand-primary text-white hover:bg-brand-primary-hover active:bg-brand-primary-active shadow-brand-sm hover:shadow-brand active:scale-[0.98] font-bold tracking-wide'
   }
   if (props.variant === 'secondary') {
-    return 'bg-brand-soft border border-brand-border/80 text-brand-primary-dark hover:bg-brand-light hover:border-brand-primary active:bg-brand-soft active:scale-[0.98] font-bold tracking-wide'
+    return 'bg-white border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white active:bg-neutral-950 active:scale-[0.98] font-bold tracking-wide transition-all shadow-2xs'
   }
   if (props.variant === 'outline') {
     return 'border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white active:scale-[0.98] font-bold tracking-wide'

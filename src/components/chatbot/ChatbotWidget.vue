@@ -72,23 +72,23 @@
       <!-- Speech Bubble -->
       <div 
         v-if="!isOpen" 
-        class="bg-white text-neutral-800 px-3.5 py-2 rounded-xl text-xs font-semibold shadow-lg border border-brand-border/80 relative animate-pulse cursor-pointer hover:border-brand-primary transition-colors"
+        class="bg-white text-neutral-900 px-3.5 py-2 rounded-xl text-xs font-semibold shadow-xl border-2 border-neutral-900 relative cursor-pointer hover:bg-neutral-50 transition-colors"
         @click="toggleChat"
       >
-        <p class="leading-snug">Need Help?<br><span class="text-brand-primary font-bold">Ask your AI Assistant</span></p>
-        <div class="absolute -bottom-1.5 right-5 w-3 h-3 bg-white border-r border-b border-brand-border/80 transform rotate-45"></div>
+        <p class="leading-snug">Need Help?<br><span class="text-brand-primary font-bold">Ask AI Assistant</span></p>
+        <div class="absolute -bottom-1.5 right-5 w-3 h-3 bg-white border-r-2 border-b-2 border-neutral-900 transform rotate-45"></div>
       </div>
 
       <!-- Robot Button -->
       <button 
         @click="toggleChat"
-        class="w-14 h-14 bg-brand-primary text-white rounded-2xl shadow-xl shadow-brand-primary/25 flex items-center justify-center hover:bg-brand-primary-hover hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none border-2 border-white"
+        class="w-14 h-14 bg-gradient-to-tr from-brand-primary-hover to-brand-primary text-white rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none border-2 border-neutral-900 flex items-center justify-center group"
         :aria-label="isOpen ? 'Close chat' : 'Open chat'"
         :aria-expanded="isOpen"
       >
         <Transition name="fade" mode="out-in">
-          <X v-if="isOpen" class="w-6 h-6" />
-          <Bot v-else class="w-7 h-7" />
+          <X v-if="isOpen" class="w-6 h-6 text-white" />
+          <Bot v-else class="w-7 h-7 text-white group-hover:scale-110 transition-transform" />
         </Transition>
       </button>
     </div>

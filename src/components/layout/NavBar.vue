@@ -5,10 +5,10 @@
       v-if="clinicStore.clinicInfo.announcement.enabled" 
       class="bg-brand-primary text-white text-xs py-2 px-4 text-center font-bold tracking-wide flex items-center justify-center gap-2 shadow-xs transition-all"
     >
-      <span class="px-2 py-0.5 rounded-full bg-white text-brand-primary text-[10px] font-extrabold uppercase flex-shrink-0">
+      <span class="px-2.5 py-0.5 rounded-full bg-white text-brand-primary text-[10px] font-extrabold uppercase flex-shrink-0 shadow-xs">
         {{ clinicStore.clinicInfo.announcement.badge }}
       </span>
-      <span class="truncate max-w-3xl">{{ clinicStore.clinicInfo.announcement.text }}</span>
+      <span class="truncate max-w-3xl font-medium">{{ clinicStore.clinicInfo.announcement.text }}</span>
     </div>
 
     <!-- Main Navigation Bar Container -->
@@ -41,29 +41,29 @@
         <nav class="hidden md:flex items-center space-x-1.5 lg:space-x-2.5 text-sm lg:text-base font-bold">
           <router-link 
             to="/" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
+            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft/70 transition-all duration-200" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border border-brand-border/80 shadow-2xs ring-1 ring-brand-primary/20"
           >
             Home
           </router-link>
           <router-link 
             to="/services" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
+            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft/70 transition-all duration-200" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border border-brand-border/80 shadow-2xs ring-1 ring-brand-primary/20"
           >
             Services
           </router-link>
           <router-link 
             to="/about" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
+            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft/70 transition-all duration-200" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border border-brand-border/80 shadow-2xs ring-1 ring-brand-primary/20"
           >
             About
           </router-link>
           <router-link 
             to="/contact" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
+            class="px-5 py-2.5 rounded-full text-neutral-700 hover:text-brand-primary hover:bg-brand-soft/70 transition-all duration-200" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border border-brand-border/80 shadow-2xs ring-1 ring-brand-primary/20"
           >
             Contact Us
           </router-link>
@@ -71,11 +71,11 @@
           <!-- Admin Portal Access Button -->
           <router-link 
             to="/admin" 
-            class="ml-2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold border border-brand-border/70 hover:bg-brand-soft text-brand-primary transition-all duration-200 shadow-2xs"
-            active-class="bg-brand-primary text-white !text-white shadow-brand-sm"
+            class="ml-2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold border-2 border-neutral-900 bg-white hover:bg-neutral-900 text-neutral-900 hover:text-white transition-all duration-200 shadow-2xs"
+            active-class="bg-neutral-900 text-white font-extrabold border-2 border-neutral-900 shadow-sm"
             title="Clinic Staff & Administration Portal"
           >
-            <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-600" />
+            <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-500" />
             <Lock v-else class="w-3.5 h-3.5" />
             <span>{{ auth.isAuthenticated.value ? 'Admin Dashboard' : 'Admin Login' }}</span>
           </router-link>
@@ -110,32 +110,32 @@
           <router-link 
             to="/" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors border border-transparent" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border-l-4 border-l-brand-primary border-y border-r border-brand-border/60 shadow-2xs"
           >
             Home
           </router-link>
           <router-link 
             to="/services" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors border border-transparent" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border-l-4 border-l-brand-primary border-y border-r border-brand-border/60 shadow-2xs"
           >
             Services
           </router-link>
           <router-link 
             to="/about" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors border border-transparent" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border-l-4 border-l-brand-primary border-y border-r border-brand-border/60 shadow-2xs"
           >
             About
           </router-link>
           <router-link 
             to="/contact" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors border border-transparent" 
+            active-class="bg-brand-soft text-brand-primary-dark font-extrabold border-l-4 border-l-brand-primary border-y border-r border-brand-border/60 shadow-2xs"
           >
             Contact Us
           </router-link>
