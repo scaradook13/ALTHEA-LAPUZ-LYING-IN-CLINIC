@@ -1,40 +1,27 @@
 <template>
-  <section id="about" class="py-20 md:py-28 bg-gradient-to-b from-brand-subtle/50 via-white to-white border-t border-brand-border/30">
+  <section id="about" class="py-16 md:py-24 bg-brand-subtle border-b border-brand-border/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Top Tag / Pill Button -->
-      <div class="text-center mb-14">
-        <router-link 
-          to="/about"
-          class="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-soft hover:bg-brand-primary text-brand-primary-dark hover:text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-full border border-brand-border/70 shadow-brand-sm hover:shadow-brand transition-all duration-300 group"
-        >
-          <span>LEARN MORE ABOUT US</span>
-          <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </router-link>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        
         <!-- Left Image Box -->
         <div class="lg:col-span-5">
-          <div class="relative group">
-            <div class="absolute -inset-2 bg-gradient-to-tr from-brand-primary/20 to-brand-soft rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition-opacity"></div>
-            
-            <div class="relative w-full h-80 sm:h-96 md:h-[460px] bg-brand-soft rounded-3xl border border-brand-border/60 overflow-hidden shadow-card">
+          <div class="bg-white p-2.5 sm:p-3 rounded-2xl border border-brand-border shadow-card">
+            <div class="relative w-full h-80 sm:h-96 md:h-[430px] bg-brand-soft rounded-xl overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop" 
-                alt="About Althea-Lapuz Clinic" 
-                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                alt="Mother and newborn infant care at Althea-Lapuz Lying-In Clinic" 
+                class="w-full h-full object-cover" 
               />
               
-              <!-- Floating Badge -->
-              <div class="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-white/95 border border-brand-border/70 rounded-2xl p-4 shadow-lg text-left">
+              <!-- Structured Clinical Focus Card -->
+              <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm border border-brand-border rounded-xl p-4 shadow-md text-left">
                 <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center font-bold text-sm shadow-brand-sm">
-                    <Heart class="w-5 h-5 fill-current" />
+                  <div class="w-10 h-10 rounded-xl bg-brand-accent-soft border border-brand-accent-border text-brand-accent flex items-center justify-center shrink-0">
+                    <Heart class="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">Our Primary Care</h4>
-                    <p class="text-xs text-text-secondary font-medium">Pregnant Women, Postpartum Mothers, Newborns & Families</p>
+                    <h3 class="text-[11px] font-bold uppercase tracking-wider text-brand-primary">Dedicated Maternal Care</h3>
+                    <p class="text-xs text-text-secondary font-medium">Pregnant Women, Postpartum Mothers, Newborns &amp; Families</p>
                   </div>
                 </div>
               </div>
@@ -45,81 +32,93 @@
         <!-- Right Clinic Information -->
         <div class="lg:col-span-7 space-y-6 text-left">
           <div class="space-y-3">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-neutral-950 tracking-tight leading-tight">
-              About the Clinic
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white border border-brand-border text-brand-primary text-xs font-bold uppercase tracking-wider rounded-full">
+              <Building2 class="w-3.5 h-3.5" />
+              <span>About Our Facility</span>
+            </div>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-text-primary tracking-tight leading-tight">
+              Safe, Compassionate Care Rooted in Community Trust
             </h2>
-            <p class="text-text-secondary text-base sm:text-lg leading-relaxed font-normal">
-              Founded on the principles of transparency and dedicated patient care, our clinic provides compassionate, affordable, and specialized maternal healthcare since November of 2024. We stay alongside our patients at each step, ensuring a focus on safe, secure, dedicated care.
-            </p>
-            <p class="text-text-secondary text-sm sm:text-base leading-relaxed font-medium">
-              Our primary care is dedicated to <strong class="text-neutral-950">pregnant women, postpartum mothers, newborns, and their families</strong>.
+            <p class="text-text-secondary text-base leading-relaxed">
+              Founded on the principles of clinical safety, transparency, and dedicated patient support, <strong class="text-text-primary font-semibold">{{ clinicStore.clinicInfo.name }}</strong> has served families in Baliwag, Bulacan since November 2024. We stay alongside expectant mothers at every stage—from first prenatal consultation through safe delivery and newborn care.
             </p>
           </div>
 
-          <!-- 2 Columns: Established & Patient Focus Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div class="bg-white p-5 rounded-2xl border border-brand-border/60 shadow-card hover:border-brand-primary/50 transition-colors">
+          <!-- 2 Columns: Established & Primary Patients Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-white p-5 rounded-2xl border border-brand-border shadow-card">
               <div class="flex items-center gap-2 mb-1.5">
                 <Calendar class="w-4 h-4 text-brand-primary" />
-                <h3 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-brand-primary">
                   Established
                 </h3>
               </div>
-              <p class="text-2xl font-serif font-bold text-neutral-950">
-                2024
+              <p class="font-heading text-2xl font-bold text-text-primary">
+                November 2024
               </p>
-              <p class="text-xs text-text-secondary mt-1">Providing trustworthy maternal care in Bulacan</p>
+              <p class="text-xs text-text-secondary mt-1">Serving families across Tilapayong, Baliwag, Bulacan</p>
             </div>
 
-            <div class="bg-white p-5 rounded-2xl border border-brand-border/60 shadow-card hover:border-brand-primary/50 transition-colors">
+            <div class="bg-white p-5 rounded-2xl border border-brand-border shadow-card">
               <div class="flex items-center gap-2 mb-1.5">
-                <Heart class="w-4 h-4 text-brand-primary" />
-                <h3 class="text-xs font-extrabold uppercase tracking-wider text-brand-primary">
-                  Primary Patients
+                <Heart class="w-4 h-4 text-brand-accent" />
+                <h3 class="text-xs font-bold uppercase tracking-wider text-brand-primary">
+                  Who We Serve
                 </h3>
               </div>
               <p class="text-xs sm:text-sm text-text-secondary leading-relaxed font-medium">
-                Pregnant Women, Postpartum Mothers, Newborns, and Families.
+                Pregnant Women, Postpartum Mothers, Newborns, and Families seeking safe lying-in care.
               </p>
             </div>
           </div>
 
           <!-- Operating Hours Card -->
-          <div class="bg-white p-6 rounded-2xl border border-brand-border/60 shadow-card space-y-3">
-            <div class="flex items-center justify-between">
+          <div class="bg-white p-5 sm:p-6 rounded-2xl border border-brand-border shadow-card space-y-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-2">
               <div class="flex items-center gap-2">
                 <Clock class="w-4 h-4 text-brand-primary" />
-                <h3 class="text-sm font-bold text-neutral-950 uppercase tracking-wider">
-                  Operating Hours
+                <h3 class="font-heading text-sm font-bold text-text-primary uppercase tracking-wider">
+                  Clinic Operating Schedule
                 </h3>
               </div>
-              <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Clinic Open 24 Hours
+              <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-brand-soft text-brand-primary-hover text-xs font-bold border border-brand-border">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>24/7 Delivery On-Call</span>
               </span>
             </div>
             
-            <ul class="text-text-secondary text-xs sm:text-sm space-y-2">
-              <li class="flex justify-between items-center border-b border-neutral-100 pb-1.5">
-                <span class="font-bold text-neutral-900">Prenatal Checkups:</span>
-                <span class="font-extrabold text-brand-primary">Mon - Sun (9:00 AM - 7:00 PM)</span>
+            <ul class="text-text-secondary text-xs sm:text-sm space-y-2.5 pt-1">
+              <li class="flex flex-wrap justify-between items-center border-b border-brand-border/60 pb-2 gap-2">
+                <span class="font-semibold text-text-primary">Prenatal Checkups &amp; Consultations:</span>
+                <span class="font-bold text-brand-primary">{{ clinicStore.clinicInfo.checkupHours }}</span>
               </li>
-              <li class="flex justify-between items-center text-emerald-700 font-bold pt-0.5">
-                <span>Maternity Delivery & Admissions:</span>
-                <span class="px-2 py-0.5 bg-emerald-50 rounded-full border border-emerald-200 text-xs">Open 24/7 (24 Hours)</span>
+              <li class="flex flex-wrap justify-between items-center font-semibold pt-0.5 gap-2">
+                <span class="text-text-primary">Maternity Delivery &amp; Admissions:</span>
+                <span class="px-2.5 py-0.5 bg-brand-soft text-brand-primary-hover rounded-md border border-brand-border text-xs font-bold">
+                  {{ clinicStore.clinicInfo.deliveryHours }}
+                </span>
               </li>
             </ul>
           </div>
-        </div>
-      </div>
 
+          <!-- Action Link to Full About Page -->
+          <div class="pt-1">
+            <router-link 
+              to="/about"
+              class="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-brand-soft text-brand-primary hover:text-brand-primary-hover text-sm font-heading font-bold rounded-xl border border-brand-border hover:border-brand-primary/50 shadow-card transition-colors duration-200"
+            >
+              <span>Meet Our Healthcare Team &amp; Mission</span>
+              <ArrowRight class="w-4 h-4" />
+            </router-link>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ArrowRight, Calendar, Heart, Clock } from '@lucide/vue'
+import { ArrowRight, Calendar, Heart, Clock, Building2 } from '@lucide/vue'
+import { clinicStore } from '../../stores/clinicStore.js'
 </script>
-
-
-

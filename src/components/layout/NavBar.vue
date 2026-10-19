@@ -1,102 +1,139 @@
 <template>
-  <header class="fixed top-0 w-full z-50 transition-all duration-300">
-    <!-- Top Announcement Bar (Configured via Admin Portal) -->
+  <header class="fixed top-0 w-full z-50 transition-all duration-200">
+    <!-- Top Clinical Announcement / Hours Bar (Configured via Admin Portal) -->
     <div 
       v-if="clinicStore.clinicInfo.announcement.enabled" 
-      class="bg-brand-primary text-white text-xs py-2 px-4 text-center font-bold tracking-wide flex items-center justify-center gap-2 shadow-xs transition-all"
+      class="bg-brand-primary-dark text-white text-xs py-2 px-4 font-medium tracking-wide border-b border-white/10"
     >
-      <span class="px-2 py-0.5 rounded-full bg-white text-brand-primary text-[10px] font-extrabold uppercase flex-shrink-0">
-        {{ clinicStore.clinicInfo.announcement.badge }}
-      </span>
-      <span class="truncate max-w-3xl">{{ clinicStore.clinicInfo.announcement.text }}</span>
-    </div>
-
-    <!-- Main Navigation Bar Container -->
-    <div class="w-full bg-white/95 backdrop-blur-xl border-b border-brand-border/50 shadow-card">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 md:h-24">
-        
-        <!-- Logo & Clinic Title (Reactive from clinicStore) -->
-        <div class="flex-shrink-0 flex items-center min-w-0">
-          <router-link to="/" class="flex items-center gap-2.5 sm:gap-4 group min-w-0">
-            <div class="w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 flex-shrink-0 relative">
-              <img 
-                src="../../assets/images/althea-lapuz-logo.png" 
-                alt="Althea-Lapuz Lying In Clinic Logo" 
-                class="w-full h-full rounded-full object-contain shadow-brand-sm group-hover:scale-105 transition-all duration-300 ring-2 sm:ring-[3px] ring-brand-border/60 group-hover:ring-brand-primary"
-              />
-            </div>
-            <div class="flex flex-col text-left min-w-0">
-              <span class="text-xs sm:text-base md:text-xl font-extrabold text-neutral-950 tracking-wide uppercase group-hover:text-brand-primary transition-colors truncate">
-                {{ clinicStore.clinicInfo.name }}
-              </span>
-              <span class="text-[9px] sm:text-[11px] md:text-xs font-bold tracking-widest text-text-muted uppercase truncate">
-                {{ clinicStore.clinicInfo.tagline }}
-              </span>
-            </div>
-          </router-link>
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5 min-w-0 mx-auto sm:mx-0">
+          <span class="px-2 py-0.5 rounded-md bg-brand-primary text-white text-[10px] font-bold uppercase tracking-wider flex-shrink-0 border border-white/20">
+            {{ clinicStore.clinicInfo.announcement.badge }}
+          </span>
+          <span class="truncate text-white/95">{{ clinicStore.clinicInfo.announcement.text }}</span>
         </div>
-
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-1.5 lg:space-x-2.5 text-sm lg:text-base font-bold">
-          <router-link 
-            to="/" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
+        <div class="hidden lg:flex items-center gap-5 text-[11px] text-white/85 flex-shrink-0">
+          <span class="inline-flex items-center gap-1.5">
+            <Clock class="w-3.5 h-3.5 text-brand-muted" aria-hidden="true" />
+            <span>Delivery: 24/7 Open</span>
+          </span>
+          <a 
+            :href="`tel:${clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, '')}`"
+            class="inline-flex items-center gap-1.5 text-white font-semibold hover:text-brand-light transition-colors"
           >
-            Home
-          </router-link>
-          <router-link 
-            to="/services" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
-          >
-            Services
-          </router-link>
-          <router-link 
-            to="/about" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
-          >
-            About
-          </router-link>
-          <router-link 
-            to="/contact" 
-            class="px-5 py-2.5 rounded-full text-neutral-800 hover:text-brand-primary hover:bg-brand-soft transition-all duration-200" 
-            active-class="bg-brand-primary text-white shadow-brand-sm ring-2 ring-brand-primary/25 !text-white hover:!bg-brand-primary"
-          >
-            Contact Us
-          </router-link>
-
-          <!-- Admin Portal Access Button -->
-          <router-link 
-            to="/admin" 
-            class="ml-2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold border border-brand-border/70 hover:bg-brand-soft text-brand-primary transition-all duration-200 shadow-2xs"
-            active-class="bg-brand-primary text-white !text-white shadow-brand-sm"
-            title="Clinic Staff & Administration Portal"
-          >
-            <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-600" />
-            <Lock v-else class="w-3.5 h-3.5" />
-            <span>{{ auth.isAuthenticated.value ? 'Admin Dashboard' : 'Admin Login' }}</span>
-          </router-link>
-        </nav>
-
-        <!-- Mobile Menu Toggle Button -->
-        <div class="md:hidden flex items-center">
-          <button 
-            @click="isOpen = !isOpen" 
-            class="text-neutral-800 hover:text-brand-primary focus:outline-none p-2.5 rounded-2xl hover:bg-brand-soft transition-colors" 
-            aria-label="Toggle Navigation Menu"
-          >
-            <Menu v-if="!isOpen" class="h-7 w-7" />
-            <X v-else class="h-7 w-7" />
-          </button>
+            <Phone class="w-3.5 h-3.5 text-brand-muted" aria-hidden="true" />
+            <span>{{ clinicStore.clinicInfo.phonePrimary }}</span>
+          </a>
         </div>
       </div>
     </div>
+
+    <!-- Main Navigation Bar Container -->
+    <div class="w-full bg-white/95 backdrop-blur-md border-b border-brand-border/80 shadow-card">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+        
+          <!-- Logo & Clinic Title (Reactive from clinicStore) -->
+          <div class="flex-shrink-0 flex items-center min-w-0">
+            <router-link to="/" class="flex items-center gap-3 sm:gap-3.5 group min-w-0">
+              <div class="w-11 h-11 sm:w-12 sm:h-12 flex-shrink-0 relative rounded-full p-0.5 bg-brand-soft border border-brand-border group-hover:border-brand-primary transition-colors">
+                <img 
+                  src="../../assets/images/althea-lapuz-logo.png" 
+                  alt="Althea-Lapuz Lying-In Clinic Official Logo" 
+                  class="w-full h-full rounded-full object-contain bg-white"
+                />
+              </div>
+              <div class="flex flex-col text-left min-w-0">
+                <span class="font-heading text-sm sm:text-base lg:text-lg font-bold text-text-primary tracking-tight group-hover:text-brand-primary transition-colors truncate">
+                  {{ clinicStore.clinicInfo.name }}
+                </span>
+                <span class="text-[10px] sm:text-xs font-medium text-text-muted truncate">
+                  {{ clinicStore.clinicInfo.tagline }}
+                </span>
+              </div>
+            </router-link>
+          </div>
+
+          <!-- Desktop Navigation Links -->
+          <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-1 lg:gap-1.5 text-sm font-heading font-semibold">
+            <router-link 
+              to="/" 
+              class="px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary hover:bg-brand-soft transition-colors duration-150" 
+              exact-active-class="!bg-brand-light !text-brand-primary-hover font-bold"
+            >
+              Home
+            </router-link>
+            <router-link 
+              to="/services" 
+              class="px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary hover:bg-brand-soft transition-colors duration-150" 
+              active-class="!bg-brand-light !text-brand-primary-hover font-bold"
+            >
+              Services &amp; Fees
+            </router-link>
+            <router-link 
+              to="/about" 
+              class="px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary hover:bg-brand-soft transition-colors duration-150" 
+              active-class="!bg-brand-light !text-brand-primary-hover font-bold"
+            >
+              About Us
+            </router-link>
+            <router-link 
+              to="/contact" 
+              class="px-4 py-2 rounded-lg text-text-secondary hover:text-brand-primary hover:bg-brand-soft transition-colors duration-150" 
+              active-class="!bg-brand-light !text-brand-primary-hover font-bold"
+            >
+              Contact &amp; Visit
+            </router-link>
+
+            <div class="h-5 w-px bg-brand-border mx-1.5" aria-hidden="true"></div>
+
+            <!-- Primary Appointment / Inquiry CTA -->
+            <router-link 
+              to="/contact" 
+              class="px-4 py-2 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-active text-white text-xs lg:text-sm font-semibold shadow-brand-sm transition-colors duration-150 inline-flex items-center gap-1.5"
+            >
+              <Phone class="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Inquire / Visit</span>
+            </router-link>
+
+            <!-- Admin Portal Access Button -->
+            <router-link 
+              to="/admin" 
+              class="ml-1 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-white border border-brand-border text-brand-primary hover:bg-brand-soft hover:border-brand-primary/50 hover:text-brand-primary-hover transition-colors duration-150"
+              active-class="!bg-brand-primary !text-white !border-brand-primary"
+              title="Clinic Staff & Administration Portal"
+            >
+              <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
+              <Lock v-else class="w-3.5 h-3.5" aria-hidden="true" />
+              <span>{{ auth.isAuthenticated.value ? 'Admin' : 'Staff Login' }}</span>
+            </router-link>
+          </nav>
+
+          <!-- Mobile Menu Toggle Button -->
+          <div class="md:hidden flex items-center gap-2">
+            <a 
+              :href="`tel:${clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, '')}`"
+              class="p-2.5 rounded-lg bg-brand-soft text-brand-primary border border-brand-border hover:bg-brand-primary hover:text-white transition-colors"
+              aria-label="Call Clinic Directly"
+            >
+              <Phone class="h-5 w-5" aria-hidden="true" />
+            </a>
+            <button 
+              @click="isOpen = !isOpen" 
+              class="text-text-primary hover:text-brand-primary p-2.5 rounded-lg border border-transparent hover:border-brand-border hover:bg-brand-soft transition-colors cursor-pointer" 
+              :aria-expanded="isOpen"
+              aria-controls="mobile-navigation-menu"
+              aria-label="Toggle Navigation Menu"
+            >
+              <Menu v-if="!isOpen" class="h-6 w-6" aria-hidden="true" />
+              <X v-else class="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     
-    <!-- Mobile dropdown menu -->
+    <!-- Mobile Dropdown Menu -->
     <transition
       enter-active-class="transition duration-200 ease-out"
       enter-from-class="opacity-0 -translate-y-2"
@@ -105,63 +142,76 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-2"
     >
-      <div v-show="isOpen" class="md:hidden bg-white/95 backdrop-blur-xl border-t border-brand-border/50 shadow-2xl absolute w-full left-0">
-        <div class="px-6 pt-4 pb-6 space-y-2 text-left">
+      <nav 
+        v-show="isOpen" 
+        id="mobile-navigation-menu"
+        aria-label="Mobile Navigation"
+        class="md:hidden bg-white border-b border-brand-border shadow-xl absolute w-full left-0"
+      >
+        <div class="px-4 pt-3 pb-6 space-y-1.5 text-left">
           <router-link 
             to="/" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-4 py-3 rounded-xl text-sm font-heading font-semibold text-text-primary hover:bg-brand-soft hover:text-brand-primary transition-colors" 
+            exact-active-class="bg-brand-light text-brand-primary-hover font-bold"
           >
             Home
           </router-link>
           <router-link 
             to="/services" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-4 py-3 rounded-xl text-sm font-heading font-semibold text-text-primary hover:bg-brand-soft hover:text-brand-primary transition-colors" 
+            active-class="bg-brand-light text-brand-primary-hover font-bold"
           >
-            Services
+            Services &amp; Fee Schedule
           </router-link>
           <router-link 
             to="/about" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-4 py-3 rounded-xl text-sm font-heading font-semibold text-text-primary hover:bg-brand-soft hover:text-brand-primary transition-colors" 
+            active-class="bg-brand-light text-brand-primary-hover font-bold"
           >
-            About
+            About the Clinic
           </router-link>
           <router-link 
             to="/contact" 
             @click="isOpen = false" 
-            class="block px-5 py-3 rounded-2xl text-base font-bold text-neutral-800 hover:bg-brand-soft hover:text-brand-primary transition-colors" 
-            active-class="bg-brand-primary text-white shadow-brand-sm"
+            class="block px-4 py-3 rounded-xl text-sm font-heading font-semibold text-text-primary hover:bg-brand-soft hover:text-brand-primary transition-colors" 
+            active-class="bg-brand-light text-brand-primary-hover font-bold"
           >
-            Contact Us
+            Contact &amp; Directions
           </router-link>
 
-          <!-- Mobile Admin Portal Link -->
-          <router-link 
-            to="/admin" 
-            @click="isOpen = false" 
-            class="flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-bold text-brand-primary bg-brand-soft/80 border border-brand-border/70 hover:bg-brand-primary hover:text-white transition-colors"
-          >
-            <span class="flex items-center gap-2">
-              <ShieldCheck v-if="auth.isAuthenticated.value" class="w-4 h-4 text-emerald-600" />
-              <Lock v-else class="w-4 h-4" />
-              <span>{{ auth.isAuthenticated.value ? 'Admin Dashboard' : 'Admin Login' }}</span>
-            </span>
-            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-white text-brand-primary shadow-2xs">Portal</span>
-          </router-link>
+          <div class="pt-3 mt-2 border-t border-brand-border/60 grid grid-cols-2 gap-2.5">
+            <router-link 
+              to="/contact" 
+              @click="isOpen = false" 
+              class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-heading font-bold bg-brand-primary hover:bg-brand-primary-hover text-white shadow-brand-sm"
+            >
+              <Phone class="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Inquire Now</span>
+            </router-link>
+
+            <!-- Mobile Admin Portal Link -->
+            <router-link 
+              to="/admin" 
+              @click="isOpen = false" 
+              class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-brand-primary bg-white border border-brand-border hover:bg-brand-soft transition-colors"
+            >
+              <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
+              <Lock v-else class="w-3.5 h-3.5" aria-hidden="true" />
+              <span>{{ auth.isAuthenticated.value ? 'Admin Dashboard' : 'Staff Portal' }}</span>
+            </router-link>
+          </div>
         </div>
-      </div>
+      </nav>
     </transition>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { Menu, X, ShieldCheck, Lock } from '@lucide/vue'
+import { Menu, X, ShieldCheck, Lock, Phone, Clock } from '@lucide/vue'
 import { clinicStore, auth } from '../../stores/clinicStore.js'
 
 const isOpen = ref(false)

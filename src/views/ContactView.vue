@@ -1,30 +1,32 @@
 <template>
-  <div class="min-h-screen bg-white pt-24 pb-20 md:pt-32">
+  <div class="min-h-screen bg-brand-canvas pt-20 pb-20 md:pt-24">
     
-    <!-- Top Header Banner (Wireframe 3) -->
-    <div class="w-full bg-gradient-to-r from-brand-subtle via-white to-brand-subtle py-12 sm:py-16 border-b border-brand-border/40 mb-14 shadow-xs">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center sm:items-end gap-6">
-        <div class="space-y-3 text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border/70 text-brand-primary text-xs font-extrabold uppercase tracking-wider rounded-full">
-            <span>Direct Inquiries</span>
+    <!-- Top Architectural Page Header -->
+    <div class="w-full bg-white py-10 sm:py-14 border-b border-brand-border/70 mb-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div class="space-y-3 text-left max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-soft border border-brand-border text-brand-primary text-xs font-bold uppercase tracking-wider rounded-full">
+            <Phone class="w-3.5 h-3.5" />
+            <span>Direct Clinic Inquiries &amp; Visits</span>
           </div>
-          <h1 class="text-4xl sm:text-5xl font-extrabold text-neutral-950 tracking-tight">
-            Contact Us
+          <h1 class="font-heading text-3xl sm:text-5xl font-bold text-text-primary tracking-tight">
+            Contact &amp; Visit Our Clinic
           </h1>
-          <p class="text-text-secondary text-sm sm:text-base">
-            We are here to assist with checkup schedules, delivery inquiries, and concierge services.
+          <p class="text-text-secondary text-base leading-relaxed">
+            Reach out to our front desk and midwives for prenatal checkup schedules, PhilHealth maternity package inquiries, and 24/7 delivery admissions.
           </p>
         </div>
-        <div>
-          <div class="w-36 h-24 sm:w-48 sm:h-28 bg-neutral-100 rounded-2xl border border-brand-border/70 flex items-center justify-center shadow-card overflow-hidden relative group">
+
+        <div class="shrink-0 w-full sm:w-auto">
+          <div class="w-full sm:w-56 h-32 bg-brand-soft rounded-2xl border border-brand-border flex items-center justify-center shadow-card overflow-hidden relative">
             <img 
               src="../assets/images/clinic-facade.jpg" 
-              alt="Althea-Lapuz Lying In Clinic Baliwag Facade" 
-              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" 
+              alt="Althea-Lapuz Lying-In Clinic Baliwag Facade" 
+              class="w-full h-full object-cover object-center" 
             />
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <span class="text-[10px] font-extrabold uppercase text-white bg-neutral-950/70 px-2.5 py-1 rounded-full backdrop-blur-xs shadow-xs">
-                Baliwag Clinic
+            <div class="absolute bottom-2 left-2 right-2 flex items-center justify-center pointer-events-none">
+              <span class="text-[11px] font-bold uppercase text-white bg-text-primary/80 px-3 py-1 rounded-lg backdrop-blur-xs">
+                Baliwag, Bulacan Facility
               </span>
             </div>
           </div>
@@ -33,67 +35,76 @@
     </div>
 
     <!-- Main Container -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
       
-      <!-- Clinic Title & 24/7 Notice -->
-      <div class="space-y-3">
-        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold shadow-xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          {{ clinicStore.clinicInfo.operatingHoursDelivery }}
+      <!-- Clinic Identity & Operating Hours Strip -->
+      <div class="bg-white rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 text-left">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-soft text-brand-primary-hover border border-brand-border text-xs font-bold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>{{ clinicStore.clinicInfo.operatingHoursDelivery || clinicStore.clinicInfo.deliveryHours }}</span>
+          </div>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-text-primary tracking-tight">
+            {{ clinicStore.clinicInfo.name }}
+          </h2>
+          <p class="text-sm text-text-secondary flex items-center gap-1.5">
+            <MapPin class="w-4 h-4 text-brand-primary shrink-0" />
+            <span>{{ clinicStore.clinicInfo.address }}</span>
+          </p>
         </div>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-primary-dark tracking-tight">
-          {{ clinicStore.clinicInfo.name }}
-        </h2>
-        <p class="text-sm sm:text-base text-text-secondary font-medium">
-          {{ clinicStore.clinicInfo.address }}
-        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full lg:w-auto shrink-0">
+          <div class="p-3.5 rounded-xl bg-brand-subtle border border-brand-border">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-brand-primary block">Prenatal Checkups</span>
+            <span class="font-heading text-sm font-bold text-text-primary">{{ clinicStore.clinicInfo.checkupHours }}</span>
+          </div>
+          <div class="p-3.5 rounded-xl bg-brand-soft border border-brand-border">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-brand-primary-hover block">Maternity Admissions</span>
+            <span class="font-heading text-sm font-bold text-text-primary">{{ clinicStore.clinicInfo.deliveryHours }}</span>
+          </div>
+        </div>
       </div>
 
       <!-- Contact Cards (3 Columns: Phone, Email & Facebook) -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Phone Card -->
         <a 
-          :href="`tel:${clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, '')}`" 
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center"
-          :title="`Click to call ${clinicStore.clinicInfo.phonePrimary}`"
+          :href="`tel:${(clinicStore.clinicInfo.phonePrimary || clinicStore.clinicInfo.phone).replace(/[^0-9]/g, '')}`" 
+          class="bg-white p-7 rounded-2xl border border-brand-border hover:border-brand-primary flex flex-col items-start justify-between space-y-5 group shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer text-left"
+          :title="`Click to call ${clinicStore.clinicInfo.phonePrimary || clinicStore.clinicInfo.phone}`"
         >
-          <!-- Phone Icon -->
-          <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-2.5 text-brand-primary">
-            <Phone class="w-7 h-7" />
+          <div class="space-y-4 w-full">
+            <div class="w-12 h-12 rounded-xl bg-brand-soft border border-brand-border flex items-center justify-center text-brand-primary">
+              <Phone class="w-6 h-6" />
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Telephone / Mobile</span>
+              <h3 class="font-heading text-xl font-bold text-text-primary group-hover:text-brand-primary transition-colors mt-1 select-all font-mono">
+                {{ clinicStore.clinicInfo.phonePrimary || clinicStore.clinicInfo.phone }}
+              </h3>
+              <p class="text-xs text-text-secondary mt-1">
+                Direct line for checkup inquiries and 24/7 emergency labor admissions.
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-              Phone / Mobile
-            </h3>
-            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 select-all font-mono">
-              {{ clinicStore.clinicInfo.phonePrimary }}
-            </p>
-          </div>
-
-          <div v-if="phoneCopied" class="px-3.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full flex items-center gap-1.5 animate-pulse">
-            <Check class="w-3.5 h-3.5" />
-            <span>Number Copied!</span>
-          </div>
-          <span v-else class="text-xs font-bold text-brand-primary group-hover:underline flex items-center gap-1">
-            <span>Call or Text Directly →</span>
-          </span>
 
           <!-- Quick Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center gap-2 pt-1" @click.stop>
+          <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-brand-border/60 w-full" @click.stop>
             <a 
-              :href="`tel:${clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, '')}`"
-              class="px-3.5 py-1.5 bg-brand-primary text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-brand-primary-hover hover:shadow-brand transition-all flex items-center gap-1 cursor-pointer"
+              :href="`tel:${(clinicStore.clinicInfo.phonePrimary || clinicStore.clinicInfo.phone).replace(/[^0-9]/g, '')}`"
+              class="px-3.5 py-2 bg-brand-primary text-white text-xs font-heading font-bold rounded-lg hover:bg-brand-primary-hover transition-colors inline-flex items-center gap-1.5 cursor-pointer"
             >
-              <Phone class="w-3 h-3" />
+              <Phone class="w-3.5 h-3.5" />
               <span>Call Now</span>
             </a>
             <button 
               @click="copyPhone" 
               type="button"
-              class="px-3.5 py-1.5 bg-brand-soft text-brand-primary border border-brand-border/80 text-[11px] font-bold rounded-full hover:bg-brand-primary hover:text-white transition-all flex items-center gap-1 cursor-pointer"
+              class="px-3.5 py-2 bg-white text-brand-primary border border-brand-border text-xs font-heading font-bold rounded-lg hover:bg-brand-soft hover:border-brand-primary/50 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
             >
-              <Copy class="w-3 h-3" />
-              <span>{{ phoneCopied ? 'Copied! ✓' : 'Copy' }}</span>
+              <Check v-if="phoneCopied" class="w-3.5 h-3.5 text-emerald-600" />
+              <Copy v-else class="w-3.5 h-3.5" />
+              <span>{{ phoneCopied ? 'Number Copied' : 'Copy Number' }}</span>
             </button>
           </div>
         </a>
@@ -101,56 +112,51 @@
         <!-- Email Card -->
         <div 
           @click="openEmail"
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center relative"
+          class="bg-white p-7 rounded-2xl border border-brand-border hover:border-brand-primary flex flex-col items-start justify-between space-y-5 group shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer text-left"
           title="Click to compose an email in Gmail or copy address"
         >
-          <!-- Authentic Official Gmail Logo -->
-          <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-2.5">
-            <img src="../assets/images/gmail-logo.png" alt="Gmail" class="w-full h-full object-contain" />
+          <div class="space-y-4 w-full">
+            <!-- Authentic Official Gmail Logo -->
+            <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center shadow-xs p-2">
+              <img src="../assets/images/gmail-logo.png" alt="Gmail" class="w-full h-full object-contain" />
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Gmail Support</span>
+              <h3 class="text-sm sm:text-base font-bold text-brand-primary mt-1 break-all select-all font-mono">
+                {{ clinicStore.clinicInfo.email }}
+              </h3>
+              <p class="text-xs text-text-secondary mt-1">
+                Send questions regarding PhilHealth requirements, packages, or medical records.
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-              Gmail Support
-            </h3>
-            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 break-all select-all font-mono">
-              {{ clinicStore.clinicInfo.email }}
-            </p>
-          </div>
-
-          <!-- Dynamic Status Notification -->
-          <div v-if="copied" class="px-3.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full flex items-center gap-1.5 animate-pulse">
-            <Check class="w-3.5 h-3.5" />
-            <span>Email Copied & Opening Gmail!</span>
-          </div>
-          <span v-else class="text-xs font-bold text-brand-primary group-hover:underline flex items-center gap-1">
-            <span>Send Email via Gmail →</span>
-          </span>
 
           <!-- Quick Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center gap-2 pt-1" @click.stop>
+          <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-brand-border/60 w-full" @click.stop>
             <a 
               :href="gmailUrl" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="px-3.5 py-1.5 bg-[#EA4335] text-white text-[11px] font-bold rounded-full shadow-xs hover:bg-[#D93025] transition-all flex items-center gap-1.5 cursor-pointer"
+              class="px-3.5 py-2 bg-brand-primary text-white text-xs font-heading font-bold rounded-lg hover:bg-brand-primary-hover transition-colors inline-flex items-center gap-1.5 cursor-pointer"
             >
-              <span>Compose</span>
-              <ExternalLink class="w-3 h-3" />
+              <span>Compose in Gmail</span>
+              <ExternalLink class="w-3.5 h-3.5" />
             </a>
             <button 
               @click="copyEmail" 
               type="button"
-              class="px-3.5 py-1.5 bg-brand-soft text-brand-primary border border-brand-border/80 text-[11px] font-bold rounded-full hover:bg-brand-primary hover:text-white transition-all flex items-center gap-1 cursor-pointer"
+              class="px-3.5 py-2 bg-white text-brand-primary border border-brand-border text-xs font-heading font-bold rounded-lg hover:bg-brand-soft hover:border-brand-primary/50 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
             >
-              <Copy class="w-3 h-3" />
-              <span>{{ copied ? 'Copied! ✓' : 'Copy' }}</span>
+              <Check v-if="copied" class="w-3.5 h-3.5 text-emerald-600" />
+              <Copy v-else class="w-3.5 h-3.5" />
+              <span>{{ copied ? 'Copied' : 'Copy' }}</span>
             </button>
             <a 
               :href="mailtoUrl"
-              class="px-3 py-1.5 bg-neutral-100 text-neutral-700 hover:bg-neutral-200 text-[11px] font-bold rounded-full transition-colors flex items-center gap-1"
+              class="px-3 py-2 bg-white border border-brand-border text-text-secondary hover:text-brand-primary hover:bg-brand-soft text-xs font-heading font-semibold rounded-lg transition-colors"
               title="Open default system mail client"
             >
-              <span>App</span>
+              <span>Mail App</span>
             </a>
           </div>
         </div>
@@ -160,57 +166,118 @@
           :href="clinicStore.clinicInfo.facebookUrl" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="bg-gradient-to-br from-brand-subtle via-white to-white p-8 rounded-3xl border border-brand-border/60 hover:border-brand-primary flex flex-col items-center justify-center space-y-4 group shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer text-center"
+          class="bg-white p-7 rounded-2xl border border-brand-border hover:border-brand-primary flex flex-col items-start justify-between space-y-5 group shadow-card hover:shadow-card-hover transition-all duration-200 cursor-pointer text-left"
           title="Visit Althea-Lapuz Lying-In Clinic on Facebook"
         >
-          <!-- Authentic Official Facebook Logo -->
-          <div class="w-14 h-14 rounded-2xl bg-white border border-neutral-200/80 group-hover:scale-110 transition-transform flex items-center justify-center shadow-md p-1.5">
-            <svg class="w-full h-full" viewBox="0 0 24 24">
-              <path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.415 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.585 23.094 24 18.1 24 12.073z"/>
-              <path fill="#FFFFFF" d="M16.671 15.563l.532-3.49h-3.328v-2.264c0-.956.465-1.886 1.956-1.886h1.491V4.952s-1.374-.236-2.686-.236c-2.741 0-4.533 1.672-4.533 4.697v2.66H7.078v3.49h3.047V24c.618.097 1.25.148 1.875.148s1.257-.051 1.875-.148v-8.437h2.796z"/>
-            </svg>
+          <div class="space-y-4 w-full">
+            <!-- Authentic Official Facebook Logo -->
+            <div class="w-12 h-12 rounded-xl bg-white border border-brand-border flex items-center justify-center shadow-xs p-2">
+              <svg class="w-full h-full" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#1877F2" d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.415 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796V24C19.585 23.094 24 18.1 24 12.073z"/>
+                <path fill="#FFFFFF" d="M16.671 15.563l.532-3.49h-3.328v-2.264c0-.956.465-1.886 1.956-1.886h1.491V4.952s-1.374-.236-2.686-.236c-2.741 0-4.533 1.672-4.533 4.697v2.66H7.078v3.49h3.047V24c.618.097 1.25.148 1.875.148s1.257-.051 1.875-.148v-8.437h2.796z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Official Social Page</span>
+              <h3 class="font-heading text-xl font-bold text-text-primary group-hover:text-brand-primary transition-colors mt-1">
+                Facebook Page
+              </h3>
+              <p class="text-xs text-text-secondary mt-1">
+                Follow announcements, health advisories, and message us on Facebook.
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-bold text-neutral-900 group-hover:text-brand-primary transition-colors">
-              Facebook Page
-            </h3>
-            <p class="text-xs sm:text-sm text-text-secondary font-medium mt-1 tracking-wide uppercase">
-              {{ clinicStore.clinicInfo.name }}
-            </p>
+
+          <div class="pt-2 border-t border-brand-border/60 w-full">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white border border-brand-border text-brand-primary group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary text-xs font-heading font-bold transition-colors">
+              <span>Visit Official Facebook Page</span>
+              <ExternalLink class="w-3.5 h-3.5" />
+            </span>
           </div>
-          <span class="text-xs font-bold text-[#1877F2] group-hover:underline flex items-center gap-1">
-            <span>Visit Facebook Page</span>
-            <ExternalLink class="w-3.5 h-3.5" />
-          </span>
         </a>
       </div>
 
-      <!-- Medical Concierge In-Person Notice Banner -->
-      <div class="w-full bg-brand-soft/80 rounded-2xl p-6 sm:p-7 border border-brand-border/70 text-sm text-brand-primary-dark font-medium leading-relaxed max-w-3xl mx-auto shadow-card flex items-start gap-4 text-left">
-        <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
-          <Sparkles class="w-5 h-5" />
+      <!-- Patient Visit Preparation & In-Person Concierge Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left">
+        <!-- In-Person Medical Concierge Notice -->
+        <div class="lg:col-span-5 bg-brand-subtle rounded-2xl p-6 sm:p-7 border border-brand-border shadow-card flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-primary text-white flex items-center justify-center">
+              <Clock class="w-5 h-5" />
+            </div>
+            <h3 class="font-heading text-lg font-bold text-text-primary">
+              Walk-In &amp; In-Person Medical Concierge
+            </h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              For direct in-person assistance, our front desk is located at <strong class="text-text-primary">{{ clinicStore.clinicInfo.address }}</strong>. Maternity delivery admissions operate <strong class="text-text-primary">{{ clinicStore.clinicInfo.deliveryHours }}</strong>, and outpatient prenatal checkups are open <strong class="text-text-primary">{{ clinicStore.clinicInfo.checkupHours }}</strong>.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-brand-border text-xs font-semibold text-brand-primary">
+            No online pre-payment required • Direct clinic assessment
+          </div>
         </div>
-        <div>
-          <h4 class="text-sm font-extrabold uppercase tracking-wider text-brand-primary mb-1">
-            In-Person Medical Concierge
-          </h4>
-          <p class="text-xs sm:text-sm text-text-secondary">
-            For direct in-person assistance, our Medical Concierge desk is located at {{ clinicStore.clinicInfo.address }}, open {{ clinicStore.clinicInfo.operatingHoursDelivery }}, with prenatal checkups available {{ clinicStore.clinicInfo.operatingHoursPrenatal }}.
-          </p>
+
+        <!-- What to Bring Checklist (Verified Clinic Guidelines) -->
+        <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-7 border border-brand-border shadow-card space-y-4">
+          <div class="flex items-center gap-2.5">
+            <FileCheck class="w-5 h-5 text-brand-primary shrink-0" />
+            <h3 class="font-heading text-lg font-bold text-text-primary">
+              What to Bring for Your Clinic Visit
+            </h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+            <div class="p-4 rounded-xl bg-brand-canvas border border-brand-border space-y-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-primary block">For Prenatal Checkups</span>
+              <ul class="text-xs text-text-secondary space-y-1.5">
+                <li class="flex items-start gap-2">
+                  <Check class="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" />
+                  <span>Maternity / Prenatal Booklet (Mother &amp; Child Book)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check class="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" />
+                  <span>Valid Government ID</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check class="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" />
+                  <span>Previous laboratory &amp; ultrasound results (if available)</span>
+                </li>
+              </ul>
+            </div>
+            <div class="p-4 rounded-xl bg-brand-canvas border border-brand-border space-y-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-accent block">For Delivery Admission (NSD)</span>
+              <ul class="text-xs text-text-secondary space-y-1.5">
+                <li class="flex items-start gap-2">
+                  <Check class="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" />
+                  <span>Complete prenatal records &amp; ultrasound results</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check class="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" />
+                  <span>PhilHealth Member Data Record (MDR) &amp; ID (if availing NBB)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <Check class="w-3.5 h-3.5 text-brand-primary shrink-0 mt-0.5" />
+                  <span>Newborn clothes, receiving blankets &amp; maternal pads</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- MAP Section -->
-      <div class="space-y-4 pt-4 max-w-3xl mx-auto text-left">
-        <div class="flex items-center justify-between">
-          <h3 class="text-sm sm:text-base font-extrabold text-neutral-950 uppercase tracking-wide">
-            MAP: Althea-Lapuz Lying In Clinic
-          </h3>
+      <div class="space-y-4 pt-2 text-left">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-primary">Location &amp; Directions</span>
+            <h3 class="font-heading text-xl font-bold text-text-primary">
+              Interactive Clinic Map — Tilapayong, Baliwag, Bulacan
+            </h3>
+          </div>
           <a 
             href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Daan+Ramon+Magsaysay+Tilapayong+Baliwag+Bulacan" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-xs font-bold text-brand-primary hover:underline inline-flex items-center gap-1"
+            class="px-4 py-2 rounded-xl bg-white border border-brand-border text-xs font-heading font-bold text-brand-primary hover:bg-brand-soft inline-flex items-center gap-1.5 transition-colors"
           >
             <span>Open in Google Maps</span>
             <ExternalLink class="w-3.5 h-3.5" />
@@ -221,7 +288,7 @@
           href="https://www.google.com/maps/search/?api=1&query=Althea-Lapuz+Lying-In+Clinic+332+Daan+Ramon+Magsaysay+Tilapayong+Baliwag+Bulacan" 
           target="_blank" 
           rel="noopener noreferrer"
-          class="block w-full h-80 sm:h-96 bg-brand-soft rounded-3xl border border-brand-border/60 relative overflow-hidden shadow-card group cursor-pointer"
+          class="block w-full h-80 sm:h-96 bg-brand-soft rounded-2xl border border-brand-border relative overflow-hidden shadow-card group cursor-pointer"
           title="Click to open Google Maps for directions to Althea-Lapuz Lying-In Clinic"
         >
           <!-- Google Maps iframe with pointer-events-none so click passes through to the anchor tag -->
@@ -233,14 +300,15 @@
             title="Althea-Lapuz Lying In Clinic Location Map"
           ></iframe>
 
-          <!-- Central Map Pin Overlay with interactive hover effect -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center bg-neutral-950/10 group-hover:bg-neutral-950/20 transition-colors">
-            <div class="w-16 h-16 sm:w-18 sm:h-18 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-xl backdrop-blur-xs border-4 border-white group-hover:scale-110 transition-transform duration-300">
-              <MapPin class="w-8 h-8 sm:w-9 sm:h-9 text-white fill-current" />
+          <!-- Central Map Pin Overlay with vector icon -->
+          <div class="absolute inset-0 flex flex-col items-center justify-center bg-text-primary/10 group-hover:bg-text-primary/20 transition-colors p-4">
+            <div class="w-14 h-14 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-lg border-4 border-white group-hover:scale-105 transition-transform duration-200">
+              <MapPin class="w-6 h-6 text-white" />
             </div>
-            <div class="mt-3 px-4 py-1.5 bg-white/95 backdrop-blur-md rounded-full border border-brand-border/80 text-xs font-bold text-brand-primary-dark shadow-md group-hover:bg-brand-primary group-hover:text-white transition-all duration-300 flex items-center gap-1.5">
-              <span>📍 Click map to get directions in Google Maps</span>
-              <ExternalLink class="w-3 h-3" />
+            <div class="mt-3 px-4 py-2 bg-white/95 backdrop-blur-sm rounded-xl border border-brand-border text-xs font-heading font-bold text-text-primary shadow-md group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary transition-colors duration-200 inline-flex items-center gap-2">
+              <MapPin class="w-3.5 h-3.5 text-brand-primary group-hover:text-white shrink-0" />
+              <span>Click map to get directions in Google Maps</span>
+              <ExternalLink class="w-3.5 h-3.5 shrink-0" />
             </div>
           </div>
         </a>
@@ -252,7 +320,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { Phone, Mail, MapPin, Sparkles, ExternalLink, Check, Copy } from '@lucide/vue'
+import { Phone, MapPin, Clock, FileCheck, ExternalLink, Check, Copy } from '@lucide/vue'
 import { clinicStore } from '../stores/clinicStore.js'
 
 const subject = computed(() => encodeURIComponent(`Inquiry - ${clinicStore.clinicInfo.name}`))
@@ -264,7 +332,8 @@ const phoneCopied = ref(false)
 
 const copyPhone = () => {
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(clinicStore.clinicInfo.phonePrimary.replace(/[^0-9]/g, ''))
+    const rawPhone = (clinicStore.clinicInfo.phonePrimary || clinicStore.clinicInfo.phone).replace(/[^0-9]/g, '')
+    navigator.clipboard.writeText(rawPhone)
     phoneCopied.value = true
     setTimeout(() => {
       phoneCopied.value = false
@@ -287,7 +356,3 @@ const openEmail = () => {
   window.open(gmailUrl.value, '_blank')
 }
 </script>
-
-
-
-

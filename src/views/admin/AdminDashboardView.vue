@@ -1,31 +1,31 @@
 <template>
-  <div class="min-h-screen bg-neutral-50 text-neutral-900 flex flex-col antialiased selection:bg-brand-light selection:text-brand-primary-dark">
+  <div class="min-h-screen bg-brand-canvas text-text-primary flex flex-col antialiased selection:bg-brand-light selection:text-brand-primary-dark">
     
     <!-- Top Admin Header -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-border/60 shadow-xs">
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-border shadow-xs">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 sm:h-20">
           
           <!-- Brand & Role Indicator -->
           <router-link to="/" class="flex items-center gap-3 sm:gap-4 group cursor-pointer" title="Return to Public Website">
-            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full p-0.5 bg-white ring-2 ring-brand-primary group-hover:scale-105 transition-transform flex-shrink-0 shadow-xs">
+            <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl p-1 bg-white border border-brand-border group-hover:border-brand-primary transition-colors shrink-0 shadow-xs">
               <img 
                 src="../../assets/images/althea-lapuz-logo.png" 
                 alt="Clinic Logo" 
-                class="w-full h-full object-contain rounded-full"
+                class="w-full h-full object-contain rounded-lg"
               />
             </div>
             <div class="text-left">
               <div class="flex items-center gap-2">
-                <span class="text-xs sm:text-sm font-extrabold uppercase text-neutral-950 tracking-wider group-hover:text-brand-primary transition-colors">
+                <span class="font-heading text-xs sm:text-sm font-bold uppercase text-text-primary tracking-wider group-hover:text-brand-primary transition-colors">
                   Althea-Lapuz Clinic
                 </span>
-                <span class="px-2 py-0.5 rounded-full bg-brand-soft border border-brand-border/70 text-[10px] font-extrabold text-brand-primary uppercase">
+                <span class="px-2 py-0.5 rounded-full bg-brand-soft border border-brand-border text-[10px] font-bold text-brand-primary uppercase">
                   Admin Panel
                 </span>
               </div>
               <p class="text-[11px] text-text-muted hidden sm:block">
-                In-Memory Live Editor • Real-time synchronization
+                Live Synced Editor • Real-time synchronization
               </p>
             </div>
           </router-link>
@@ -36,8 +36,8 @@
             <button
               @click="handleResetDefaults"
               type="button"
-              class="px-3 sm:px-4 py-2 rounded-xl border border-neutral-300 hover:border-brand-primary text-neutral-700 hover:text-brand-primary hover:bg-brand-soft/50 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
-              title="Reset all in-memory changes back to official default values"
+              class="px-3 sm:px-4 py-2 rounded-xl border border-brand-border hover:border-brand-primary text-text-secondary hover:text-brand-primary hover:bg-brand-soft/50 text-xs font-heading font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              title="Reset all changes back to official default values"
             >
               <RotateCcw class="w-3.5 h-3.5" />
               <span class="hidden sm:inline">Reset Defaults</span>
@@ -47,7 +47,7 @@
             <router-link
               to="/"
               @click="saveClinicStore"
-              class="px-3 sm:px-4 py-2 rounded-xl bg-white border border-brand-border/80 text-brand-primary hover:bg-brand-soft text-xs font-bold transition-all flex items-center gap-1.5 shadow-2xs"
+              class="px-3 sm:px-4 py-2 rounded-xl bg-white border border-brand-border text-brand-primary hover:bg-brand-soft text-xs font-heading font-bold transition-all flex items-center gap-1.5"
             >
               <ExternalLink class="w-3.5 h-3.5" />
               <span class="hidden sm:inline">Preview Live Site</span>
@@ -57,7 +57,7 @@
             <button
               @click="handleLogout"
               type="button"
-              class="px-3 sm:px-4 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-brand-sm cursor-pointer"
+              class="px-3 sm:px-4 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-heading font-bold transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <LogOut class="w-3.5 h-3.5" />
               <span class="hidden sm:inline">Sign Out</span>
@@ -69,9 +69,9 @@
     </header>
 
     <!-- Live Synced Mode Banner Reminder -->
-    <div class="bg-gradient-to-r from-emerald-500/10 via-brand-soft to-emerald-500/10 border-b border-brand-border/50 py-2.5 px-4 text-center">
-      <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 text-xs text-neutral-800 font-medium">
-        <Sparkles class="w-4 h-4 text-brand-primary flex-shrink-0 animate-pulse" />
+    <div class="bg-brand-soft border-b border-brand-border py-2.5 px-4 text-center">
+      <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 text-xs text-text-primary font-medium">
+        <CheckCircle2 class="w-4 h-4 text-brand-primary shrink-0" />
         <span>
           <strong>Live Synced Mode</strong>: All updates are automatically saved and synchronize across all pages, open tabs, and browser reloads.
         </span>
@@ -92,7 +92,8 @@
       >
         <div 
           v-if="toastMessage" 
-          class="fixed bottom-6 right-6 z-50 px-5 py-3 rounded-2xl bg-neutral-900 text-white shadow-2xl border border-brand-primary/40 flex items-center gap-3 text-xs font-bold"
+          role="status"
+          class="fixed bottom-6 right-6 z-50 px-5 py-3 rounded-xl bg-brand-primary-dark text-white shadow-xl border border-brand-border/40 flex items-center gap-3 text-xs font-bold"
         >
           <CheckCircle2 class="w-4 h-4 text-emerald-400" />
           <span>{{ toastMessage }}</span>
@@ -100,16 +101,16 @@
       </transition>
 
       <!-- Navigation Tabs -->
-      <div class="border-b border-neutral-200 bg-white rounded-2xl p-2 shadow-xs flex flex-wrap gap-1.5">
+      <div class="border border-brand-border bg-white rounded-2xl p-2 shadow-xs flex flex-wrap gap-1.5">
         <button
           v-for="tab in tabs"
           :key="tab.id"
           @click="activeTab = tab.id"
           :class="[
-            'px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer',
+            'px-4 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold transition-all flex items-center gap-2 cursor-pointer',
             activeTab === tab.id
-              ? 'bg-brand-primary text-white shadow-brand-sm'
-              : 'text-neutral-700 hover:text-brand-primary hover:bg-brand-soft'
+              ? 'bg-brand-primary text-white shadow-xs'
+              : 'text-text-secondary hover:text-brand-primary hover:bg-brand-soft'
           ]"
         >
           <component :is="tab.icon" class="w-4 h-4" />
@@ -117,7 +118,7 @@
           <span 
             v-if="tab.badge" 
             :class="[
-              'px-2 py-0.5 rounded-full text-[10px] font-extrabold',
+              'px-2 py-0.5 rounded-full text-[10px] font-bold',
               activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-brand-soft text-brand-primary'
             ]"
           >
@@ -128,15 +129,15 @@
 
       <!-- ================= TAB 1: CLINIC INFO ================= -->
       <div v-if="activeTab === 'info'" class="space-y-6 text-left">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
-          <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border shadow-card space-y-6">
+          <div class="flex items-center justify-between border-b border-brand-border pb-4">
             <div>
-              <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">Clinic Identity & Contact Information</h2>
+              <h2 class="font-heading text-xl sm:text-2xl font-bold text-text-primary">Clinic Identity &amp; Contact Information</h2>
               <p class="text-xs sm:text-sm text-text-secondary mt-1">Updates clinic name, address, contact numbers, email, and social links across the site.</p>
             </div>
             <button 
               @click="triggerToast('Clinic Information updated successfully!')"
-              class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all"
+              class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-heading font-bold transition-all cursor-pointer"
             >
               Save Changes
             </button>
@@ -267,7 +268,7 @@
 
       <!-- ================= TAB 2: MISSION & VISION ================= -->
       <div v-else-if="activeTab === 'mission'" class="space-y-6 text-left">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
             <div>
               <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">Mission, Vision & Core Values</h2>
@@ -344,7 +345,7 @@
       <div v-else-if="activeTab === 'pricing'" class="space-y-6 text-left">
         
         <!-- General Services & Family Planning -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
             <div>
               <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">General Consultation & Family Planning Fees</h2>
@@ -436,7 +437,7 @@
         </div>
 
         <!-- PhilHealth Packages -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
             <div>
               <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">PhilHealth Package Case Rates</h2>
@@ -500,7 +501,7 @@
 
       <!-- ================= TAB 4: PHARMACY & SUPPLIES ================= -->
       <div v-else-if="activeTab === 'inventory'" class="space-y-6 text-left">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-brand-border/40 pb-4">
             <div>
@@ -517,7 +518,7 @@
               />
               <button 
                 @click="showAddInventoryModal = true"
-                class="px-4 py-2 rounded-xl bg-brand-soft hover:bg-brand-soft/80 text-brand-primary text-xs font-bold border border-brand-border/70 flex items-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
+                class="px-4 py-2 rounded-xl bg-white hover:bg-brand-soft text-brand-primary text-xs font-bold border border-brand-border hover:border-brand-primary/50 flex items-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
               >
                 <Plus class="w-3.5 h-3.5" />
                 <span>Add Item</span>
@@ -536,8 +537,8 @@
             <button
               @click="inventoryType = 'medicines'"
               :class="[
-                'px-4 py-2 rounded-xl text-xs font-bold transition-all',
-                inventoryType === 'medicines' ? 'bg-brand-soft text-brand-primary border border-brand-border' : 'bg-neutral-100 text-neutral-600'
+                'px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer',
+                inventoryType === 'medicines' ? 'bg-brand-light text-brand-primary-hover border border-brand-primary/40' : 'bg-white border border-brand-border text-text-secondary hover:bg-brand-soft hover:text-brand-primary'
               ]"
             >
               Essential Medicines ({{ clinicStore.pricing.medicinesList.length }})
@@ -545,8 +546,8 @@
             <button
               @click="inventoryType = 'supplies'"
               :class="[
-                'px-4 py-2 rounded-xl text-xs font-bold transition-all',
-                inventoryType === 'supplies' ? 'bg-brand-soft text-brand-primary border border-brand-border' : 'bg-neutral-100 text-neutral-600'
+                'px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer',
+                inventoryType === 'supplies' ? 'bg-brand-light text-brand-primary-hover border border-brand-primary/40' : 'bg-white border border-brand-border text-text-secondary hover:bg-brand-soft hover:text-brand-primary'
               ]"
             >
               Medical Supplies ({{ clinicStore.pricing.suppliesList.length }})
@@ -618,7 +619,7 @@
 
       <!-- ================= TAB 5: CHATBOT FAQS ================= -->
       <div v-else-if="activeTab === 'chatbot'" class="space-y-6 text-left">
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-brand-border/40 pb-4 gap-4">
             <div>
               <div class="flex items-center gap-3">
@@ -637,7 +638,7 @@
             <div class="flex items-center gap-2.5 w-full sm:w-auto">
               <button 
                 @click="openAddFaqModal"
-                class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-brand-soft hover:bg-brand-soft/80 text-brand-primary text-xs font-bold border border-brand-border/70 flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
+                class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-white hover:bg-brand-soft text-brand-primary text-xs font-bold border border-brand-border hover:border-brand-primary/50 flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs active:scale-95"
               >
                 <Plus class="w-4 h-4" />
                 <span>Add FAQ</span>
@@ -762,7 +763,7 @@
       v-if="showAddInventoryModal" 
       class="fixed inset-0 z-50 bg-neutral-950/60 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 text-left border border-brand-border/60">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 text-left border border-brand-border/60">
         <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
           <h3 class="text-base font-extrabold text-neutral-950">
             Add New {{ inventoryType === 'medicines' ? 'Medicine' : 'Medical Supply' }}
@@ -828,7 +829,7 @@
       v-if="showAddFaqModal" 
       class="fixed inset-0 z-50 bg-neutral-950/60 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-5 text-left border border-brand-border/60">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-5 text-left border border-brand-border/60">
         <div class="flex items-center justify-between border-b border-neutral-100 pb-3">
           <div>
             <div class="flex items-center gap-2 flex-wrap">

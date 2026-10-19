@@ -5,15 +5,17 @@
     <Transition name="chat-window">
       <div 
         v-show="isOpen" 
-        class="bg-white w-[350px] max-w-[calc(100vw-2rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl shadow-2xl flex flex-col mb-4 border border-brand-border/60 overflow-hidden"
+        class="bg-white w-[360px] max-w-[calc(100vw-2rem)] h-[510px] max-h-[calc(100vh-6rem)] rounded-2xl shadow-xl flex flex-col mb-3 border border-brand-border overflow-hidden"
+        role="dialog"
+        aria-label="Clinic Assistant Chat"
       >
         <ChatbotHeader @close="toggleChat" />
 
         <!-- Messages Area -->
-        <div class="flex-1 overflow-y-auto p-4 scroll-smooth bg-white" ref="messagesContainer">
+        <div class="flex-1 overflow-y-auto p-4 scroll-smooth bg-brand-canvas" ref="messagesContainer">
           
           <ChatMessage 
-            text="Hello! 👋 How can we help you today with Althea-Lapuz Lying In Clinic?" 
+            text="Hello! Welcome to Althea-Lapuz Lying-In Clinic. How can we assist you with our services, operating hours, or maternity packages today?" 
             :isUser="false" 
           />
 
@@ -25,10 +27,10 @@
           </template>
 
           <div v-if="isTyping" class="flex justify-start mb-4">
-            <div class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0 mr-2 mt-auto text-white">
+            <div class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center shrink-0 mr-2 mt-auto text-white">
               <Bot class="w-4 h-4 text-white" />
             </div>
-            <div class="bg-brand-soft border border-brand-border/40 px-4 py-3 rounded-2xl rounded-bl-none flex gap-1 items-center">
+            <div class="bg-white border border-brand-border px-4 py-3 rounded-2xl rounded-bl-none flex gap-1 items-center">
               <span class="w-2 h-2 bg-brand-primary rounded-full animate-bounce"></span>
               <span class="w-2 h-2 bg-brand-primary rounded-full animate-bounce" style="animation-delay: 0.2s"></span>
               <span class="w-2 h-2 bg-brand-primary rounded-full animate-bounce" style="animation-delay: 0.4s"></span>
@@ -45,19 +47,19 @@
         </div>
 
         <!-- Input Area -->
-        <div class="p-3 border-t border-brand-border/40 bg-brand-soft/30">
+        <div class="p-3 border-t border-brand-border bg-white">
           <form @submit.prevent="handleInputSubmit" class="flex gap-2">
             <input 
               v-model="userInput" 
               type="text" 
-              placeholder="Type a message..." 
-              class="flex-1 bg-white border border-brand-border/60 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all text-neutral-900 placeholder:text-neutral-400"
+              placeholder="Ask about hours, prices, PhilHealth..." 
+              class="flex-1 bg-brand-canvas border border-brand-border rounded-xl px-3.5 py-2 text-xs sm:text-sm focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/30 transition-all text-text-primary placeholder:text-text-muted"
               aria-label="Type a message"
             />
             <button 
               type="submit" 
               :disabled="!userInput.trim() || isTyping"
-              class="bg-brand-primary text-white p-2.5 rounded-full hover:bg-brand-primary-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-xs"
+              class="bg-brand-primary text-white p-2.5 rounded-xl hover:bg-brand-primary-hover disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-xs cursor-pointer"
               aria-label="Send message"
             >
               <Send class="w-4 h-4" />
@@ -67,28 +69,31 @@
       </div>
     </Transition>
 
-    <!-- Floating Toggle Button & Speech Bubble (Wireframe 3) -->
+    <!-- Floating Toggle Button & Speech Bubble -->
     <div class="flex flex-col items-end gap-2">
       <!-- Speech Bubble -->
-      <div 
+      <button 
         v-if="!isOpen" 
-        class="bg-white text-neutral-800 px-3.5 py-2 rounded-xl text-xs font-semibold shadow-lg border border-brand-border/80 relative animate-pulse cursor-pointer hover:border-brand-primary transition-colors"
+        type="button"
+        class="bg-white text-text-primary px-3.5 py-2 rounded-xl text-xs font-medium shadow-md border border-brand-border relative cursor-pointer hover:border-brand-primary transition-colors text-left"
         @click="toggleChat"
       >
-        <p class="leading-snug">Need Help?<br><span class="text-brand-primary font-bold">Ask your AI Assistant</span></p>
-        <div class="absolute -bottom-1.5 right-5 w-3 h-3 bg-white border-r border-b border-brand-border/80 transform rotate-45"></div>
-      </div>
+        <span class="block leading-snug text-text-secondary">Have a question?</span>
+        <span class="text-brand-primary font-heading font-bold">Ask Clinic Assistant</span>
+        <span class="absolute -bottom-1.5 right-5 w-3 h-3 bg-white border-r border-b border-brand-border transform rotate-45"></span>
+      </button>
 
-      <!-- Robot Button -->
+      <!-- Assistant Toggle Button -->
       <button 
+        type="button"
         @click="toggleChat"
-        class="w-14 h-14 bg-brand-primary text-white rounded-2xl shadow-xl shadow-brand-primary/25 flex items-center justify-center hover:bg-brand-primary-hover hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none border-2 border-white"
-        :aria-label="isOpen ? 'Close chat' : 'Open chat'"
+        class="w-14 h-14 bg-brand-primary text-white rounded-2xl shadow-lg flex items-center justify-center hover:bg-brand-primary-hover active:scale-95 transition-all duration-200 border-2 border-white cursor-pointer"
+        :aria-label="isOpen ? 'Close clinic assistant chat' : 'Open clinic assistant chat'"
         :aria-expanded="isOpen"
       >
         <Transition name="fade" mode="out-in">
           <X v-if="isOpen" class="w-6 h-6" />
-          <Bot v-else class="w-7 h-7" />
+          <Bot v-else class="w-6 h-6" />
         </Transition>
       </button>
     </div>
