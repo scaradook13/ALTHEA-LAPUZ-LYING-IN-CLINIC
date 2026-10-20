@@ -436,6 +436,67 @@
           </div>
         </div>
 
+        <!-- Antenatal Care Packages -->
+        <div v-if="clinicStore.pricing.antenatalCarePackages && clinicStore.pricing.antenatalCarePackages.length" class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
+          <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
+            <div>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-neutral-950">Antenatal Care Packages (ANC)</h2>
+              <p class="text-xs sm:text-sm text-text-secondary mt-1">Configure prenatal check-ups (ANC01) and labor watch monitoring (ANC02).</p>
+            </div>
+            <button 
+              @click="triggerToast('Antenatal care package rates updated!')"
+              class="px-5 py-2 rounded-xl bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-bold shadow-brand-sm transition-all"
+            >
+              Save Changes
+            </button>
+          </div>
+
+          <div class="space-y-6">
+            <div 
+              v-for="pkg in clinicStore.pricing.antenatalCarePackages" 
+              :key="pkg.code"
+              class="p-6 rounded-2xl bg-neutral-50 border border-neutral-200 space-y-4"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-3">
+                <div class="flex items-center gap-2.5">
+                  <span :class="getPackageBadgeClass(pkg.code)">{{ formatPackageCode(pkg.code) }}</span>
+                  <span class="text-sm font-extrabold text-neutral-950">{{ pkg.title }}</span>
+                </div>
+                <span class="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+                  With PhilHealth: No Balance Billing (₱0 Out of Pocket)
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-[11px] font-bold uppercase text-neutral-600 mb-1">Official Case Rate</label>
+                  <input 
+                    v-model="pkg.caseRate" 
+                    type="text" 
+                    class="w-full px-3 py-1.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold"
+                  />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold uppercase text-neutral-600 mb-1">Non-PhilHealth Out-of-Pocket</label>
+                  <input 
+                    v-model="pkg.withoutPhilHealth.totalOutOfPocket" 
+                    type="text" 
+                    class="w-full px-3 py-1.5 bg-white border border-neutral-300 rounded-xl text-xs font-bold text-brand-primary"
+                  />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold uppercase text-neutral-600 mb-1">Brief Description</label>
+                  <input 
+                    v-model="pkg.description" 
+                    type="text" 
+                    class="w-full px-3 py-1.5 bg-white border border-neutral-300 rounded-xl text-xs"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- PhilHealth Packages -->
         <div class="bg-white rounded-2xl p-6 sm:p-8 border border-brand-border/60 shadow-card space-y-6">
           <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
@@ -459,7 +520,7 @@
             >
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-200 pb-3">
                 <div class="flex items-center gap-2">
-                  <span class="px-2.5 py-0.5 rounded-full bg-brand-primary text-white text-xs font-extrabold">{{ pkg.code }}</span>
+                  <span :class="getPackageBadgeClass(pkg.code)">{{ formatPackageCode(pkg.code) }}</span>
                   <span class="text-sm font-extrabold text-neutral-950">{{ pkg.title }}</span>
                 </div>
                 <span class="text-xs text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
@@ -930,6 +991,7 @@ import {
   X 
 } from '@lucide/vue'
 import { clinicStore, auth, resetStoreToDefaults, saveClinicStore } from '../../stores/clinicStore.js'
+import { formatPackageCode, getPackageBadgeClass } from '../../utils/packageBadges.js'
 
 const router = useRouter()
 const activeTab = ref('info')

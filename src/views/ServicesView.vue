@@ -430,14 +430,16 @@
                               :key="pkg.code"
                               class="p-4 bg-white rounded-xl border border-brand-border space-y-2.5"
                             >
-                              <div class="flex flex-wrap items-center justify-between gap-2">
-                                <div class="flex items-center gap-2">
-                                  <span class="px-2.5 py-0.5 bg-brand-primary text-white font-mono text-xs font-bold rounded-md">
-                                    {{ pkg.code }}
+                              <div class="space-y-1.5">
+                                <div class="flex items-center justify-between">
+                                  <span :class="getPackageBadgeClass(pkg.code)">
+                                    {{ formatPackageCode(pkg.code) }}
                                   </span>
-                                  <h5 class="font-heading text-xs sm:text-sm font-bold text-text-primary">{{ pkg.title }}</h5>
+                                  <span class="text-xs font-bold text-brand-primary">Case Rate: {{ pkg.caseRate }}</span>
                                 </div>
-                                <span class="text-xs font-semibold text-text-secondary">Case Rate: <strong class="text-text-primary">{{ pkg.caseRate }}</strong></span>
+                                <div>
+                                  <h5 class="font-heading text-sm font-bold text-text-primary">{{ pkg.title }}</h5>
+                                </div>
                               </div>
 
                               <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs pt-1">
@@ -677,28 +679,33 @@
                   class="bg-white p-6 sm:p-8 rounded-2xl border border-brand-border shadow-card flex flex-col justify-between space-y-6"
                 >
                   <div class="space-y-4">
-                    <div class="flex flex-wrap items-center justify-between gap-2">
-                      <div class="flex items-center gap-2.5">
-                        <span class="px-3 py-1 rounded-md bg-brand-primary text-white text-xs font-mono font-bold">
-                          {{ pkg.code }}
-                        </span>
-                        <h4 class="font-heading text-base sm:text-lg font-bold text-text-primary">
-                          {{ pkg.title }}
-                        </h4>
-                      </div>
-                      <span v-if="pkg.icdCode" class="text-[11px] font-semibold px-2.5 py-0.5 bg-brand-canvas border border-brand-border text-text-secondary rounded-md">
-                        ICD: {{ pkg.icdCode }} | RVS: {{ pkg.rvsCode }}
+                    <!-- Top Row: Badge on Left, Case Rate on Right -->
+                    <div class="flex items-center justify-between">
+                      <span :class="getPackageBadgeClass(pkg.code)">
+                        {{ formatPackageCode(pkg.code) }}
                       </span>
+                      <span class="text-xs font-bold text-brand-primary">Case Rate: {{ pkg.caseRate }}</span>
                     </div>
 
-                    <p class="text-xs sm:text-sm text-text-secondary leading-relaxed bg-brand-subtle p-3.5 rounded-xl border border-brand-border">
-                      {{ pkg.description }}
-                    </p>
+                    <!-- Title & ICD/RVS row -->
+                    <div>
+                      <div class="flex flex-wrap items-center justify-between gap-2">
+                        <h4 class="font-heading text-lg font-bold text-text-primary">
+                          {{ pkg.title }}
+                        </h4>
+                        <span v-if="pkg.icdCode" class="text-[11px] font-semibold px-2.5 py-0.5 bg-brand-canvas border border-brand-border text-text-secondary rounded-md">
+                          ICD: {{ pkg.icdCode }} | RVS: {{ pkg.rvsCode }}
+                        </span>
+                      </div>
+                      <p class="text-xs sm:text-sm text-text-secondary mt-2 leading-relaxed bg-brand-subtle p-3.5 rounded-xl border border-brand-border">
+                        {{ pkg.description }}
+                      </p>
+                    </div>
 
-                    <!-- Case Rate Breakdown Banner -->
-                    <div class="p-3 bg-brand-canvas rounded-xl border border-brand-border flex flex-wrap justify-between items-center text-xs gap-2">
-                      <span class="font-semibold text-text-secondary">PhilHealth Case Rate: <strong class="text-text-primary font-bold">{{ pkg.caseRate }}</strong></span>
-                      <span class="text-text-muted">HCI: {{ pkg.includes.hci }} • PF: {{ pkg.includes.professionalFee }}</span>
+                    <!-- HCI & PF Split -->
+                    <div class="p-2.5 bg-brand-soft rounded-xl border border-brand-border text-[11px] text-brand-primary-dark flex justify-between">
+                      <span>HCI: <strong>{{ pkg.includes.hci }}</strong></span>
+                      <span>PF: <strong>{{ pkg.includes.professionalFee }}</strong></span>
                     </div>
                   </div>
 
@@ -772,8 +779,8 @@
                 >
                   <div class="space-y-4">
                     <div class="flex items-center justify-between">
-                      <span class="px-3 py-1 rounded-md bg-brand-primary text-white text-xs font-mono font-bold">
-                        {{ pkg.code }}
+                      <span :class="getPackageBadgeClass(pkg.code)">
+                        {{ formatPackageCode(pkg.code) }}
                       </span>
                       <span class="text-xs font-bold text-brand-primary">Case Rate: {{ pkg.caseRate }}</span>
                     </div>
@@ -993,22 +1000,7 @@
             </div>
 
             <div class="lg:col-span-6">
-              <div class="w-full h-80 sm:h-96 rounded-xl bg-brand-soft border border-brand-border overflow-hidden relative">
-                <img 
-                  src="../assets/images/clinic-reception.jpg" 
-                  alt="Althea-Lapuz Lying In Clinic Facility & Reception" 
-                  class="w-full h-full object-cover object-center"
-                />
-                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-xl p-3.5 border border-brand-border shadow-md flex items-center justify-between">
-                  <div>
-                    <h4 class="font-heading text-xs font-bold text-text-primary uppercase">Althea-Lapuz Clinic Reception</h4>
-                    <p class="text-[11px] text-text-secondary">Comfortable, Accessible Maternal Facility</p>
-                  </div>
-                  <span class="px-3 py-1 bg-brand-primary text-white text-xs font-bold rounded-full shrink-0">
-                    Open 24/7
-                  </span>
-                </div>
-              </div>
+              <ClinicPhotoCarousel />
             </div>
           </div>
 
@@ -1079,6 +1071,8 @@ import {
   X
 } from '@lucide/vue'
 import { clinicStore } from '../stores/clinicStore.js'
+import { formatPackageCode, getPackageBadgeClass } from '../utils/packageBadges.js'
+import ClinicPhotoCarousel from '../components/ClinicPhotoCarousel.vue'
 import normalDeliveryImg from '../assets/images/normal-delivery.jpg'
 import vaccinationWellnessImg from '../assets/images/vaccination-wellness.jpg'
 
