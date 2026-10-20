@@ -1013,107 +1013,28 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                01
+            <div 
+              v-for="(item, idx) in accessibilityFeatures" 
+              :key="item.title"
+              class="p-5 bg-white rounded-2xl border border-brand-border shadow-card hover:border-brand-primary/60 hover:shadow-card-hover transition-all duration-200 flex items-start gap-4 group"
+            >
+              <div class="w-11 h-11 rounded-xl bg-brand-soft border border-brand-border flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary transition-colors duration-200 shrink-0 shadow-xs">
+                <component :is="item.icon" class="w-5 h-5 transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
               </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Wheelchair Ramp</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Easy entrance for wheelchair users and mobility aids.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                02
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Handrails</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Support along stairs and hallways for stability and patient balance.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                03
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Accessible Restroom</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Easy-to-use dedicated restroom designed for pregnant and recovering mothers.</p>
+              <div class="space-y-1 text-left flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="font-heading text-sm font-bold text-text-primary group-hover:text-brand-primary transition-colors">
+                    {{ item.title }}
+                  </h3>
+                  <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-brand-canvas border border-brand-border text-text-muted">
+                    {{ String(idx + 1).padStart(2, '0') }}
+                  </span>
+                </div>
+                <p class="text-xs text-text-secondary leading-relaxed">
+                  {{ item.description }}
+                </p>
               </div>
             </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                04
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Non-Slip Floors</h3>
-                <p class="text-xs text-text-secondary mt-0.5">High-traction medical grade flooring helps prevent slips and falls.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                05
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Wide Doorways</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Allows unobstructed movement for patients, wheelchairs, and stretchers.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                06
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Comfortable Waiting Area</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Provides ergonomic seating tailored specifically for pregnant women and companions.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                07
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Clear Signage</h3>
-                <p class="text-xs text-text-secondary mt-0.5">High-contrast, intuitive directional signs for all clinic departments.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                08
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Good Lighting</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Keeps clinical hallways, consultation rooms, and recovery areas well-lit.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                09
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Priority Assistance</h3>
-                <p class="text-xs text-text-secondary mt-0.5">Dedicated staff on standby to assist pregnant women and patients needing extra mobility support.</p>
-              </div>
-            </div>
-
-            <div class="p-5 bg-brand-canvas rounded-xl border border-brand-border flex items-start gap-4">
-              <div class="w-9 h-9 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 font-heading font-bold text-xs">
-                10
-              </div>
-              <div>
-                <h3 class="font-heading text-sm font-bold text-text-primary">Accessible Entrance</h3>
-                <p class="text-xs text-text-secondary mt-0.5">A barrier-free, street-level main clinic entrance for swift, comfortable arrival.</p>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
@@ -1128,6 +1049,16 @@ import { useRoute, useRouter } from 'vue-router'
 import { 
   ArrowRight, 
   ArrowLeft,
+  Accessibility,
+  Hand,
+  Bath,
+  DoorOpen,
+  Armchair,
+  Signpost,
+  Lightbulb,
+  HeartHandshake,
+  Building2,
+  Footprints,
   Banknote, 
   ShieldCheck, 
   ChevronDown, 
@@ -1221,6 +1152,60 @@ const tabSubtitle = computed(() => {
   }
   return 'We provide comprehensive maternity care primarily dedicated to pregnant women, postpartum mothers, newborns, and their families.'
 })
+
+
+const accessibilityFeatures = [
+  {
+    title: 'Wheelchair Ramp',
+    description: 'Easy entrance for wheelchair users and mobility aids.',
+    icon: Accessibility
+  },
+  {
+    title: 'Handrails',
+    description: 'Support along stairs and hallways for stability and patient balance.',
+    icon: Hand
+  },
+  {
+    title: 'Accessible Restroom',
+    description: 'Easy-to-use dedicated restroom designed for pregnant and recovering mothers.',
+    icon: Bath
+  },
+  {
+    title: 'Non-Slip Floors',
+    description: 'High-traction medical grade flooring helps prevent slips and falls.',
+    icon: Footprints
+  },
+  {
+    title: 'Wide Doorways',
+    description: 'Allows unobstructed movement for patients, wheelchairs, and stretchers.',
+    icon: DoorOpen
+  },
+  {
+    title: 'Comfortable Waiting Area',
+    description: 'Provides ergonomic seating tailored specifically for pregnant women and companions.',
+    icon: Armchair
+  },
+  {
+    title: 'Clear Signage',
+    description: 'High-contrast, intuitive directional signs for all clinic departments.',
+    icon: Signpost
+  },
+  {
+    title: 'Good Lighting',
+    description: 'Keeps clinical hallways, consultation rooms, and recovery areas well-lit.',
+    icon: Lightbulb
+  },
+  {
+    title: 'Priority Assistance',
+    description: 'Dedicated staff on standby to assist pregnant women and patients needing extra mobility support.',
+    icon: HeartHandshake
+  },
+  {
+    title: 'Accessible Entrance',
+    description: 'A barrier-free, street-level main clinic entrance for swift, comfortable arrival.',
+    icon: Building2
+  }
+]
 
 const servicesData = [
   {
