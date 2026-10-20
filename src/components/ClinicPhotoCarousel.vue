@@ -231,44 +231,14 @@ const photos = [
     title: 'Barrier-Free Hallway Transitions'
   },
   {
-    src: '/clinic_pictures/optimized/IMG20260922084952.jpg',
-    fullSrc: '/clinic_pictures/IMG20260922084952.jpg',
-    title: 'Physician Consultation Suite'
-  },
-  {
     src: '/clinic_pictures/optimized/IMG20260922084959.jpg',
     fullSrc: '/clinic_pictures/IMG20260922084959.jpg',
     title: 'Maternal Assessment & Records Station'
   },
   {
-    src: '/clinic_pictures/optimized/IMG20260922085050.jpg',
-    fullSrc: '/clinic_pictures/IMG20260922085050.jpg',
-    title: 'Clinical Examination Bed'
-  },
-  {
-    src: '/clinic_pictures/optimized/IMG20260922085101.jpg',
-    fullSrc: '/clinic_pictures/IMG20260922085101.jpg',
-    title: 'Sterile Delivery Suite'
-  },
-  {
     src: '/clinic_pictures/optimized/IMG20260922085113.jpg',
     fullSrc: '/clinic_pictures/IMG20260922085113.jpg',
     title: 'Delivery & Labor Monitoring Equipment'
-  },
-  {
-    src: '/clinic_pictures/optimized/IMG20260922085131.jpg',
-    fullSrc: '/clinic_pictures/IMG20260922085131.jpg',
-    title: 'Postpartum Maternal Recovery Ward'
-  },
-  {
-    src: '/clinic_pictures/optimized/IMG20260922085155.jpg',
-    fullSrc: '/clinic_pictures/IMG20260922085155.jpg',
-    title: 'Comfortable Recovery Beds'
-  },
-  {
-    src: '/clinic_pictures/optimized/IMG20260922085211.jpg',
-    fullSrc: '/clinic_pictures/IMG20260922085211.jpg',
-    title: 'Newborn Care & Bassinet Area'
   },
   {
     src: '/clinic_pictures/optimized/IMG20260922085226.jpg',
