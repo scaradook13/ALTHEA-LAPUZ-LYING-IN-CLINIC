@@ -87,15 +87,6 @@
 
             <div class="h-5 w-px bg-brand-border mx-1.5" aria-hidden="true"></div>
 
-            <!-- Primary Appointment / Inquiry CTA -->
-            <router-link 
-              to="/contact" 
-              class="px-4 py-2 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-active text-white text-xs lg:text-sm font-semibold shadow-brand-sm transition-colors duration-150 inline-flex items-center gap-1.5"
-            >
-              <Phone class="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Inquire / Visit</span>
-            </router-link>
-
             <!-- Admin Portal Access Button -->
             <router-link 
               to="/admin" 
@@ -182,21 +173,12 @@
             Contact &amp; Directions
           </router-link>
 
-          <div class="pt-3 mt-2 border-t border-brand-border/60 grid grid-cols-2 gap-2.5">
-            <router-link 
-              to="/contact" 
-              @click="isOpen = false" 
-              class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-heading font-bold bg-brand-primary hover:bg-brand-primary-hover text-white shadow-brand-sm"
-            >
-              <Phone class="w-3.5 h-3.5" aria-hidden="true" />
-              <span>Inquire Now</span>
-            </router-link>
-
+          <div class="pt-3 mt-2 border-t border-brand-border/60">
             <!-- Mobile Admin Portal Link -->
             <router-link 
               to="/admin" 
               @click="isOpen = false" 
-              class="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-brand-primary bg-white border border-brand-border hover:bg-brand-soft transition-colors"
+              class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-heading font-bold text-brand-primary bg-white border border-brand-border hover:bg-brand-soft transition-colors"
             >
               <ShieldCheck v-if="auth.isAuthenticated.value" class="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
               <Lock v-else class="w-3.5 h-3.5" aria-hidden="true" />
